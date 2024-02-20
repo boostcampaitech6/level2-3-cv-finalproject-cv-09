@@ -12,7 +12,6 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
-
 import argparse
 from omegaconf import OmegaConf
 import copy
@@ -68,7 +67,7 @@ from diffusers.utils.torch_utils import is_compiled_module
 
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
-check_min_version("0.27.0.dev0")
+#check_min_version("0.27.0.dev0")
 
 logger = get_logger(__name__)
 
@@ -152,7 +151,7 @@ class DreamBoothDataset(Dataset):
     def __init__(
         self,
         instance_data_root,
-        instance_prompt,
+        instance_prompt_root,
         tokenizer,
         class_data_root=None,
         class_prompt=None,
@@ -176,7 +175,7 @@ class DreamBoothDataset(Dataset):
 
         self.instance_images_path = list(Path(instance_data_root).iterdir())
         self.num_instance_images = len(self.instance_images_path)
-        self.instance_prompt = instance_prompt
+        self.instance_prompt_path = list(Path(instance_prompt_root).iterdir())
         self._length = self.num_instance_images
 
         if class_data_root is not None:
@@ -207,6 +206,11 @@ class DreamBoothDataset(Dataset):
     def __getitem__(self, index):
         example = {}
         instance_image = Image.open(self.instance_images_path[index % self.num_instance_images])
+        instance_prompt_idx = self.instance_prompt_path[index % self.num_instance_images]
+        
+        with open(instance_prompt_idx, 'r') as f: 
+            instance_prompt = f.read().strip()
+
         instance_image = exif_transpose(instance_image)
 
         if not instance_image.mode == "RGB":
@@ -217,7 +221,7 @@ class DreamBoothDataset(Dataset):
             example["instance_prompt_ids"] = self.encoder_hidden_states
         else:
             text_inputs = tokenize_prompt(
-                self.tokenizer, self.instance_prompt, tokenizer_max_length=self.tokenizer_max_length
+                self.tokenizer, instance_prompt, tokenizer_max_length=self.tokenizer_max_length
             )
             example["instance_prompt_ids"] = text_inputs.input_ids
             example["instance_attention_mask"] = text_inputs.attention_mask
@@ -423,9 +427,7 @@ def main(configs):
             pipeline = DiffusionPipeline.from_pretrained(
                 model_name,
                 torch_dtype=torch_dtype,
-                safety_checker=None,
-                revision=revision,
-                variant=variant,
+                safety_checker=None
             )
             pipeline.set_progress_bar_config(disable=True)
 
@@ -696,13 +698,14 @@ def main(configs):
         pre_computed_class_prompt_encoder_hidden_states = None
 
     instance_data_dir = configs['data']['instance_data_dir']
+    instance_prompt_dir = configs['data']['instance_prompt_dir']
     resolution = configs['data']['resolution']
     center_crop = configs['data']['center_crop']
 
     # Dataset and DataLoaders creation:
     train_dataset = DreamBoothDataset(
         instance_data_root=instance_data_dir,
-        instance_prompt=instance_prompt,
+        instance_prompt_root=instance_prompt_dir,
         class_data_root=class_data_dir if with_prior_preservation else None,
         class_prompt=class_prompt,
         class_num=num_class_images,

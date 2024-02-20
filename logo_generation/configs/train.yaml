@@ -10,13 +10,14 @@ model:
 
 
 data:
-  instance_data_dir: "/data/ephemeral/home/dog"
-  instance_prompt: "a dog"
-  class_data_dir: None 
-  class_prompt: None 
+  instance_data_dir: "/data/ephemeral/home/datasets/images"
+  instance_prompt_dir: "/data/ephemeral/home/datasets/labels"
+  instance_prompt: "a logo"
+  class_data_dir: "/data/ephemeral/home/spare"
+  class_prompt: "a logo"
   validation_prompt: "a sks dog" 
   num_class_images: 100
-  output_dir: "/data/ephemeral/home/deepfloyd/output"
+  output_dir: "/data/ephemeral/home/deepfloyd/output2"
   resolution: 64
   center_crop: False 
   dataloader_num_workers: 0
@@ -30,7 +31,7 @@ train:
   train_batch_size: 4
   sample_batch_size: 4
   num_train_epochs: 1
-  max_train_steps: 100
+  max_train_steps: 1500
   checkpointing_steps: 100
   checkpoints_total_limit: 0
   resume_from_checkpoint: False
@@ -53,7 +54,7 @@ infer:
   validation_epochs: 25
   validation_images: None 
 
-with_prior_preservation: False 
+with_prior_preservation: True
 seed: 42
 mixed_precision: "fp16"
 prior_generation_precision: "fp16"
