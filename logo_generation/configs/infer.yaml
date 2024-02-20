@@ -1,0 +1,5 @@
+project_dir: './output2'
+save_dir: './sample/'
+prompt: 'a logo of'
+num_inference_steps: 50
+n_sample: 4
