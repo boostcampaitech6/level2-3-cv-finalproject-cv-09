@@ -33,7 +33,8 @@ def main(configs):
 
     pipeline = pipeline.to(accelerator.device)
 
-    pipeline.load_lora_weights(project_dir, weight_name="pytorch_lora_weights.safetensors")
+    if project_dir:
+        pipeline.load_lora_weights(project_dir, weight_name="pytorch_lora_weights.safetensors")
     
     generator = torch.Generator(device=accelerator.device)
 
@@ -43,7 +44,7 @@ def main(configs):
     save_dir = configs['save_dir']
 
     
-    safety_modules = {"feature_extractor": pipeline.feature_extractor, "safety_checker": pipeline.safety_checker, "watermarker": pipeline.watermarker}
+    safety_modules = {"feature_extractor": pipeline.feature_extractor, "safety_checker": pipeline.safety_checker}
     sr = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-x4-upscaler", **safety_modules, torch_dtype=torch.float16)
     sr.enable_model_cpu_offload()
     prompt_embeds, negative_embeds = pipeline.encode_prompt(prompt)
