@@ -1,0 +1,60 @@
+
+ul {
+  list-style: none;
+}
+.navbar {
+  position: fixed;
+  z-index: 50;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid transparent;
+  background-color: #ffffff;
+  left: 0;
+  transition: background-color .2s ease;
+  border-bottom-color: rgba(0,27,55,0.1);
+}
+.navbar_inner-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.container {
+  width: 100%;
+  height: 100%;
+}
+.title{
+  display: flex;
+  color: rgb(79, 100, 255);
+  font-family: 'Gasoek One', sans-serif;
+  font-size:200%;
+}
+.navbar_logo-container {
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+  min-height: 60px;
+}
+.navbar_content {
+  display: flex;
+  flex: 1;
+  max-height: 100%;
+  justify-content: space-between;
+}
+.navbar_menu {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+.navbar_item>a {
+  padding: 12px 10px;
+  font-size: 20px;
+  line-height: 20px;
+  color: currentColor;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+  text-decoration: none;
+  text-align: left;
+}
