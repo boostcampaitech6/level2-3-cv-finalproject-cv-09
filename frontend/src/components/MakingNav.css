@@ -1,0 +1,45 @@
+.sidebar{
+    width: 200px;
+    height: 1000px;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 1rem;
+    text-align: center;
+    background-color: #ffffff;
+    border-right: 1px solid rgba(0,27,55,0.1);
+}
+.navtitle{
+    font-size: 150%;
+    display: block;
+    border-bottom: 1px solid #c4c4c4;
+    padding-bottom: 1rem;
+}
+.navbutton {
+    border: none;
+    width:100%;
+    height: 100px;
+    font-weight: 100;
+    font-size: 200%;
+    transition: all 0.2s ;
+    border-bottom: 1px solid #c4c4c4;
+    /*
+    color: #8c8c8c;
+    background: #ffffff;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.01), 0 1px 1px rgba(0,0,0,0.14);
+    */
+    color: #000000;
+    background: #ffffff;
+}
+.navbutton:hover {
+    /*
+    box-shadow: 2px 5px 5px rgba(0,0,0,0.17), 0 5px 5px rgba(0,0,0,0.17);
+    */
+    background: #c4c4c4;
+}
+.navbutton_list{
+    margin-top: 0;
+    display: inline-block;
+    padding-left: 0;
+    width: 100%;
+    list-style: none;
+}

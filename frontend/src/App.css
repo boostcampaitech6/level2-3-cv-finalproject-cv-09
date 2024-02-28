@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap');
+
+main {
+  display: block;
+}
+@media (min-width: 992px){
+.container-lg, .container-md, .container-sm, .container {
+    max-width: 960px;
+  }
+}
+.container  {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+.box {
+  padding-top: 300px;
+  padding-bottom: 100px;
+}
