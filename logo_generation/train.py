@@ -1,17 +1,3 @@
-#!/usr/bin/env python
-# coding=utf-8
-# Copyright 2024 The HuggingFace Inc. team. All rights reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
 import argparse
 from omegaconf import OmegaConf
 import copy
@@ -469,7 +455,6 @@ def main(configs):
         tokenizer = AutoTokenizer.from_pretrained(
             model_name,
             subfolder="tokenizer",
-            #revision=revision,
             use_fast=False,
         )  
 
@@ -766,13 +751,6 @@ def main(configs):
     # Afterwards we recalculate our number of training epochs
     num_train_epochs = math.ceil(max_train_steps / num_update_steps_per_epoch)
 
-    # We need to initialize the trackers we use, and also store our configuration.
-    # The trackers initializes automatically on the main process.
-    # if accelerator.is_main_process:
-    #     tracker_config = vars(copy.deepcopy(args))
-    #     tracker_config.pop("validation_images")
-    #     accelerator.init_trackers("dreambooth-lora", config=tracker_config)
-
     # Train!
     total_batch_size = train_batch_size * accelerator.num_processes * gradient_accumulation_steps
 
@@ -865,9 +843,6 @@ def main(configs):
                 if unwrap_model(unet).config.in_channels == channels * 2:
                     noisy_model_input = torch.cat([noisy_model_input, noisy_model_input], dim=1)
 
-                # if args.class_labels_conditioning == "timesteps":
-                #     class_labels = timesteps
-                # else:
                 class_labels = None
 
                 # Predict the noise residual
@@ -878,14 +853,11 @@ def main(configs):
                     class_labels=class_labels,
                     return_dict=False,
                 )[0]
-
-                # if model predicts variance, throw away the prediction. we will only train on the
-                # simplified training objective. This means that all schedulers using the fine tuned
-                # model must be configured to use one of the fixed variance variance types.
+                
                 if model_pred.shape[1] == 6:
                     model_pred, _ = torch.chunk(model_pred, 2, dim=1)
 
-                # Get the target for loss depending on the prediction type
+        
                 if noise_scheduler.config.prediction_type == "epsilon":
                     target = noise
                 elif noise_scheduler.config.prediction_type == "v_prediction":

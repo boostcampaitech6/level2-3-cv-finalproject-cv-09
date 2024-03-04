@@ -2,23 +2,23 @@ model:
   model_name: "DeepFloyd/IF-I-XL-v1.0"
   revision: None
   variant: None
-  tokenizer_name: False
+  tokenizer_name: None
   train_text_encoder: False
-  tokenizer_max_length: 77 
-  pre_compute_text_embeddings: True
-  text_encoder_use_attention_mask: True
+  tokenizer_max_length: 30
+  pre_compute_text_embeddings: False
+  text_encoder_use_attention_mask: False
 
 
 data:
-  instance_data_dir: "/data/ephemeral/home/datasets/images"
-  instance_prompt_dir: "/data/ephemeral/home/datasets/labels"
-  instance_prompt: "a logo"
-  class_data_dir: "/data/ephemeral/home/spare"
-  class_prompt: "a logo"
-  validation_prompt: "a sks dog" 
+  instance_data_dir: "/data/ephemeral/home/dataset/image"
+  instance_prompt_dir: "/data/ephemeral/home/dataset/label"
+  instance_prompt: "로고"
+  class_data_dir: "/data/ephemeral/home/dataset2/dataset/logo"
+  class_prompt: "로고 그림"
+  validation_prompt: "로고 그림" 
   num_class_images: 100
-  output_dir: "/data/ephemeral/home/deepfloyd/output2"
-  resolution: 64
+  output_dir: "/data/ephemeral/home/deepfloyd/outputkor"
+  resolution: 16
   center_crop: False 
   dataloader_num_workers: 0
   logging_dir: logs
@@ -28,10 +28,10 @@ data:
 
 train:
   prior_loss_weight: 1
-  train_batch_size: 4
-  sample_batch_size: 4
+  train_batch_size: 1
+  sample_batch_size: 1
   num_train_epochs: 1
-  max_train_steps: 1500
+  max_train_steps: 10000
   checkpointing_steps: 100
   checkpoints_total_limit: 0
   resume_from_checkpoint: False

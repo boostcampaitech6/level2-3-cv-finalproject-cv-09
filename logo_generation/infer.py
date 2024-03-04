@@ -6,11 +6,15 @@ from accelerate import Accelerator
 import argparse
 from omegaconf import OmegaConf
 from tqdm import tqdm
+from transformers import T5Tokenizer
 
 def main(configs):
 
     # 모형
     pipeline = pipeline = DiffusionPipeline.from_pretrained("DeepFloyd/IF-I-XL-v1.0", torch_dtype=torch.float16)
+    # tokenizer = T5Tokenizer.from_pretrained('KETI-AIR/ke-t5-base')
+    # pipeline.tokenizer = tokenizer
+    # pipeline.text_encoder.resize_token_embeddings(len(tokenizer) + 1)
 
     scheduler_args = {}
     variance_type = pipeline.scheduler.config.variance_type
