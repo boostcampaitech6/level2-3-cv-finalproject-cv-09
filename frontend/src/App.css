@@ -16,6 +16,7 @@ main {
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-right: auto;
   margin-left: auto;
+  position: relative;
 }
 .box {
   padding-top: 300px;

@@ -1,28 +1,32 @@
-import React, { Component } from 'react';
+import React, { forwardRef } from 'react';
 import { Link } from "react-router-dom";
 import '../App.css';
 import './MakingNav.css'
 
-const MakingNav = () => {
+const MakingNav = ({props, handleScrollView, prompt}) => {
     return(
-          <div class="sidebar">
+          <div className="sidebar">
                 <div >
                   <Link 
                     to="/"
-                    class='navtitle'>Logoin</Link>
+                    className='navtitle'>Logoin</Link>
                 </div>
                 <div >
-                  <ul class="navbutton_list">
+                  <ul className="navbutton_list">
                     <li >
-                      <button class="navbutton" >About</button>
+                      <button id="Question01" onClick={handleScrollView} className="navbutton" >1</button>
                     </li>
                     <li >
-                      <button class="navbutton" >How To</button>
+                      <button id="Question02" onClick={handleScrollView} className="navbutton" >2</button>
                     </li>
                     <li >
-                      <button class="navbutton" >Devs</button>
+                      <button id="Question03" onClick={handleScrollView} className="navbutton" >3</button>
+                    </li>
+                    <li >
+                      <button id="Question04" onClick={handleScrollView} className="navbutton" >4</button>
                     </li>
                   </ul>
+                  <div>{prompt}</div>
                   </div>
           </div>
     );

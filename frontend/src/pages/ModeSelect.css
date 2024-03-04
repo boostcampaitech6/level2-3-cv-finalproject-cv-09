@@ -1,0 +1,36 @@
+.modebutton{
+    margin-right: 5rem;
+    margin-left: 0;
+    margin-bottom: 15px;
+    width: 400px;
+    height: 400px;
+    border-radius: 15px;
+    transition: all 0.2s ;
+    /*
+    color: #8c8c8c;
+    background: #ffffff;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.01), 0 1px 1px rgba(0,0,0,0.14);
+    */
+    color: #000000;
+    background: #e0e0e0;
+    position: relative;
+}
+.modebutton:hover {
+    /*
+    box-shadow: 2px 5px 5px rgba(0,0,0,0.17), 0 5px 5px rgba(0,0,0,0.17);
+    */
+    background: #c4c4c4;
+}
+.modebuttonT1{
+    font-size: 200%;
+    margin-bottom: 2%;
+}
+.modebuttonT2{
+    font-size: 100%;
+}
+.modebuttonText{
+    position:absolute; bottom: 0px;
+    white-space: nowrap;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
