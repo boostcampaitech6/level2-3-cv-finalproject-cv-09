@@ -1,11 +1,17 @@
+.modebuttonbox {
+    width: 100%;
+    display:flex;
+    padding-left: 0;
+    
+}
 .modebutton{
-    margin-right: 5rem;
-    margin-left: 0;
     margin-bottom: 15px;
-    width: 400px;
-    height: 400px;
+    width: 48%;
+    height: 30rem;
     border-radius: 15px;
     transition: all 0.2s ;
+    float: left;
+
     /*
     color: #8c8c8c;
     background: #ffffff;
@@ -22,8 +28,9 @@
     background: #c4c4c4;
 }
 .modebuttonT1{
-    font-size: 200%;
+    font-size: 300%;
     margin-bottom: 2%;
+    
 }
 .modebuttonT2{
     font-size: 100%;
@@ -33,4 +40,9 @@
     white-space: nowrap;
     margin-left: 5%;
     margin-bottom: 5%;
+}
+.nametext {
+    margin-top: 8rem;
+    font-size: 1000%;
+    color: var(--color-purple);
 }
