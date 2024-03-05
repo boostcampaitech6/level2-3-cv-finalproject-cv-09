@@ -5,13 +5,23 @@ import React, { useState } from 'react';
 const Question01 = ({props, handleScrollView, handleSingleCheck}) => {
 
   const [Index, setIndex] = useState([
-    {id: 0, title: '비즈니스',},
-    {id: 1, title: '행사',},
-    {id: 2, title: '대회', },
-    {id: 3, title: '동아리',},
-    {id: 4, title: '유튜브', },
-    {id: 5, title: 'SNS', },
-    {id: 6, title: '단체', },
+    {id: 0, title: '제조업',},
+    {id: 1, title: 'IT사업',},
+    {id: 2, title: '농업', },
+    {id: 3, title: '어업',},
+    {id: 4, title: '건설업', },
+    {id: 5, title: '부동산', },
+    {id: 6, title: '의료/바이오', },
+    {id: 7, title: '교육', },
+    {id: 8, title: '문화/예술', },
+    {id: 9, title: '여행', },
+    {id: 10, title: '우주/항공', },
+    {id: 11, title: '로봇/인공지능', },
+    {id: 12, title: '화학', },
+    {id: 13, title: '미디어', },
+    {id: 14, title: '스포츠', },
+    {id: 15, title: '기타', },
+
   ]);
       return(
             <div style={{paddingTop: "100px", paddingBottom:"200px"}}>
