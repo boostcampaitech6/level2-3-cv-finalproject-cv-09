@@ -19,23 +19,23 @@ const PromptStart = () => {
       }
       return(
             <div className="inputbbox">
-            <div className='inputbox'>
-                <input className='inputline'
-                type="text"
-                title=''
-                onChange={onChange} //글자 입력 처리
-                onKeyUp={onEnter} //엔터키 입력 처리
-                required
-                />
-                <label className='label'>브랜드 이름을 입력해주세요!</label>
-                <span className='span'></span>
-                <button href=""
-                  className='startbutton'
-                  style={{ textDecoration: "none" }}
-                  onClick={onClick} //버튼 클릭 처리
-                  disabled={!content}//버튼 활성화 처리
-                  >start</button>
-            </div>
+                  <div className='inputbox'>
+                        <input className='inputline'
+                        type="text"
+                        title=''
+                        onChange={onChange} //글자 입력 처리
+                        onKeyUp={onEnter} //엔터키 입력 처리
+                        required
+                        />
+                        <label className='label'>브랜드 이름을 입력해주세요!</label>
+                        <span className='span'></span>
+                        <button href=""
+                              className='startbutton'
+                              style={{ textDecoration: "none" }}
+                              onClick={onClick} //버튼 클릭 처리
+                              disabled={!content}//버튼 활성화 처리
+                              >start</button>
+                  </div>
             </div>
       );
     }
