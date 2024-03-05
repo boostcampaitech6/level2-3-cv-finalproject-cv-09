@@ -8,16 +8,19 @@ const Home = () =>{
     return(
         <div>
           <MainNav/>
-          <div>
-            <section className='container box'>
-              <div>
+          <section className='container box'>
+            <div className="column_box">
+              <div className="column1">
                 <div className="text1">Create Logo</div>
                 <div className="text2">로고를 생성해볼까요?</div>
-              <PromptStart/>
+                <PromptStart/>
               </div>
-            </section>
-          </div>
-          </div>
+              <div className="column2">
+              <img alt="HTML" src="https://www.w3schools.com/whatis/img_js.png"></img>
+              </div>
+            </div>
+          </section>
+      </div>
     );
 }
 export default Home;

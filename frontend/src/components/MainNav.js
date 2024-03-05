@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Routes, Link } from "react-router-dom";
+import { ReactComponent as Cookie } from './assets/login.svg';
 import '../App.css';
 import './MainNav.css';
 
@@ -31,8 +32,8 @@ const MainNav = () => {
                     </li>
                   </ul>
                   <ul className="navbar_login">
-                    <li className="navbar_item">
-                        <Link >Login</Link>
+                    <li className="login_item">
+                        <Link ><Cookie width="35" height="35" /></Link>
                     </li>
                   </ul>
                 </div>

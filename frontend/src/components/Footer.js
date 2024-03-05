@@ -8,7 +8,7 @@ const Footer = () => {
         <footer className="footer bg-white">
           <div className='container'>
             <div style={{display:"flex" }}> 
-              <div style={{fontSize:"150%" }}>SCV</div> 
+              <div className='team'>SCV</div> 
               <div className="navbar_content" aria-expanded="false" aria-hidden="true">
                 <div></div>
                 <div className="RightsReserved">Copyright © 2024 SCV | All Rights Reserved</div>

@@ -1,58 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap');
+
 .inputbbox{
   display: flex;
   border: solid #adadad;
   border-radius: 15px;
   height: 4rem;
-  width: 80%;
+  width: 90%;
   margin-bottom: 10rem;
-  margin: 0 auto; 
+  margin: 0; 
 }
+
 .inputbox {
   display: flex;
-  /* margin-left: 4%; */
-  margin: 0 auto;
+  margin: 5px 10px;
+  margin-right: 20px;
   position: relative;
-  width: 600px;
+  width: 550px;
 }
+
 .inputline {
   display: flex;
   font-size: 20px;
-  margin-right: 30%;
   color: #222222;
   border: none;
-  border-bottom: solid #aaaaaa 1px;
-  /* padding-bottom: 10px; */
   padding-left: 10px;
   position: relative;
   background: none;
   z-index: 5;
   box-sizing: border-box;
+  width: 100%
 }
 
 .inputline::placeholder { color: #aaaaaa; }
 .inputline:focus { outline: none; }
 .span {
-    display: block;
     position: absolute;
     bottom: 0;
     left: 0%;  /* right로만 바꿔주면 오 - 왼 */
-    background-color: #666;
+    background-color: #aaaaaa;
     width: 0;
     height: 2px;
     border-radius: 2px;
     transition: 0.5s;
     box-sizing: border-box;
   }
-  
+
 .label {
     display: flex;
     position: absolute;
-    color: #aaa;
+    color: #aaaaaa;
     left: 10px;
     font-size: 20px;
     bottom: 14px;
     transition: all .2s;
+    width: 100%;
   }
   input:focus ~ label, input:valid ~ label {
 
@@ -66,23 +67,24 @@
 .startbutton {
   display: flex;
   border: none;
-  float: right;
-  padding: 10px 20px;
-  margin: 0 ;
+  height: 50px;
+  margin: 6px 10px;
+  padding: 1px 17px 1px 17px;
+  position: relative;
   font-weight: 300;
   font-size: 100%;
   text-align: center;
   line-height: 50px;
-  color: #FFF;
+  color: #ffffff;
   border-radius: 5px;
   transition: all 0.2s ;
-  background: #0080ae;
+  background: #929191;
 }
 /*버튼위에 마우스가 올라갔을 때 색 지정*/
 .startbutton:hover {
-  background: #215682;
+  background: #4f64ff;
 }
 /*버튼이 비활성화 되었을 때 색 지정*/
 .startbutton:disabled { 
-  background: #9d9d9d;
+  background: #aaaaaa;
 }

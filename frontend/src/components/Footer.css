@@ -8,6 +8,10 @@ footer {
     border-top: 1px solid #e6e7ea;
     margin-top: auto;
   }
+  .team {
+    font-size: 150%;
+    color: #708090;
+  }
   .bg-white {
     --bs-bg-opacity: 1;
     background-color:white;

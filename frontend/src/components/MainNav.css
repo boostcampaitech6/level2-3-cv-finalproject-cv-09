@@ -25,7 +25,7 @@ ul {
 }
 .title{
   display: flex;
-  color: rgb(79, 100, 255);
+  color: #4f64ff;
   font-family: 'Spoqa Han Sans Neo', sans-serif;
   font-weight: bolder;
   font-size: 220%;
@@ -42,6 +42,7 @@ ul {
   flex: 1;
   max-height: 100%;
   justify-content: space-between;
+  margin-left: 5%;
 }
 .navbar_menu {
   display: flex;
@@ -77,4 +78,27 @@ ul {
   align-items: center;
   padding: 30;
   margin: 0 auto;
+}
+
+
+.login_item>a {
+  display: flex;
+  padding: 0px 0px;
+  font-size: 20px;
+  line-height: 20px;
+  color: #646464;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+  text-decoration: none;
+  text-align: left;
+  letter-spacing :0.5px;
+}
+
+.login_item>a:hover {
+  background-color: #f4f4f4;
+  color: #000000;
+  text-decoration: underline;
+  border-radius: 10px;
 }

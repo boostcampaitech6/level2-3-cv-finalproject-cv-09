@@ -29,13 +29,13 @@ const PromptStart = () => {
                         />
                         <label className='label'>브랜드 이름을 입력해주세요!</label>
                         <span className='span'></span>
-                        <button href=""
-                              className='startbutton'
-                              style={{ textDecoration: "none" }}
-                              onClick={onClick} //버튼 클릭 처리
-                              disabled={!content}//버튼 활성화 처리
-                              >start</button>
                   </div>
+                  <button href=""
+                        className='startbutton'
+                        style={{ textDecoration: "none" }}
+                        onClick={onClick} //버튼 클릭 처리
+                        disabled={!content}//버튼 활성화 처리
+                        >start</button>
             </div>
       );
     }
