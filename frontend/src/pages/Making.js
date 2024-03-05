@@ -54,30 +54,32 @@ const Making = () =>{
     });
   };
     return(
-        <div>
-          <MakingNav handleScrollView={handleScrollView} prompt={checkItems}/>
-          <div>
-            <section className='container'>
-              <div ref={(el) => (scrollRef.current[0] = el)}>
-              <Question01 handleScrollView={handleScrollView} handleSingleCheck={handleSingleCheck}/>
-              </div>
-              <div ref={(el) => (scrollRef.current[1] = el)}>
-              <Question02 handleScrollView={handleScrollView} handleSingleCheck={handleSingleCheck}/>
-              </div>
-              <div ref={(el) => (scrollRef.current[2] = el)}>
-              <Question03 handleScrollView={handleScrollView} handleSingleCheck={handleSingleCheck}/>
-              </div>
-              <div ref={(el) => (scrollRef.current[3] = el)}>
-              <Question04 handleScrollView={handleScrollView} handleSingleCheck={handleSingleCheck}/>
-              </div>
-              <button className="button" onClick={onClickpost}>제작</button>
-              <img
-                style={{ maxWidth: "100%", height: "auto" }}
-                src={MyImage}
-                />
-            </section>
-          </div>
-          </div>
+      <div className="making_column_box">
+        <div className="making_column1">
+          <MakingNav handleScrollView={handleScrollView} prompt={checkItems.join(', ')}/>
+        </div>
+        <div className="making_column2">
+          <section className='container'>
+            <div ref={(el) => (scrollRef.current[0] = el)}>
+            <Question01 handleScrollView={handleScrollView} handleSingleCheck={handleSingleCheck}/>
+            </div>
+            {/* <div ref={(el) => (scrollRef.current[1] = el)}>
+            <Question02 handleScrollView={handleScrollView} handleSingleCheck={handleSingleCheck}/>
+            </div>
+            <div ref={(el) => (scrollRef.current[2] = el)}>
+            <Question03 handleScrollView={handleScrollView} handleSingleCheck={handleSingleCheck}/>
+            </div>
+            <div ref={(el) => (scrollRef.current[3] = el)}>
+            <Question04 handleScrollView={handleScrollView} handleSingleCheck={handleSingleCheck}/>
+            </div> */}
+            {/* <button className="button" onClick={onClickpost}>제작</button> */}
+            <img
+              style={{ maxWidth: "100%", height: "auto" }}
+              src={MyImage}
+              />
+          </section>
+        </div>
+        </div>
     );
 }
 

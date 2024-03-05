@@ -9,22 +9,27 @@ const MakingNav = ({props, handleScrollView, prompt}) => {
                 <div >
                   <Link 
                     to="/"
-                    className='navtitle'>Logoin</Link>
+                    className='navtitle'>K-Logo Gen</Link>
                 </div>
+                <div className='margin'></div>
                 <div >
                   <ul className="navbutton_list">
                     <li >
                       <button id="Question01" onClick={handleScrollView} className="navbutton" >1</button>
                     </li>
+                    <div className='margin'>{prompt}</div>
                     <li >
                       <button id="Question02" onClick={handleScrollView} className="navbutton" >2</button>
                     </li>
+                    <div className='margin'>{prompt}</div>
                     <li >
                       <button id="Question03" onClick={handleScrollView} className="navbutton" >3</button>
                     </li>
+                    <div className='margin'>{prompt}</div>
                     <li >
                       <button id="Question04" onClick={handleScrollView} className="navbutton" >4</button>
                     </li>
+                    <div className='margin'>{prompt}</div>
                   </ul>
                   <div>{prompt}</div>
                   </div>
