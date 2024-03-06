@@ -2,35 +2,35 @@ import { useLocation } from "react-router";
 import MainNav from "../components/MainNav";
 import { useNavigate } from 'react-router';
 import React, { useState } from 'react';
-import './ModeSelect.css';
 
-const ModeSelect = () =>{
+const PromptCheck = () =>{
     let location = useLocation();
     const name = location.state?.name;
+    const prompt = location.state?.checkItems;
     const navigate = useNavigate();
-    const onClickMaking = () =>{
-    navigate("/making?name=" + name, {state: { name }});
+    const onClickResult = () =>{
+    navigate("/result?name=" + name + "?prompt="+ prompt, {state: { name, prompt }});
   }
   const onClickAdv = () =>{
-    navigate("/adv?name=" + name, {state: { name }});
+    navigate("/adv?name=" + name + "?prompt="+ prompt, {state: { name, prompt }});
   }
 return(
     <div><MainNav/>
 <div className='container' style={{paddingTop: "100px", paddingBottom: "200px"}}>
 <div className="nametext" >{name}</div>
-<div className="QuestionT2">라는 로고를 만들게요.</div>
-<div className="QuestionT2">원하시는 생성 방식을 선택해주세요.</div>
+<div className="QuestionT2">{prompt.join(", ")}</div>
+<div className="QuestionT2">확인</div>
 <div className="modebuttonbox">
-    <div onClick={onClickMaking} className="modebutton" style={{marginRight:"auto"}}>
+    <div onClick={onClickResult} className="modebutton" style={{marginRight:"auto"}}>
     <div className="buttonText">
-      <div className="buttonT1">select mode</div>
-      <div className="buttonT2">객관식</div>
+      <div className="buttonT1">making logo</div>
+      <div className="buttonT2">로고를 생성할래요!</div>
       </div>
       </div>
   <div onClick={onClickAdv} className="modebutton" style={{marginLeft:"auto"}}>
     <div className="buttonText">
     <div className="buttonT1">typing mode</div>
-      <div className="buttonT2">주관식</div>
+      <div className="buttonT2">직접 더 수정하고 싶어요!</div>
       </div>
       </div>
 </div>
@@ -38,4 +38,4 @@ return(
 </div>
 );
 }
-export default ModeSelect;
+export default PromptCheck;

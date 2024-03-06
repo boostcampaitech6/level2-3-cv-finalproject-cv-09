@@ -1,0 +1,36 @@
+.logobutton {
+    border: none;
+    margin-bottom: 15px;
+    height: 30rem;
+    border-radius: 15px;
+    transition: all 0.1s ;
+    
+    /*
+    color: #8c8c8c;
+    background: #ffffff;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.01), 0 1px 1px rgba(0,0,0,0.14);
+    */
+    color: #000000;
+    background: #e0e0e0;
+    position: relative;
+}
+.logobutton:hover {
+    /*
+    box-shadow: 2px 5px 5px rgba(0,0,0,0.17), 0 5px 5px rgba(0,0,0,0.17);
+    */
+    border: solid var(--color-purple);
+    background: #c4c4c4;
+}
+.logobuttonbox {
+    width: 100%;
+    display: inline-block;
+    padding-left: 0;
+}
+.logoimg {
+    width: 90%;
+    position: absolute;
+}
+.logoli {
+    float: left;
+    width: 40%;
+}
