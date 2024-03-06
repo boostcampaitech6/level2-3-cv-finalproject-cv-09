@@ -17,14 +17,14 @@ const Question01 = ({props, handleScrollView, handleSingleCheck}) => {
     {id: 9, title: '여행', },
     {id: 10, title: '우주/항공', },
     {id: 11, title: '로봇/인공지능', },
-    {id: 12, title: '화학', },
-    {id: 13, title: '미디어', },
-    {id: 14, title: '스포츠', },
-    {id: 15, title: '기타', },
+    // {id: 12, title: '화학', },
+    // {id: 13, title: '미디어', },
+    // {id: 14, title: '스포츠', },
+    // {id: 15, title: '기타', },
 
   ]);
       return(
-            <div style={{paddingTop: "100px", paddingBottom:"200px"}}>
+            <div style={{paddingTop: "30px", paddingBottom: "30px"}}>
               <div className='QuestionT2'>어떤 분야에서 사용할 로고인지 알려주세요!</div>
               <div className="button_margin">
               {Index?.map((Index, key) => (
@@ -37,7 +37,7 @@ const Question01 = ({props, handleScrollView, handleSingleCheck}) => {
                 }}
                 // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
                 >
-                  <div className='buttonT1 buttonText'>{Index.title}</div></button>
+                  <div className='select_button select_text'>{Index.title}</div></button>
                 </li>
           </ul>
         ))}

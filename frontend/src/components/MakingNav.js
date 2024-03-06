@@ -29,7 +29,6 @@ const MakingNav = ({props, handleScrollView, prompt}) => {
                     <li >
                       <button id="Question04" onClick={handleScrollView} className="navbutton" >4</button>
                     </li>
-                    <div className='margin'>{prompt}</div>
                   </ul>
                   <div>{prompt}</div>
                   </div>

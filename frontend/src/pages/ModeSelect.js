@@ -18,18 +18,18 @@ return(
     <div><MainNav/>
 <div className='container' style={{paddingTop: "100px", paddingBottom: "200px"}}>
 <div className="nametext" >{name}</div>
-<div className="QuestionT2">라는 로고를 만들게요.</div>
-<div className="QuestionT2">원하시는 생성 방식을 선택해주세요.</div>
+<div className="QuestionT2">라는 로고를 만들게요</div>
+<div className="QuestionT2">원하시는 생성 방식을 선택해주세요</div>
 <div className="modebuttonbox">
     <div onClick={onClickMaking} className="modebutton" style={{marginRight:"auto"}}>
-    <div className="buttonText">
-      <div className="buttonT1">select mode</div>
-      <div className="buttonT2">객관식</div>
-      </div>
-      </div>
+      <div className="buttonText">
+        <div className="buttonT1">Select Mode</div>
+        <div className="buttonT2">객관식</div>
+        </div>
+    </div>
   <div onClick={onClickAdv} className="modebutton" style={{marginLeft:"auto"}}>
     <div className="buttonText">
-    <div className="buttonT1">typing mode</div>
+    <div className="buttonT1">Typing Mode</div>
       <div className="buttonT2">주관식</div>
       </div>
       </div>
