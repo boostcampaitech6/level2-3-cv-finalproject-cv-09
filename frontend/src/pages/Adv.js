@@ -5,6 +5,12 @@ import React, { useEffect, useState } from 'react';
 import './ModeSelect.css';
 import axios from "axios";
 
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import {Button, Stack} from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
+
+
 const ModeSelect = () =>{
     let location = useLocation();
     const name = location.state?.name;
@@ -24,29 +30,55 @@ const ModeSelect = () =>{
     }
     useEffect( () =>{
       if (prompt){setContent(prompt.join(", "))}
+      else{setContent('프롬프트를 입력해주세요')}
     })
+    
     return(
         <div>
             <MainNav/>
             <div className='container' style={{paddingTop: "100px", paddingBottom: "200px"}}>
-              <div className="nametext" >{name}</div>
+              <div className="nametext" >{name}</div> 
+              <br></br>
               <div className="QuestionT2">라는 로고를 만들게요.</div>
               <div className="QuestionT2">원하시는 프롬프트를 입력해주세요.</div>
               <div >
-                <input 
-                  defaultValue={content}
-                  className='inputline'
-                  type="text"
-                  title=''
-                  onChange={onChange} //글자 입력 처리
-                  onKeyUp={onEnter} //엔터키 입력 처리
-                  required
-                  autoFocus/>
-                  <button href=""
+                <Box
+                  component="form"
+                  sx={{
+                    '& .MuiTextField-root': { m: 1, width: '60ch' },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <Box sx={{ position: 'relative',
+                            // width: '100%'
+                             }}>
+                    <TextField
+                      id="outlined-multiline-static"
+                      label="프롬프트"
+                      multiline
+                      onChange={onChange} 
+                      onKeyUp={onEnter} 
+                      rows={10}
+                      defaultValue={content}
+                      // fullWidth
+                    />
+                  </Box>
+                  <Box sx={{ position: 'relative', bottom: -50, left: 410 }}>
+                    <Stack direction="row" spacing={2}>
+                      <Button 
+                        href="" 
+                        variant="contained" 
+                        endIcon={<SendIcon />}
                         onClick={onClickResult} //버튼 클릭 처리
                         disabled={!name}//버튼 활성화 처리
-                        >start</button>
-                </div>
+                        >
+                        로고 생성하기
+                      </Button>
+                    </Stack>
+                  </Box>
+                </Box>
+              </div>
             </div>
         </div>
 );
