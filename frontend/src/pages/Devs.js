@@ -6,8 +6,8 @@ const Devs = () =>{
     return(
         <div>
           <MainNav/>
-          <mian>
-            <section class='container box'>
+          <div>
+            <section className='container box'>
               <div>
                 <h2>프로젝트 인원들 나올 페이지</h2>
                 <h2>프로젝트 인원들 나올 페이지</h2>
@@ -21,7 +21,7 @@ const Devs = () =>{
                 <h2>프로젝트 인원들 나올 페이지</h2>
               </div>
             </section>
-          </mian>
+          </div>
           </div>
     );
 }

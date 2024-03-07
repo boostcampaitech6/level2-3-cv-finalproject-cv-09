@@ -5,17 +5,17 @@ import '../App.css';
 
 const Footer = () => {
       return(
-        <footer class="footer bg-white">
-          <div class='container'>
+        <footer className="footer bg-white">
+          <div className='container'>
             <div style={{display:"flex" }}> 
-              <div style={{fontSize:"150%" }}>SCV</div> 
-              <div class="navbar_content" aria-expanded="false" aria-hidden="true">
+              <div className='team'>SCV</div> 
+              <div className="navbar_content" aria-expanded="false" aria-hidden="true">
                 <div></div>
-                <div class="RightsReserved">Copyright © 2024 SCV | All Rights Reserved</div>
+                <div className="RightsReserved">Copyright © 2024 SCV | All Rights Reserved</div>
                 <div>
                   <div></div>
                   <a 
-                    class="RightsReserved"
+                    className="RightsReserved"
                     href='https://github.com/boostcampaitech6/level2-3-cv-finalproject-cv-09'
                     target="_blank"
                     rel="noopener noreferrer"

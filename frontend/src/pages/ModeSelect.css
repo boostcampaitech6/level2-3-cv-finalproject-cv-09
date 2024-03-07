@@ -1,0 +1,61 @@
+.modebuttonbox {
+    width: 100%;
+    display:flex;
+    padding-left: 0;
+    
+}
+.modebutton{
+    margin-bottom: 15px;
+    width: 23rem;
+    height: 23rem;
+    border-radius: 15px;
+    transition: all 0.2s ;
+    float: left;
+
+    /*
+    color: #8c8c8c;
+    background: #ffffff;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.01), 0 1px 1px rgba(0,0,0,0.14);
+    */
+    color: #000000;
+    background: #e0e0e0;
+    position: relative;
+}
+.modebutton:hover {
+    /*
+    box-shadow: 2px 5px 5px rgba(0,0,0,0.17), 0 5px 5px rgba(0,0,0,0.17);
+    */
+    background: #a1a1a1;
+}
+.modebuttonT1{
+    font-size: 300%;
+    margin-bottom: 2%;
+    text-align: center;
+    color: #000000bf;
+}
+.modebuttonT2{
+    font-size: 100%;
+    text-align: center;
+    color: #000000bf;
+}
+.modebuttonText{
+    position:absolute; bottom: 0px;
+    white-space: nowrap;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+.nametext {
+    margin-top: 8rem;
+    font-size: 700%;
+    color: var(--color-purple);
+}
+.select_button{
+    font-size: 200%;
+    margin-bottom: 3%;
+}
+.select_text{
+    position:absolute; bottom: 0px;
+    white-space: nowrap;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}

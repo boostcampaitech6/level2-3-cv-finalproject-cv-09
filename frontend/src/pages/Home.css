@@ -1,0 +1,44 @@
+.text1 {
+    position: flex;
+    text-align: left;
+    font-size: 400%;
+    color: #000000bf;
+    margin-bottom: 2%;
+    font-family: 'Spoqa Han Sans Neo', sans-serif;
+    font-weight: bold;
+}
+.text2 {
+    position: flex;
+    text-align: left;
+    font-size: 150%;
+    color: #000000bf;
+    margin-bottom: 5%;
+    font-family: 'Spoqa Han Sans Neo', sans-serif;
+    font-weight: bold;
+}
+
+.column_box {
+    display: table;
+    clear: both;
+    height: 600px;
+    width: 110%;
+}
+
+.column1 {
+    height: 600px;
+    width: 50%;
+    float: left;
+    position: absolute;
+    -ms-transform: translateY(-50%);
+    transform: translateY(30%);
+}
+
+.column2 {
+    height: 600px;
+    width: 50%;
+    float: right
+}
+
+img {
+    width: 100%;
+}

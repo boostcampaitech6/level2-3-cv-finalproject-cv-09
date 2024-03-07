@@ -5,8 +5,8 @@ const About = () =>{
     return(
         <div>
           <MainNav/>
-          <mian>
-            <section class='container box'>
+          <div>
+            <section className='container box'>
               <h2>대충 뭐하는 플젝인지 설명하는 페이지</h2>
               <h2>대충 뭐하는 플젝인지 설명하는 페이지</h2>
               <h2>대충 뭐하는 플젝인지 설명하는 페이지</h2>
@@ -24,7 +24,7 @@ const About = () =>{
               <h2>대충 뭐하는 플젝인지 설명하는 페이지</h2>
               <h2>대충 뭐하는 플젝인지 설명하는 페이지</h2>
             </section>
-          </mian>
+          </div>
           </div>
     );
 }

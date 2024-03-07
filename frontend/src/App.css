@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap');
-
+:root{
+  --color-purple: #4f64ff;
+  --color-gray: #adadad;
+}
 main {
   display: block;
 }
 @media (min-width: 992px){
 .container-lg, .container-md, .container-sm, .container {
-    max-width: 960px;
+    max-width: 1080px;
   }
 }
-.container  {
+.container {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   width: 100%;
@@ -16,8 +19,15 @@ main {
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-right: auto;
   margin-left: auto;
+  position: relative;
 }
 .box {
-  padding-top: 300px;
+  padding-top: 200px;
   padding-bottom: 100px;
+}
+.loding {
+  padding-top: 30rem;
+  padding-bottom: 30rem;
+  text-align: center;
+
 }

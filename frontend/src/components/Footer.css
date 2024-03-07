@@ -4,8 +4,13 @@ footer {
   }
   .footer {
     padding-top: 1rem;
+    padding-bottom: 1rem;
     border-top: 1px solid #e6e7ea;
     margin-top: auto;
+  }
+  .team {
+    font-size: 150%;
+    color: #708090;
   }
   .bg-white {
     --bs-bg-opacity: 1;
