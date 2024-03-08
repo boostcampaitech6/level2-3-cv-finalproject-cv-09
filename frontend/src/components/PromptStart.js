@@ -38,6 +38,6 @@ const PromptStart = () => {
                         >start</button>
             </div>
       );
-    }
+}
 
 export default PromptStart;
