@@ -11,16 +11,15 @@ import {Button, Stack} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
 
-const ModeSelect = () =>{
+const Adv = () =>{
     let location = useLocation();
     const name = location.state?.name;
-    const prompt = location.state?.prompt;
-    const [content, setContent] = useState('');
+    const [prompt, setPrompt] = useState("");
     //입력창에 글자를 입력했을때 변화를 적용하는 함수
-    const onChange = (e) =>{setContent(e.target.value)}
+    const onChange = (e) =>{setPrompt(e.target.value)}
     //글자를 입력후 엔터키를 눌렀을때 다음 페이지로 넘어가는 함수
     const onEnter =(e)=>{
-      if((e.key == 'Enter') && (content)){
+      if((e.key === 'Enter') && (prompt)){
         onClickResult();  
         }
     }
@@ -29,9 +28,9 @@ const ModeSelect = () =>{
       navigate("/result?name=" + name + "?prompt="+ prompt, {state: { name, prompt }});
     }
     useEffect( () =>{
-      if (prompt){setContent(prompt.join(", "))}
-      else{setContent('프롬프트를 입력해주세요')}
-    })
+      if (location.state?.prompt){setPrompt(location.state?.prompt)}
+      else{setPrompt('프롬프트를 입력해주세요')}
+    },[])
     
     return(
         <div>
@@ -60,7 +59,7 @@ const ModeSelect = () =>{
                       onChange={onChange} 
                       onKeyUp={onEnter} 
                       rows={10}
-                      defaultValue={content}
+                      defaultValue={prompt}
                       // fullWidth
                     />
                   </Box>
@@ -83,4 +82,4 @@ const ModeSelect = () =>{
         </div>
 );
 }
-export default ModeSelect;
+export default Adv;

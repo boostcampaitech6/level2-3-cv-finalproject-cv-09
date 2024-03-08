@@ -1,12 +1,13 @@
 import { useLocation } from "react-router";
 import MainNav from "../components/MainNav";
 import { useNavigate } from 'react-router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const PromptCheck = () =>{
     let location = useLocation();
     const name = location.state?.name;
-    const prompt = location.state?.checkItems;
+    const checkItems = location.state?.checkItems;
+    const [prompt, setPrompt] = useState('');
     const navigate = useNavigate();
     const onClickResult = () =>{
     navigate("/result?name=" + name + "?prompt="+ prompt, {state: { name, prompt }});
@@ -14,11 +15,15 @@ const PromptCheck = () =>{
   const onClickAdv = () =>{
     navigate("/adv?name=" + name + "?prompt="+ prompt, {state: { name, prompt }});
   }
+  useEffect( () =>{
+    if (checkItems){setPrompt(checkItems.join(", "))}
+    else{setPrompt("default")}
+  },[])
 return(
     <div><MainNav/>
 <div className='container' style={{paddingTop: "100px", paddingBottom: "200px"}}>
 <div className="nametext" >{name}</div>
-<div className="QuestionT2">{prompt.join(", ")}</div>
+<div className="QuestionT2">{prompt}</div>
 <div className="QuestionT2">확인</div>
 <div className="modebuttonbox">
     <div onClick={onClickResult} className="modebutton" style={{marginRight:"auto"}}>
