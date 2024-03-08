@@ -1,0 +1,29 @@
+.adv {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.select_margin1 {
+    display: block;
+    width: 100%;
+    height: 1vh;
+    pointer-events: none;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+@media (max-height:600px) {
+    .select_margin1 {
+        display: none
+    }
+}
+.nametext {
+    font-size: 700%;
+    color: var(--color-purple);
+}
+.adv_text{
+    font-size: 180%;
+    margin-bottom: 2%;
+    color: #000000bf;
+    font-weight: light;
+}

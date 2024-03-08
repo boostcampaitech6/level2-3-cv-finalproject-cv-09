@@ -2,13 +2,14 @@ import { useLocation } from "react-router";
 import MainNav from "../components/MainNav";
 import { useNavigate } from 'react-router';
 import React, { useEffect, useState } from 'react';
-import './ModeSelect.css';
+import './Adv.css';
 import axios from "axios";
 
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import {Button, Stack} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import Footer from "../components/Footer";
 
 
 const ModeSelect = () =>{
@@ -34,14 +35,15 @@ const ModeSelect = () =>{
     })
     
     return(
-        <div>
-            <MainNav/>
-            <div className='container' style={{paddingTop: "100px", paddingBottom: "200px"}}>
+        <div className="home">
+          <MainNav/>
+          <div className="adv">
+            <div className='home_main'>
+              <div className="select_margin1"></div>
               <div className="nametext" >{name}</div> 
-              <br></br>
-              <div className="QuestionT2">라는 로고를 만들게요.</div>
-              <div className="QuestionT2">원하시는 프롬프트를 입력해주세요.</div>
-              <div >
+              <div className="adv_text">라는 로고를 만들게요.</div>
+              <div className="adv_text">원하시는 프롬프트를 입력해주세요.</div>
+              <div>
                 <Box
                   component="form"
                   sx={{
@@ -52,7 +54,7 @@ const ModeSelect = () =>{
                 >
                   <Box sx={{ position: 'relative',
                             // width: '100%'
-                             }}>
+                            }}>
                     <TextField
                       id="outlined-multiline-static"
                       label="프롬프트"
@@ -79,7 +81,10 @@ const ModeSelect = () =>{
                   </Box>
                 </Box>
               </div>
+              <div className="select_margin1"></div>
             </div>
+          </div>
+          <Footer></Footer>
         </div>
 );
 }
