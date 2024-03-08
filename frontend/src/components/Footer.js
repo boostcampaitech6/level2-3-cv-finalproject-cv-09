@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import { Link } from "react-router-dom";
 import './Footer.css';
 import '../App.css';
 
@@ -7,13 +6,12 @@ const Footer = () => {
       return(
         <footer className="footer bg-white">
           <div className='container'>
-            <div style={{display:"flex" }}> 
+            <div className='footer_layout'> 
               <div className='team'>SCV</div> 
-              <div className="navbar_content" aria-expanded="false" aria-hidden="true">
+              {/* <div className="navbar_content" aria-expanded="false" aria-hidden="true"> */}
                 <div></div>
                 <div className="RightsReserved">Copyright © 2024 SCV | All Rights Reserved</div>
-                <div>
-                  <div></div>
+                {/* <div> */}
                   <a 
                     className="RightsReserved"
                     href='https://github.com/boostcampaitech6/level2-3-cv-finalproject-cv-09'
@@ -27,8 +25,8 @@ const Footer = () => {
                     Github
                     </div>
                     </a>
-                </div>
-              </div>
+                {/* </div> */}
+              {/* </div> */}
             </div>
             </div>
         </footer>

@@ -5,18 +5,15 @@ import HowTo from './pages/HowTo';
 import Devs from './pages/Devs';
 import Making from './pages/Making';
 import Adv from './pages/Adv';
-import Footer from "./components/Footer";
 import ModeSelect from './pages/ModeSelect';
 import PromptCheck from './pages/PromptCheck';
 import Result from './pages/Result';
-//import axios from 'axios';
-//import { useState } from 'react';
 import { BrowserRouter, Router, Route, Routes } from 'react-router-dom';
 
 
 const App = ()=> {
   return (
-    <div className="App">
+    <div className="app">
       <BrowserRouter>
           <Routes>
             <Route path='/' element ={<Home/>}/>
@@ -29,7 +26,6 @@ const App = ()=> {
             <Route path='/promptcheck' element ={<PromptCheck/>}/>
             <Route path='/result' element ={<Result/>}/>
           </Routes>
-          <Footer/>
           </BrowserRouter>
     </div>
     );
