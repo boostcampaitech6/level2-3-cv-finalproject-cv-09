@@ -2,6 +2,10 @@ footer {
     display: block;
     z-index: 2000;
   }
+  .footer_layout {
+    display: flex;
+    justify-content: space-between;
+  }
   .footer {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -15,6 +19,14 @@ footer {
   .bg-white {
     --bs-bg-opacity: 1;
     background-color:white;
+    margin-top: 1vh;
+  }
+  @media (min-height: 950px) {
+    .bg-white {
+      --bs-bg-opacity: 1;
+      background-color:white;
+      /* margin-top: 5vh; */
+    }
   }
   .footer__bottom-row {
     padding: 1rem 0;
@@ -25,7 +37,6 @@ footer {
     display: flex;
     align-items: center;
     font-size: 80%;
-    height: 100%;
     text-align: center;
     color: #708090;
     flex: 0 0 auto;
