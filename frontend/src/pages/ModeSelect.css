@@ -1,32 +1,93 @@
-.modebuttonbox {
+.modeselect {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    display:flex;
-    padding-left: 0;
-    
+}
+.select_margin1 {
+    display: block;
+    width: 100%;
+    height: 1vh;
+    pointer-events: none;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+@media (max-height:600px) {
+    .select_margin1 {
+        display: none
+    }
+}
+.nametext {
+    font-size: 700%;
+    color: var(--color-purple);
+}
+.modeselect_text{
+    font-size: 180%;
+    margin-bottom: 3vh;
+    color: #000000bf;
+    font-weight: light;
+}
+.modebuttonbox {
+    display:grid;
+    position:relative;
+    grid-template-columns:repeat(
+        auto-fill,
+        minmax(
+        290px,
+        1fr
+    ));
+    gap:16px;
+    padding-top:16px;
+    padding-bottom:4px;
+    padding-left: 10px;
 }
 .modebutton{
     margin-bottom: 15px;
-    width: 23rem;
-    height: 23rem;
+    width: 270px;
+    height: 270px;
     border-radius: 15px;
     transition: all 0.2s ;
-    float: left;
-
-    /*
-    color: #8c8c8c;
-    background: #ffffff;
-    box-shadow: 1px 1px 1px rgba(0,0,0,0.01), 0 1px 1px rgba(0,0,0,0.14);
-    */
     color: #000000;
     background: #e0e0e0;
     position: relative;
+    margin: auto;
 }
 .modebutton:hover {
-    /*
-    box-shadow: 2px 5px 5px rgba(0,0,0,0.17), 0 5px 5px rgba(0,0,0,0.17);
-    */
     background: #a1a1a1;
 }
+.buttonText{
+    position:absolute;
+    top: 50%;
+    width: 100%;
+    margin: -40px 0 0 0px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+.buttonT1{
+    font-size: 200%;
+    margin-bottom: 3%;
+    text-align: center;
+    color: #000000bf;
+    font-weight: light;
+}
+.buttonT2{
+    font-size: 100%;
+    margin-bottom: 5%;
+    text-align: center;
+    color: #000000bf;
+    font-weight: light;
+}
+.select_margin2 {
+    display: block;
+    width: 100%;
+    height: 5vh;
+    pointer-events: none;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+
 .modebuttonT1{
     font-size: 300%;
     margin-bottom: 2%;
@@ -43,11 +104,6 @@
     white-space: nowrap;
     margin-left: 5%;
     margin-bottom: 5%;
-}
-.nametext {
-    margin-top: 8rem;
-    font-size: 700%;
-    color: var(--color-purple);
 }
 .select_button{
     font-size: 200%;
