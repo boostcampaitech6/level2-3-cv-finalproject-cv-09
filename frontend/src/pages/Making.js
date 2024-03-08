@@ -60,11 +60,7 @@ const Making = () =>{
             <Question04 handleScrollView={handleScrollView} handleSingleCheck={handleSingleCheck}/>
             </div> */}
             {/* <button className="button" onClick={onClickpost}>제작</button> */}
-<<<<<<< Updated upstream
-            <button className="button" onClick={onClickPromptCheck}>제작</button>
-=======
             <button className="makebutton" id="Question02" onClick={onClickPromptCheck}>제작</button>
->>>>>>> Stashed changes
           </section>
         </div>
         </div>
