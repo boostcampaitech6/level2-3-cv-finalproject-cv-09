@@ -16,7 +16,7 @@ const Makedlogo = () =>{
 
   const logoapipost = () =>{
     console.log('요청시도')
-    axios.post('http://localhost:8000/prompt', 
+    axios.post('/prompt', 
     {
       name: name,
       prompt: prompt,
