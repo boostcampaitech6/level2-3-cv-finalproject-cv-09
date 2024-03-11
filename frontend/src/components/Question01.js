@@ -1,5 +1,6 @@
 //import { Link } from "react-router-dom";
 import '../App.css';
+import './Question.css'
 import React, { useState } from 'react';
 
 const Question01 = ({props, handleScrollView, handleSingleCheck}) => {
@@ -25,7 +26,7 @@ const Question01 = ({props, handleScrollView, handleSingleCheck}) => {
   ]);
       return(
             <div style={{paddingTop: "30px", paddingBottom: "30px"}}>
-              <div className='QuestionT2'>어떤 분야에서 사용할 로고인지 알려주세요!</div>
+              <div className='question_text'>어떤 분야에서 사용할 로고인지 알려주세요!</div>
               <div className="button_margin">
               {Index?.map((Index, key) => (
                   <ul key={key} className="button_list">

@@ -3,6 +3,7 @@ import Question01 from "../components/Question01";
 import Question02 from "../components/Question02";
 import Question03 from "../components/Question03";
 import Question04 from "../components/Question04";
+import Footer from "../components/Footer"
 
 import './Making.css';
 import React, { Component, useState, useRef } from 'react';
@@ -63,6 +64,7 @@ const Making = () =>{
             <button className="makebutton" id="Question02" onClick={onClickPromptCheck}>제작</button>
           </section>
         </div>
+        <Footer></Footer>
         </div>
     );
 }
