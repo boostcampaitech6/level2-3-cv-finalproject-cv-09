@@ -13,8 +13,11 @@ const MakingNav = ({name, prompt}) => {
   const onClickPurpose = () =>{
     navigate("/making/purpose?name=" + name, {state: { name }});
   }
-  const onClickColor = () =>{
-    navigate("/making/color?name=" + name, {state: { name }});
+  const onClickFontColor = () =>{
+    navigate("/making/fontcolor?name=" + name, {state: { name }});
+  }
+  const onClickBackgroundColor = () =>{
+    navigate("/making/backgroundcolor?name=" + name, {state: { name }});
   }
   const onClickStyle = () =>{
     navigate("/making/style?name=" + name, {state: { name }});
@@ -38,7 +41,11 @@ const MakingNav = ({name, prompt}) => {
                     </li>
                     <div className='margin'>{prompt}</div>
                     <li >
-                      <button id="Question03" onClick={onClickColor} className="navbutton" >색상</button>
+                      <button id="Question03" onClick={onClickFontColor} className="navbutton" >글자 색상</button>
+                    </li>
+                    <div className='margin'>{prompt}</div>
+                    <li >
+                      <button id="Question03" onClick={onClickBackgroundColor} className="navbutton" >배경 색상</button>
                     </li>
                     <div className='margin'>{prompt}</div>
                     <li >

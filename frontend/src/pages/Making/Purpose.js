@@ -1,8 +1,18 @@
 import '../../App.css';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router";
 
-const Purpose = ({props, handleSingleCheck, name}) => {
+const Purpose = ({clickedCheck, handleSingleCheck, name}) => {
+
+  useEffect( () => {
+    Index?.map((Index, key) => (
+      Index.clicked=clickedCheck(Index.prompt)
+    ))
+    forceUpdate();
+  },[]);
+  const [,updateState]=useState();
+  const forceUpdate = useCallback(()=>updateState({}),[]);
+
   const [Index, setIndex] = useState([
     {id: 0, title: '프로모션', prompt: 'promotion'},
     {id: 1, title: '행사', prompt: 'event'},
@@ -11,7 +21,7 @@ const Purpose = ({props, handleSingleCheck, name}) => {
   ]);
   const navigate = useNavigate();
   const onClickNext = () =>{
-    navigate("/making/color?name=" + name, {state: { name }});
+    navigate("/making/fontcolor?name=" + name, {state: { name }});
   }
       return(
             <div style={{paddingTop: "100px", }}>

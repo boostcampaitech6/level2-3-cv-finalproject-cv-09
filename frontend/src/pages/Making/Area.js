@@ -1,9 +1,18 @@
 //import { Link } from "react-router-dom";
 import '../../App.css';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from "react-router";
 
-const Area = ({handleSingleCheck, name}) => {
+const Area = ({clickedCheck, handleSingleCheck, name}) => {
+
+  useEffect( () => {
+    Index?.map((Index, key) => (
+      Index.clicked=clickedCheck(Index.prompt)
+    ))
+    forceUpdate();
+  },[]);
+  const [,updateState]=useState();
+  const forceUpdate = useCallback(()=>updateState({}),[]);
 
   const [Index, setIndex] = useState([
     {id: 0, title: '제조업', prompt: 'manufacturing'},

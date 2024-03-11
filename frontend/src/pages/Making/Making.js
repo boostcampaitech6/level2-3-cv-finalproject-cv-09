@@ -1,7 +1,8 @@
 import MakingNav from "../../components/MakingNav";
 import Area from "./Area";
 import Purpose from "./Purpose";
-import Color from "./Color";
+import FontColor from "./FontColor";
+import BackgroundColor from "./BackgroundColor";
 import Style from "./Style";
 
 
@@ -14,13 +15,22 @@ const Making = () =>{
   let location = useLocation();
   const name = location.state?.name;
   const [checkItems, setCheckItems] = useState([]);
-  const handleSingleCheck = (title) => {
-    if (checkItems.includes(title)) {
+  const handleSingleCheck = (prompt) => {
+    if (checkItems.includes(prompt)) {
       // 단일 선택 시 체크된 아이템을 배열에 추가
-      setCheckItems(checkItems.filter((el) => el !== title));
+      setCheckItems(checkItems.filter((el) => el !== prompt));
     } else {
       // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
-      setCheckItems(prev => [...prev, title]);
+      setCheckItems(prev => [...prev, prompt]);
+    }
+  };
+  const clickedCheck = (prompt) => {
+    if (checkItems.includes(prompt)) {
+      // 단일 선택 시 체크된 아이템을 배열에 추가
+      return true;
+    } else {
+      // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
+      return false;
     }
   };
   const scrollRef = useRef([]);
@@ -44,10 +54,11 @@ const Making = () =>{
         <div className="making_column2">
           <section className='container'>
             <Routes>
-              <Route path='area' element ={<Area handleSingleCheck={handleSingleCheck} name={name} />}></Route>
-              <Route path='purpose' element ={<Purpose handleSingleCheck={handleSingleCheck} name={name} />}></Route>
-              <Route path='color' element ={<Color handleSingleCheck={handleSingleCheck} name={name} />}></Route>
-              <Route path='style' element ={<Style handleSingleCheck={handleSingleCheck} name={name} checkItems={checkItems}/>}></Route>
+              <Route path='area' element ={<Area clickedCheck={clickedCheck} handleSingleCheck={handleSingleCheck} name={name} />}></Route>
+              <Route path='purpose' element ={<Purpose clickedCheck={clickedCheck} handleSingleCheck={handleSingleCheck} name={name} />}></Route>
+              <Route path='fontcolor' element ={<FontColor clickedCheck={clickedCheck} handleSingleCheck={handleSingleCheck} name={name} />}></Route>
+              <Route path='backgroundcolor' element ={<BackgroundColor clickedCheck={clickedCheck} handleSingleCheck={handleSingleCheck} name={name} />}></Route>
+              <Route path='style' element ={<Style clickedCheck={clickedCheck} handleSingleCheck={handleSingleCheck} name={name} checkItems={checkItems}/>}></Route>
             </Routes>
           </section>
         </div>
