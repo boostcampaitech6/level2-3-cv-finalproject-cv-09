@@ -15,10 +15,11 @@ const Makedlogo = () =>{
   },[]);
 
   const logoapipost = () =>{
-    axios.post('http://192.168.50.160:8000/prompt', 
+    console.log('요청시도')
+    axios.post('/prompt', 
     {
       name: name,
-      prompt: prompt.join(", "),
+      prompt: prompt,
     })
     .then((response)=>{
       console.log('요청성공')

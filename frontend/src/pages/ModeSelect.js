@@ -1,6 +1,5 @@
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import MainNav from "../components/MainNav";
-import { useNavigate } from 'react-router';
 import React, { useState } from 'react';
 import './ModeSelect.css';
 import Footer from "../components/Footer";
@@ -10,7 +9,7 @@ const ModeSelect = () =>{
     const name = location.state?.name;
     const navigate = useNavigate();
     const onClickMaking = () =>{
-    navigate("/making?name=" + name, {state: { name }});
+    navigate("/making/area?name=" + name, {state: { name }});
   }
   const onClickAdv = () =>{
     navigate("/adv?name=" + name, {state: { name }});
