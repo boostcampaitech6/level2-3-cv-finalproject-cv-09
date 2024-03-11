@@ -16,8 +16,7 @@ const PromptCheck = () =>{
     navigate("/adv?name=" + name + "?prompt="+ prompt, {state: { name, prompt }});
   }
   useEffect( () =>{
-    if (checkItems){setPrompt(checkItems.join(", "))}
-    else{setPrompt("default")}
+    if (checkItems){setPrompt(checkItems)}
   },[])
 return(
     <div><MainNav/>
