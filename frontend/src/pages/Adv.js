@@ -2,16 +2,19 @@ import { useLocation } from "react-router";
 import MainNav from "../components/MainNav";
 import { useNavigate } from 'react-router';
 import React, { useEffect, useState } from 'react';
-import './ModeSelect.css';
+import './Adv.css';
 import axios from "axios";
 
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import {Button, Stack} from '@mui/material';
+// import Grid from '@mui/material/Grid';
+// import TextField from '@mui/material/TextField';
+// import Box from '@mui/material/Box';
+// import Paper from '@mui/material/Paper';
+import {Button, Stack, Paper, Box, TextField, Grid, useMediaQuery} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import Footer from "../components/Footer";
 
 
-const ModeSelect = () =>{
+const AdvancedMode = () =>{
     let location = useLocation();
     const name = location.state?.name;
     const prompt = location.state?.prompt;
@@ -30,41 +33,66 @@ const ModeSelect = () =>{
     }
     useEffect( () =>{
       if (prompt){setContent(prompt.join(", "))}
-      else{setContent('프롬프트를 입력해주세요')}
     })
-    
+    // 화면 크기에 따라 다른 ui구성
+    const isMobile = useMediaQuery('(max-width:600px)');
     return(
-        <div>
-            <MainNav/>
-            <div className='container' style={{paddingTop: "100px", paddingBottom: "200px"}}>
-              <div className="nametext" >{name}</div> 
-              <br></br>
-              <div className="QuestionT2">라는 로고를 만들게요.</div>
-              <div className="QuestionT2">원하시는 프롬프트를 입력해주세요.</div>
-              <div >
-                <Box
-                  component="form"
-                  sx={{
-                    '& .MuiTextField-root': { m: 1, width: '60ch' },
-                  }}
-                  noValidate
-                  autoComplete="off"
-                >
-                  <Box sx={{ position: 'relative',
-                            // width: '100%'
-                             }}>
-                    <TextField
-                      id="outlined-multiline-static"
-                      label="프롬프트"
-                      multiline
-                      onChange={onChange} 
-                      onKeyUp={onEnter} 
-                      rows={10}
-                      defaultValue={content}
-                      // fullWidth
-                    />
+      <div className="Adv">
+        <div className="Adv_Main">
+          <MainNav></MainNav>
+          <Grid container>
+            <div className="select_margin1"></div>
+            <Grid container className= 'Adv_Main_container' justifyContent="center" alignItems="center">
+              <Grid item xs={6}>
+                <div className="nametext">{name}</div> 
+                <div className="adv_text">브랜드에 대한 구체적인 설명을 바탕으로 로고를 생성합니다.<br/> 로고의 특징을 입력해주세요.</div>
+                
+                {isMobile &&(
+                <Grid item>
+                  <Box sx={{ padding: 2 }}>
+                    <Paper className="PromptExample_mobile" elevation={3} sx={{ padding: 2 }}>
+                      예시<br/><br/>
+                      고기 음식점의 로고이다. 흰색 배경에 검정색 글자로 '맛있는 고기집'이라고 적힌 로고.<br/><br/>
+                      </Paper>
                   </Box>
-                  <Box sx={{ position: 'relative', bottom: -50, left: 410 }}>
+                </Grid>)} 
+                {!isMobile &&(
+                <Grid item>
+                  <Box sx={{ padding: 2 }}>
+                    <Paper className="PromptExample" elevation={3} sx={{ padding: 2 }}>
+                      예시<br/><br/>
+                      1. 고기 음식점의 로고이다. 흰색 배경에 검정색 글자로 '맛있는 고기집'이라고 적힌 로고.<br/><br/>
+                      2. 흰색 바탕에 빨간색 떡볶이 캐릭터가 그려진 떡볶이 전문 음식점의 로고. "매운떡볶이"라는 검정색과 빨간색 글자가 적혀있다.
+                      </Paper>
+                  </Box>
+                </Grid>)}
+                <Grid item>
+                  <Box
+                    component="form"
+                    sx={{'& .MuiTextField-root':{mb: 2,mt: 2, width: '100%', minWidth: '100px' }}}
+                    noValidate
+                    autoComplete="off"
+                  >
+                    <Box sx={{ position: 'relative',
+                              width: '100%'
+                              }}>
+                      <TextField
+                        id="outlined-multiline-static"
+                        label="로고의 특징을 입력해주세요."
+                        multiline
+                        onChange={onChange} 
+                        onKeyUp={onEnter} 
+                        rows={10}
+                        placeholder="로고에 글자를 넣고 싶을 때는 따옴표로(예시:'글자') 표시해주세요."
+                        defaultValue={content}
+                        // fullWidth
+                      />
+                    </Box>
+                  </Box>
+                </Grid>
+              
+                <Grid container justifyContent="flex-end">
+                  <Box>
                     <Stack direction="row" spacing={2}>
                       <Button 
                         href="" 
@@ -73,14 +101,18 @@ const ModeSelect = () =>{
                         onClick={onClickResult} //버튼 클릭 처리
                         disabled={!name}//버튼 활성화 처리
                         >
-                        로고 생성하기
+                        로고 생성
                       </Button>
                     </Stack>
                   </Box>
-                </Box>
-              </div>
-            </div>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+          <div className="select_margin1"></div>
         </div>
+        <Footer></Footer>
+      </div>
 );
 }
-export default ModeSelect;
+export default AdvancedMode;
