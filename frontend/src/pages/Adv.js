@@ -17,13 +17,12 @@ import Footer from "../components/Footer";
 const AdvancedMode = () =>{
     let location = useLocation();
     const name = location.state?.name;
-    const prompt = location.state?.prompt;
-    const [content, setContent] = useState('');
+    const [prompt, setPrompt] = useState(location.state?.prompt);
     //입력창에 글자를 입력했을때 변화를 적용하는 함수
-    const onChange = (e) =>{setContent(e.target.value)}
+    const onChange = (e) =>{setPrompt(e.target.value)}
     //글자를 입력후 엔터키를 눌렀을때 다음 페이지로 넘어가는 함수
     const onEnter =(e)=>{
-      if((e.key == 'Enter') && (content)){
+      if((e.key == 'Enter') && (prompt)){
         onClickResult();  
         }
     }
@@ -31,9 +30,6 @@ const AdvancedMode = () =>{
     const onClickResult = () =>{
       navigate("/result?name=" + name + "?prompt="+ prompt, {state: { name, prompt }});
     }
-    useEffect( () =>{
-      if (prompt){setContent(prompt.join(", "))}
-    })
     // 화면 크기에 따라 다른 ui구성
     const isMobile = useMediaQuery('(max-width:600px)');
     return(
@@ -84,7 +80,7 @@ const AdvancedMode = () =>{
                         onKeyUp={onEnter} 
                         rows={10}
                         placeholder="로고에 글자를 넣고 싶을 때는 따옴표로(예시:'글자') 표시해주세요."
-                        defaultValue={content}
+                        defaultValue={prompt}
                         // fullWidth
                       />
                     </Box>

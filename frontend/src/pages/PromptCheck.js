@@ -13,10 +13,10 @@ const PromptCheck = () =>{
     navigate("/result?name=" + name + "?prompt="+ prompt, {state: { name, prompt }});
   }
   const onClickAdv = () =>{
-    navigate("/adv?name=" + name + "?prompt="+ prompt, {state: { name, prompt }});
+    navigate("/adv?name=" + name + "?prompt="+ checkItems, {state: { name, prompt }});
   }
   useEffect( () =>{
-    if (checkItems){setPrompt(checkItems)}
+    setPrompt(checkItems.join(", "))
   },[])
 return(
     <div><MainNav/>
