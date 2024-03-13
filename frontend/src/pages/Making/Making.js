@@ -1,4 +1,4 @@
-import MakingNav from "../../components/MakingNav";
+import SideNavbar from "../../components/SideNavbar";
 import Area from "./Area";
 import Purpose from "./Purpose";
 import FontColor from "./FontColor";
@@ -49,7 +49,7 @@ const Making = () =>{
     return(
       <div className="making_column_box">
         <div className="making_column1">
-          <MakingNav handleScrollView={handleScrollView} name={name} prompt={checkItems.join(', ')}/>
+          <SideNavbar name={name} prompt={checkItems.join(', ')}/>
         </div>
         <div className="making_column2">
           <section className='container'>

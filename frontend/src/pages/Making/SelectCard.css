@@ -1,0 +1,37 @@
+.button {
+    border: none;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    transition: all 0.2s ;
+    color: #000000;
+    background: #e0e0e0;
+    position: relative;
+    display: flex;
+}
+.button:hover {
+    /*
+    box-shadow: 2px 5px 5px rgba(0,0,0,0.17), 0 5px 5px rgba(0,0,0,0.17);
+    */
+    background: #c4c4c4;
+}
+.hover-image img[aria-pressed="true"] {
+    filter:grayscale(0%)
+}
+
+.hover-image img {
+	-webkit-filter: grayscale(90%);
+	filter: grayscale(90%);
+	-webkit-transition: .05s ease-in-out;
+	transition: .05s ease-in-out;
+}
+.hover-image:hover img {	
+	-webkit-filter: grayscale(0%);
+	filter: grayscale(0%);
+}
+
+.Question01 {
+    font-size: 150%
+}

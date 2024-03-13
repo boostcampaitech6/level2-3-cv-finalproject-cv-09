@@ -10,7 +10,7 @@ const Home = () =>{
         <div className="home">
           <MainNav/>
           <div className="home_align">
-            <div class='home_main'>
+            <div className='home_main'>
               <div className='main_margin'></div>
                 <div className="column_box">
                   <div className="column1">

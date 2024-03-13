@@ -21,11 +21,11 @@ const AdvancedMode = () =>{
     //입력창에 글자를 입력했을때 변화를 적용하는 함수
     const onChange = (e) =>{setPrompt(e.target.value)}
     //글자를 입력후 엔터키를 눌렀을때 다음 페이지로 넘어가는 함수
-    const onEnter =(e)=>{
-      if((e.key == 'Enter') && (prompt)){
-        onClickResult();  
-        }
-    }
+    //const onEnter =(e)=>{
+      //if((e.key == 'Enter') && (prompt)){
+        //onClickResult();  
+        //}
+    //}
     const navigate = useNavigate();
     const onClickResult = () =>{
       navigate("/result?name=" + name + "?prompt="+ prompt, {state: { name, prompt }});
@@ -77,7 +77,7 @@ const AdvancedMode = () =>{
                         label="로고의 특징을 입력해주세요."
                         multiline
                         onChange={onChange} 
-                        onKeyUp={onEnter} 
+                        //onKeyUp={onEnter} 
                         rows={10}
                         placeholder="로고에 글자를 넣고 싶을 때는 따옴표로(예시:'글자') 표시해주세요."
                         defaultValue={prompt}

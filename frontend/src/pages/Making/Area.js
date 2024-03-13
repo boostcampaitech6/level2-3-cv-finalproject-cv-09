@@ -1,66 +1,71 @@
-//import { Link } from "react-router-dom";
-import '../../App.css';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from "react-router";
+import data from '../../components/SelectCard_data/Area_SelectCard_data'
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import './SelectCard.css'
 
-const Area = ({clickedCheck, handleSingleCheck, name}) => {
+const Area =({clickedCheck, handleSingleCheck, name}) => {
+    useEffect( () => {
+        itemData?.map((itemData, key) => (
+            itemData.clicked=clickedCheck(itemData.title)
+        ))
+        forceUpdate();
+      },[]);
+    const [,updateState]=useState();
+    const forceUpdate = useCallback(()=>updateState({}),[]);
 
-  useEffect( () => {
-    Index?.map((Index, key) => (
-      Index.clicked=clickedCheck(Index.prompt)
-    ))
-    forceUpdate();
-  },[]);
-  const [,updateState]=useState();
-  const forceUpdate = useCallback(()=>updateState({}),[]);
-
-  const [Index, setIndex] = useState([
-    {id: 0, title: '제조업', prompt: 'manufacturing'},
-    {id: 1, title: 'IT사업', prompt: 'IT'},
-    {id: 2, title: '농업', prompt: 'Agriculture'},
-    //{id: 3, title: '어업',},
-    //{id: 4, title: '건설업', },
-    //{id: 5, title: '부동산', },
-    //{id: 6, title: '의료/바이오', },
-    {id: 7, title: '교육', prompt: 'education'},
-    {id: 8, title: '문화/예술', prompt:'Culture'},
-    {id: 9, title: '여행', },
-    //{id: 10, title: '우주/항공', },
-    //{id: 11, title: '로봇/인공지능', },
-    // {id: 12, title: '화학', },
-    // {id: 13, title: '미디어', },
-    // {id: 14, title: '스포츠', },
-    // {id: 15, title: '기타', },
-
-  ]);
-
-  const navigate = useNavigate();
-  const onClickNext = () =>{
+    const itemData = data
+    const navigate = useNavigate();
+    const onClickNext = () =>{
     navigate("/making/purpose?name=" + name, {state: { name }});
   }
-      return(
-            <div style={{paddingTop: "30px", paddingBottom: "30px"}}>
-              <div className='QuestionT2'>어떤 분야에서 사용할 로고인지 알려주세요!</div>
-              <div className="button_margin">
-              {Index?.map((Index, key) => (
-                  <ul key={key} className="button_list">
-                <li className="li">
-                  <button key={key} aria-pressed={Index.clicked} className="button" name={`select-${Index.id}`}
-                onClick={(e) => {
-                  handleSingleCheck(Index.prompt);
-                  Index.clicked=!Index.clicked;
-                }}
-                // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
-                >
-                  <div className='select_button select_text'>{Index.title}</div></button>
-                </li>
-          </ul>
-        ))}
-              </div>
-              <button className="nextbutton" onClick={onClickNext}>다음으로</button>
-              </div>
-        );
-    }
-        
-export default Area;
+  return (
+    <Grid container direction="row" justifyContent="center" >
+        <Grid item sx={3}>
+        </Grid>
+        <Grid item lg={6} xs={5} alignItems="center" >
+            <Box sx={{mt:8}}>
+                <div className='Question01'>어떤 분야에서 사용할 로고인지 알려주세요!</div>
+                <ImageList cols={3} rows={3} sx={{mb:4, mt:4}}>
+                {itemData.map((item) => (
+                    <ImageListItem key={item.img} className="hover-image" cols={1} rows={1}>
+                        <img
+                            class = {item.title}
+                            aria-pressed={item.clicked}
+                            srcSet={item.img}
+                            src={item.img}
+                            alt={item.title}
+                            loading="lazy"
+                            onClick={(e) => {
+                                handleSingleCheck(item.title);
+                                item.clicked=!item.clicked;
+                              }}
+                        />
+                        <ImageListItemBar
+                            className='img_title'
+                            sx={{height: 1/4, }}
+                            position='top'
+                            title={item.title}
+                            subtitle={item.author}
+                        />
+                    </ImageListItem>
+                ))}
+                </ImageList>
+                <Grid container justifyContent="flex-end">
+                <Button onClick={onClickNext} variant="contained" sx={{mb:2}}>
+                    다음으로
+                </Button>
+                </Grid>
+            </Box>
+        </Grid>
+    </Grid>
+  );
+}
 
+
+export default Area;
