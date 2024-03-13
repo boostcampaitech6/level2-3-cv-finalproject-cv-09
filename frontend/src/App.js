@@ -11,12 +11,13 @@ import ModeSelect from './pages/ModeSelect';
 import PromptCheck from './pages/PromptCheck';
 import Result from './pages/Result';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
+import ScrollToTop from './components/ScrollToTop';
 
 const App = ()=> {
   return (
     <div className="app">
       <BrowserRouter>
+        <ScrollToTop/>
           <Routes>
             <Route path='/' element ={<Home/>}/>
             <Route path='/about' element ={<About/>}/>
