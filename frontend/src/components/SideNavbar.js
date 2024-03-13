@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './SideNavbar.css'
-import { Typography, Paper, Box, Grid } from '@mui/material';
-import { BiMenuAltRight, BiSolidBusiness, BiHomeAlt2, BiSolidColorFill, BiFontColor, BiWalletAlt, BiDevices, BiCog } from 'react-icons/bi';
+import { Typography, Box, Grid} from '@mui/material';
+import { BiMenuAltRight, BiSolidBusiness, BiSolidColorFill, BiFontColor, BiText } from 'react-icons/bi';
+import { TbCrosshair } from "react-icons/tb";
+import { RxFontStyle } from "react-icons/rx";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
@@ -32,62 +34,58 @@ const Sidebar = ({name, prompt}) => {
     navigate("/making/style?name=" + name, {state: { name }});
   }
   return (
-<div className='sidebarall'>
+  <Box className='sidebarall'>
     <Box 
+      sx={{boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)', borderRadius: '10px'}}
+      
       className={`sidebar ${isHovered ? 'expand' : ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <Grid container direction="column" >
-      <Grid item className="nav-header">
-        <Link to="/">
-        <Typography 
-            variant="h6" 
-            className="logo" 
-            sx={{ opacity: isHovered ? 1 : 0, transition: 'var(--transition)' }}
-            >K-Logo Gen</Typography>
-            </Link>
-        <BiMenuAltRight className="BiMenuAltRight" />
-      </Grid>
-      <Grid item className="nav-links">
-        <ul>
-          <li>
-            <a onClick={onClickArea}>
-              <BiSolidBusiness className='icon'/>
-              <span className="title">사업분야</span>
-            </a>
-          </li>
-          <li>
-            <a onClick={onClickPurpose}>
-              <BiHomeAlt2 className='icon'/>
-              <span className="title" >목적</span>
-            </a>
-          </li>
-          <li>
-            <a onClick={onClickFontColor}>
-              <BiSolidColorFill className='icon'/>
-              <span className="title" >글자색상</span>
-            </a>
-          </li>
-          <li>
-            <a  onClick={onClickBackgroundColor}>
-              <BiSolidColorFill className='icon'/>
-              <span className="title">배경색상</span>
-            </a>
-          </li>
-          <li>
-            <a  onClick={onClickStyle}>
-              <BiFontColor className='icon'/>
-              <span className="title">스타일</span>
-            </a>
-          </li>
-          <li>
-            <a>
-              <BiCog className='icon'/>
-              <span className="title" >설정</span>
-            </a>
-          </li>
-        </ul>
+        <Grid item className="sidebar-header">
+          <Link to="/" style={{ textDecoration: 'none' }} >
+            <Typography 
+                variant="h6" 
+                className="logo" 
+                sx={{ opacity: isHovered ? 1 : 0, transition: 'var(--transition)' }}
+                >K-Logo Gen</Typography>
+          </Link>
+          <BiMenuAltRight className="BiMenuAltRight" />
+        </Grid>
+        <Grid item className="sidebar-links">
+          <ul>
+            <li>
+              <a onClick={onClickArea}>
+                <BiSolidBusiness className='sidebar-icon'/>
+                <span className="sidebar-title">사업분야</span>
+              </a>
+            </li>
+            <li>
+              <a onClick={onClickPurpose}>
+                <TbCrosshair className='sidebar-icon'/>
+                <span className="sidebar-title" >목적</span>
+              </a>
+            </li>
+            <li>
+              <a onClick={onClickFontColor}>
+                <BiFontColor className='sidebar-icon'/>
+                <span className="sidebar-title" >글자색상</span>
+              </a>
+            </li>
+            <li>
+              <a  onClick={onClickBackgroundColor}>
+                <BiSolidColorFill className='sidebar-icon'/>
+                <span className="sidebar-title">배경색상</span>
+              </a>
+            </li>
+            <li>
+              <a  onClick={onClickStyle}>
+                <RxFontStyle className='sidebar-icon'/>
+                <span className="sidebar-title">스타일</span>
+              </a>
+            </li>
+          </ul>
         </Grid>
         <Grid item 
         // sx={{
@@ -102,17 +100,13 @@ const Sidebar = ({name, prompt}) => {
         //         },
         //       }}
               >
-        <Grid container direction="column" justifyContent="flex-end">
-            
-        <div className='rounded-rectangle'>{prompt}</div>
-        </Grid>
+          <Grid container direction="column" justifyContent="flex-end">    
+            <div className='rounded-rectangle'>{prompt}</div>
+          </Grid>
         </Grid> 
-      
-      
-      
       </Grid>
     </Box>
-    </div>
+  </Box>
   );
 };
 
