@@ -20,8 +20,9 @@ broker = connection_url+"/0"
 celery_app = Celery("tasks", backend=backend, broker=broker, worker_heartbeat=280)
 celery_app.conf.worker_pool = "solo"
 
+
 def upload_gcs(image_dir, file_name):
-    KEY_PATH = "gcskey.json"
+    KEY_PATH = "/data/ephemeral/home/celery/gcskey.json"
     credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
     bucket_name = "klogogenimgserver"
     client = storage.Client(credentials=credentials)
@@ -34,11 +35,13 @@ def upload_gcs(image_dir, file_name):
     url = blob.generate_signed_url(extime)
     return url
 
+
 @celery_app.task(name="DeepFloyd")
-def generate(user_dir, name, prompt, n_sample=1):
+
+def generate(prompt, save_dir,n_sample=1):
 
     # 모형
-    pipe = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16, use_safetensors=True, variant="fp16")
+    pipe = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-2", torch_dtype=torch.float16, use_safetensors=True, variant="fp16")
     # Device
     pipe.to("cuda")
     
@@ -49,9 +52,9 @@ def generate(user_dir, name, prompt, n_sample=1):
     prompt = translation.text
     images = pipe(prompt=prompt).images[0].resize((256,256))
     
-    image_name = 'sample/'+f'{prompt}_1.png'
-    gcsdir = f'{user_dir}/{prompt}_2.png'
-    image[0].save(image_name)
+    image_name = 'sample/'+f'{prompt}_3.png'
+    gcsdir = f'{user_dir}/{prompt}_3.png'
+    images.save(image_name)
     url = upload_gcs(image_name, gcsdir)
     #os.remove(image_name)
     
