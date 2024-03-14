@@ -38,7 +38,7 @@ def upload_gcs(image_dir, file_name):
 
 @celery_app.task(name="SD2")
 
-def generate(prompt, save_dir,n_sample=1):
+def generate(user_dir, name, prompt, n_sample=1):
 
     # 모형
     pipe = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-2", torch_dtype=torch.float16, use_safetensors=True, variant="fp16")
