@@ -36,7 +36,7 @@ def upload_gcs(image_dir, file_name):
     return url
 
 
-@celery_app.task(name="DeepFloyd")
+@celery_app.task(name="SD2")
 
 def generate(prompt, save_dir,n_sample=1):
 
