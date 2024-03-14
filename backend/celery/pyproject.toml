@@ -18,6 +18,11 @@ bitsandbytes = "0.42.0"
 peft = "^0.8.2"
 uvicorn = "^0.27.1"
 fastapi = "^0.110.0"
+celery = "^5.3.6"
+redis = "^5.0.3"
+translator = "^0.0.9"
+googletrans = "3.1.0a0"
+google-cloud-storage = "^2.15.0"
 
 
 [tool.poetry.group.dev.dependencies]
