@@ -6,6 +6,7 @@ import '../App.css';
 import './Home.css';
 
 const Home = () =>{
+    
     return(
         <div className="home">
           <MainNav/>

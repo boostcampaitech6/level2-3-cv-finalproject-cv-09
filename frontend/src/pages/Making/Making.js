@@ -1,68 +1,62 @@
 import SideNavbar from "../../components/SideNavbar";
-import Area from "./Area";
-import Purpose from "./Purpose";
-import FontColor from "./FontColor";
-import BackgroundColor from "./BackgroundColor";
-import Style from "./Style";
+import SelectCard from "./SelectCard";
+import AreaData from '../../components/SelectCard_data/Area_SelectCard_data';
+import BgColorData from '../../components/SelectCard_data/BgColor_SelectCard_data';
+import PurposeData from '../../components/SelectCard_data/Purpose_SelectCard_data';
+import FontColorData from '../../components/SelectCard_data/FontColor_SelectCard_data';
+import StyleData from '../../components/SelectCard_data/Style_SelectCard_data';
+import Area from './Area';
+import BackgroundColor from './BackgroundColor';
+import Purpose from './Purpose';
+import FontColor from './FontColor';
+import Style from './Style';
 
 
 import './Making.css';
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useLocation, useNavigate } from "react-router";
+import { useLocation } from "react-router";
 
 const Making = () =>{
   let location = useLocation();
   const name = location.state?.name;
-  const [checkItems, setCheckItems] = useState([]);
-  const handleSingleCheck = (prompt) => {
-    if (checkItems.includes(prompt)) {
-      // 단일 선택 시 체크된 아이템을 배열에 추가
-      setCheckItems(checkItems.filter((el) => el !== prompt));
-    } else {
-      // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
-      setCheckItems(prev => [...prev, prompt]);
-    }
-  };
-  const clickedCheck = (prompt) => {
-    if (checkItems.includes(prompt)) {
-      // 단일 선택 시 체크된 아이템을 배열에 추가
-      return true;
-    } else {
-      // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
-      return false;
-    }
-  };
-  const scrollRef = useRef([]);
-  const handleScrollView = (event) => {
-    const name = event.target.id;
-    const category = {
-      Question01: 0,
-      Question02: 1,
-      Question03: 2,
-      Question04: 3,
-    };
-    scrollRef.current[category[name]].scrollIntoView({
-      behavior: "smooth",
-    });
-  };
+  const QuestionAbout = { 'Area':'어떤 분야에서 사용할 로고인지 알려주세요.', 
+                          'FontColor':'폰트 색상을 지정해주세요.', 
+                          'BackgroundColor':'배경 색상을 지정해주세요', 
+                          'Purpose':'목적을 알려주세요.',
+                          'Style':'스타일을 지정해주세요'}
     return(
       <div className="making_column_box">
         <div className="making_column1">
-          <SideNavbar name={name} prompt={checkItems.join(', ')}/>
+          <SideNavbar name={name}/>
         </div>
         <div className="making_column2">
           <section className='container'>
             <Routes>
-              <Route path='area' element ={<Area clickedCheck={clickedCheck} handleSingleCheck={handleSingleCheck} name={name} />}></Route>
-              <Route path='purpose' element ={<Purpose clickedCheck={clickedCheck} handleSingleCheck={handleSingleCheck} name={name} />}></Route>
-              <Route path='fontcolor' element ={<FontColor clickedCheck={clickedCheck} handleSingleCheck={handleSingleCheck} name={name} />}></Route>
-              <Route path='backgroundcolor' element ={<BackgroundColor clickedCheck={clickedCheck} handleSingleCheck={handleSingleCheck} name={name} />}></Route>
-              <Route path='style' element ={<Style clickedCheck={clickedCheck} handleSingleCheck={handleSingleCheck} name={name} checkItems={checkItems}/>}></Route>
+              <Route path='area' element ={<Area nextNavigate='purpose' 
+                                                       name={name} 
+                                                       QuestionAbout={QuestionAbout['Area']} 
+                                                       itemData={AreaData} />}></Route>
+              <Route path='purpose' element ={<Purpose nextNavigate='fontcolor' 
+                                                          name={name} 
+                                                          QuestionAbout={QuestionAbout['Purpose']} 
+                                                          itemData={PurposeData} />}></Route>
+              <Route path='fontcolor' element ={<FontColor nextNavigate='backgroundcolor' 
+                                                            name={name} 
+                                                            QuestionAbout={QuestionAbout['FontColor']} 
+                                                            itemData={FontColorData} />}></Route>
+              <Route path='backgroundcolor' element ={<BackgroundColor nextNavigate='style' 
+                                                                  name={name} 
+                                                                  QuestionAbout={QuestionAbout['BackgroundColor']} 
+                                                                  itemData={BgColorData} />}></Route>
+              <Route path='style' element ={<Style nextNavigate='PromptCheck'
+                                                        name={name} 
+                                                        QuestionAbout={QuestionAbout['Style']} 
+                                                        itemData={StyleData} />}></Route>
             </Routes>
           </section>
         </div>
-        </div>
+      </div>
     );
 }
 

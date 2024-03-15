@@ -3,6 +3,7 @@ import MainNav from "../components/MainNav";
 import React, { useState } from 'react';
 import './ModeSelect.css';
 import Footer from "../components/Footer";
+import Grid from '@mui/material/Grid';
 
 const ModeSelect = () =>{
     let location = useLocation();
@@ -17,6 +18,8 @@ const ModeSelect = () =>{
 return(
     <div className="home">
       <MainNav/>
+      <Grid container className= 'ModeSelect_container' justifyContent="center" alignItems="center">
+      <Grid item xs={6}>
       <div className="modeselect">
         <div className='home_main'>
           <div className="select_margin1"></div>
@@ -40,6 +43,8 @@ return(
           <div className="select_margin2"></div>
         </div>
       </div>
+      </Grid>
+      </Grid>
       <Footer></Footer>
     </div>
 );

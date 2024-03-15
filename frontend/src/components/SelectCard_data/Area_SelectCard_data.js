@@ -1,14 +1,14 @@
-import logo1 from '../assets/112.jpg'
-import logo2 from '../assets/73.jpg'
-import logo3 from '../assets/92.png'
-import logo4 from '../assets/82.jpg'
-import logo5 from '../assets/84.jpg'
-import logo6 from '../assets/93.jpg'
-import logo7 from '../assets/91.jpg'
-import logo8 from '../assets/99.jpg'
-import logo9 from '../assets/107.jpg'
+import logo1 from '../assets/Area_imgs/112.jpg'
+import logo2 from '../assets/Area_imgs/73.jpg'
+import logo3 from '../assets/Area_imgs/92.png'
+import logo4 from '../assets/Area_imgs/82.jpg'
+import logo5 from '../assets/Area_imgs/84.jpg'
+import logo6 from '../assets/Area_imgs/93.jpg'
+import logo7 from '../assets/Area_imgs/91.jpg'
+import logo8 from '../assets/Area_imgs/99.jpg'
+import logo9 from '../assets/Area_imgs/107.jpg'
 
-const itemData = [
+const AreaData = [
     {
       img: logo1,
       title: '제조업',
@@ -75,4 +75,11 @@ const itemData = [
     
   ];
 
-  export default itemData;
+  export default AreaData;
+// {id: 0, title: '빨강', prompt: 'red color background'},
+// {id: 1, title: '주황', prompt: 'orange color background'},
+// {id: 2, title: '노랑', prompt: 'yellow color background'},
+// {id: 3, title: '초록', prompt: 'green color background'},
+// {id: 4, title: '파랑', prompt: 'blue color background'},
+// {id: 5, title: '남색', prompt: 'navy color background'},
+// {id: 6, title: '보라', prompt: 'purple color background'}

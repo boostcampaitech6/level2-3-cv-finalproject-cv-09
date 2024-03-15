@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
 import './SideNavbar.css'
 import { Typography, Box, Grid} from '@mui/material';
-import { BiMenuAltRight, BiSolidBusiness, BiSolidColorFill, BiFontColor, BiText } from 'react-icons/bi';
+import { BiMenuAltRight, BiSolidBusiness, BiSolidColorFill, BiFontColor } from 'react-icons/bi';
 import { TbCrosshair } from "react-icons/tb";
 import { RxFontStyle } from "react-icons/rx";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+// import DeletableChips from './DeletableChip';
+import Chip from '@mui/material/Chip';
+import { useUpdateItems } from '../context'
 
-const Sidebar = ({name, prompt}) => {
+const Sidebar = ({name}) => {
   const [isHovered, setIsHovered] = React.useState(false);
+  const {checkItems, updateItems} = useUpdateItems();
+  const onDeleteChip = (item) =>{
+    updateItems(item);
+    console.info('You delete the Chip: '+item);
+  };
+  // const getRandomColor = () => {
+  //   const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722', '#795548', '#607d8b'];
+  //   return colors[Math.floor(Math.random() * colors.length)];
+  // };
 
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
-
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
@@ -101,7 +112,18 @@ const Sidebar = ({name, prompt}) => {
         //       }}
               >
           <Grid container direction="column" justifyContent="flex-end">    
-            <div className='rounded-rectangle'>{prompt}</div>
+            <div className='rounded-rectangle' style={{ paddingTop: '15px', paddingBottom: '-10px'}}>
+              <div className='tagBox'>
+                {checkItems.map((checkItem) => (
+                    <Chip label={checkItem} onDelete={()=>onDeleteChip(checkItem)} style={{
+                      margin: '-50px 0px -20px 0px', // Adjust spacing between chips
+                      lineHeight: '5',
+                      fontSize: '10px',
+                    }}
+                    />
+                  ))}
+              </div>
+            </div>
           </Grid>
         </Grid> 
       </Grid>
