@@ -1,5 +1,4 @@
 import SideNavbar from "../../components/SideNavbar";
-import SelectCard from "./SelectCard";
 import AreaData from '../../components/SelectCard_data/Area_SelectCard_data';
 import BgColorData from '../../components/SelectCard_data/BgColor_SelectCard_data';
 import PurposeData from '../../components/SelectCard_data/Purpose_SelectCard_data';
@@ -10,7 +9,6 @@ import BackgroundColor from './BackgroundColor';
 import Purpose from './Purpose';
 import FontColor from './FontColor';
 import Style from './Style';
-
 
 import './Making.css';
 import React from 'react';

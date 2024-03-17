@@ -36,6 +36,7 @@ const SelectCard =({nextNavigate, name, QuestionAbout, itemData}) => {
                                 updateItems(item.title);
                                 item.clicked=!item.clicked;
                               }}
+                            style ={{filter: checkItems.includes(item.title) ? 'grayscale(0%)' : 'grayscale(100%)'}}
                         />
                         <ImageListItemBar
                             className='img_title'
@@ -48,7 +49,7 @@ const SelectCard =({nextNavigate, name, QuestionAbout, itemData}) => {
                 ))}
                 </ImageList>
                 <Grid container justifyContent="flex-end">
-                    <Button onClick={onClickNext} variant="contained" sx={{mb:2}}>
+                    <Button className='making_next_button' onClick={onClickNext} variant="contained" sx={{mb:2}}>
                         다음으로
                     </Button>
                 </Grid>
