@@ -27,24 +27,11 @@
     color: #000000bf;
     font-weight: light;
 }
-.modebuttonbox {
-    display:grid;
-    position:relative;
-    grid-template-columns:repeat(
-        auto-fill,
-        minmax(
-        290px,
-        1fr
-    ));
-    gap:16px;
-    padding-top:16px;
-    padding-bottom:4px;
-    padding-left: 10px;
-}
 .modebutton{
-    margin-bottom: 15px;
-    width: 270px;
-    height: 270px;
+    /* margin-bottom: 15px; */
+    padding-top: 100%;
+    width: 15vw;
+    height: 0;
     border-radius: 15px;
     transition: all 0.2s ;
     color: #000000;
@@ -52,17 +39,37 @@
     position: relative;
     margin: auto;
 }
+@media (min-width:1600px) {
+    .modebutton{
+        width: 250px;
+    }
+}
 .modebutton:hover {
     background: #a1a1a1;
 }
 .buttonText{
     position:absolute;
-    top: 50%;
+    /* top: 30%; */
     width: 100%;
-    margin: -40px 0 0 0px;
+    /* margin: -40px 0 0 0px; */
     height: 100px;
     justify-content: center;
     align-items: center;
+}
+@media (max-width:1000px) {
+    .buttonText {
+        padding-top: 10%;
+        font-size: 70%;
+    }
+}
+@media (max-width:600px) {
+    .buttonText {
+        padding-top: 20%;
+        font-size: 50%;
+    }
+}
+.margin_grid {
+    width: 15vw;
 }
 .buttonT1{
     font-size: 200%;
@@ -114,4 +121,8 @@
     white-space: nowrap;
     margin-left: 5%;
     margin-bottom: 5%;
+}
+.PromptCheck{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    height: 120px;
 }

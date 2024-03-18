@@ -3,18 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {MakingProvider, NameProvider} from './context';
+import {MakingProvider, PromptProvider} from './context';
 
 const root = ReactDOM.createRoot(document.getElementById('__next'));
 root.render(
-  // <NameProvider>
   <MakingProvider>
+  <PromptProvider>
   <React.StrictMode>
     <App />
   </React.StrictMode>
+  </PromptProvider>
   </MakingProvider>
-  // </NameProvider>
-  
 );
 
 // If you want to start measuring performance in your app, pass a function

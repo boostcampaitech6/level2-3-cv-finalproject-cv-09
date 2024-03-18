@@ -1,91 +1,95 @@
-import logo41 from '../assets/Area_imgs/112.jpg'
-import logo42 from '../assets/Area_imgs/73.jpg'
-import logo43 from '../assets/Area_imgs/92.png'
-import logo44 from '../assets/Area_imgs/82.jpg'
-import logo45 from '../assets/Area_imgs/84.jpg'
-import logo46 from '../assets/Area_imgs/93.jpg'
-import logo47 from '../assets/Area_imgs/91.jpg'
-import logo48 from '../assets/Area_imgs/99.jpg'
-import logo49 from '../assets/Area_imgs/107.jpg'
+import modern from '../assets/Style_imgs/modern.png'
+import fancy from '../assets/Style_imgs/fancy.png'
+import abstract from '../assets/Style_imgs/abstract.png'
+import gothic from '../assets/Style_imgs/gothic.png'
+import simple from '../assets/Style_imgs/simple.png'
+import mysterious from '../assets/Style_imgs/mysterious.png'
+import typography from '../assets/Style_imgs/typography.png'
+import vintage from '../assets/Style_imgs/vintage.png'
+import elegant from '../assets/Style_imgs/elegant.png'
 
 
 const StyleData = [
     {
-      img: logo41,
-      title: '모던',
+      img: modern,
+      title: '모던한',
       rows: 1,
       cols: 1,
       featured: true,
-      prompt: 'moden style'
+      en_prompt: 'moden style',
+      ko_prompt: '모던한'
     },
     {
-      img: logo42,
-      title: '고딕',
+      img: gothic,
+      title: '고딕풍의',
       rows: 1,
       cols: 1,
       featured: true,
-      prompt: 'gothic style'
+      en_prompt: 'gothic style',
+      ko_prompt: '고딕풍의'
     },
     {
-      img: logo43,
-      title: '심플',
+      img: simple,
+      title: '심플한',
       rows: 1,
       cols: 1,
       featured: true,
-      prompt: 'simple style'
+      en_prompt: 'simple style',
+      ko_prompt: '심플한'
     },
     {
-      img: logo44,
+      img: fancy,
       title: '화려한',
       rows: 1,
       cols: 1,
       featured: true,
-      prompt: 'fancy style'
+      en_prompt: 'fancy style',
+      ko_prompt: '화려한'
     },
     {
-      img: logo41,
-      title: '모던',
+      img: vintage,
+      title: '빈티지한',
       rows: 1,
       cols: 1,
       featured: true,
-      prompt: 'moden style'
+      en_prompt: 'vintage style',
+      ko_prompt: '빈티지한'
     },
     {
-      img: logo42,
-      title: '고딕',
+      img: mysterious,
+      title: '신비로운',
       rows: 1,
       cols: 1,
       featured: true,
-      prompt: 'gothic style'
+      en_prompt: 'mysterious style',
+      ko_prompt: '신비로운'
     },
     {
-      img: logo43,
-      title: '심플',
+      img: typography,
+      title: '타이포그래피',
       rows: 1,
       cols: 1,
       featured: true,
-      prompt: 'simple style'
+      en_prompt: 'typography style',
+      ko_prompt: '타이포그래피'
     },
     {
-      img: logo44,
-      title: '화려한',
+      img: elegant,
+      title: '우아한',
       rows: 1,
       cols: 1,
       featured: true,
-      prompt: 'fancy style'
+      en_prompt: 'elegant style',
+      ko_prompt: '우아한'
     },
     {
-      img: logo44,
-      title: '화려한',
+      img: abstract,
+      title: '추상적인',
       rows: 1,
       cols: 1,
       featured: true,
-      prompt: 'fancy style'
+      en_prompt: 'abstract style',
+      ko_prompt: '추상적인'
     },
   ];
-
-  export default StyleData;
-// {id: 0, title: '모던', prompt: 'moden style' },
-// {id: 1, title: '고딕', prompt: 'gothic style'},
-// {id: 2, title: '심플', prompt: 'simple style'},
-// {id: 3, title: '화려한', prompt: 'fancy style'}
+export default StyleData;

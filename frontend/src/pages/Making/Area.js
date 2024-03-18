@@ -36,6 +36,8 @@ const Area =({nextNavigate, name, QuestionAbout, itemData}) => {
                                 updateItems(item.title);
                                 item.clicked=!item.clicked;
                               }}
+                            onMouseEnter = {(e)=>checkItems.includes(item.title)?'none':e.target.style.filter='grayscale(0%)'}
+                            onMouseLeave={(e) => checkItems.includes(item.title)? 'none':e.target.style.filter = 'grayscale(100%)'}
                             style ={{filter: checkItems.includes(item.title) ? 'grayscale(0%)' : 'grayscale(100%)'}}
                         />
                         <ImageListItemBar
@@ -43,7 +45,7 @@ const Area =({nextNavigate, name, QuestionAbout, itemData}) => {
                             sx={{height: 1/4, }}
                             position='top'
                             title={item.title}
-                            subtitle={item.author}
+                            // subtitle={item.author}
                         />
                     </ImageListItem>
                 ))}

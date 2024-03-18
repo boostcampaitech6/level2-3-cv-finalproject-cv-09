@@ -18,10 +18,10 @@ import { useLocation } from "react-router";
 const Making = () =>{
   let location = useLocation();
   const name = location.state?.name;
-  const QuestionAbout = { 'Area':'어떤 분야에서 사용할 로고인지 알려주세요.', 
-                          'FontColor':'폰트 색상을 지정해주세요.', 
+  const QuestionAbout = { 'Area':'어떤 분야에서 사용할 로고인지 알려주세요', 
+                          'FontColor':'폰트 색상을 지정해주세요', 
                           'BackgroundColor':'배경 색상을 지정해주세요', 
-                          'Purpose':'목적을 알려주세요.',
+                          'Purpose':'목적을 알려주세요',
                           'Style':'스타일을 지정해주세요'}
     return(
       <div className="making_column_box">

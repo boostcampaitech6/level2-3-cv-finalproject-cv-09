@@ -1,85 +1,98 @@
-import logo1 from '../assets/Area_imgs/112.jpg'
-import logo2 from '../assets/Area_imgs/73.jpg'
-import logo3 from '../assets/Area_imgs/92.png'
-import logo4 from '../assets/Area_imgs/82.jpg'
-import logo5 from '../assets/Area_imgs/84.jpg'
-import logo6 from '../assets/Area_imgs/93.jpg'
-import logo7 from '../assets/Area_imgs/91.jpg'
-import logo8 from '../assets/Area_imgs/99.jpg'
-import logo9 from '../assets/Area_imgs/107.jpg'
+import manufacturing from '../assets/Area_imgs/manufacturing.png'
+import IT from '../assets/Area_imgs/IT.png'
+import agriculture from '../assets/Area_imgs/agriculture.png'
+import fishing from '../assets/Area_imgs/fishing.png'
+import construction from '../assets/Area_imgs/construction.png'
+import real_estate from '../assets/Area_imgs/real_estate.png'
+import medicine from '../assets/Area_imgs/medicine.png'
+import education from '../assets/Area_imgs/education.png'
+import travel from '../assets/Area_imgs/travel.png'
+import restaurant from '../assets/Area_imgs/restaurant.png'
+
 
 const AreaData = [
     {
-      img: logo1,
-      title: '제조업',
+      img: manufacturing,
+      title: '제조 기업',
       rows: 1,
       cols: 1,
       featured: true,
+      en_prompt: 'manufacturing',
+      ko_prompt: '제조기업'
     },
     {
-      img: logo2,
-      title: 'IT사업',
+      img: IT,
+      title: 'IT 기업',
       rows: 1,
       cols: 1,
       featured: true,
+      en_prompt: 'IT',
+      ko_prompt: 'IT 기업'
     },
     {
-      img: logo3,
-      title: '농업',
+      img: agriculture,
+      title: '농업 기업',
       rows: 1,
       cols: 1,
       featured: true,
+      en_prompt: 'agriculture',
+      ko_prompt: '농업 기업'
     },
     {
-      img: logo4,
-      title: '어업',
+      img: restaurant,
+      title: '음식점',
       rows: 1,
       cols: 1,
       featured: true,
+      en_prompt: 'fishing industry',
+      ko_prompt: '음식점'
     },
     {
-      img: logo5,
-      title: '건설업',
+      img: construction,
+      title: '건설 기업',
       rows: 1,
       cols: 1,
       featured: true,
+      en_prompt: 'construction',
+      ko_prompt: '건설 기업'
     },
     {
-      img: logo6,
+      img: real_estate,
       title: '부동산',
       rows: 1,
       cols: 1,
       featured: true,
+      en_prompt: 'real estate',
+      ko_prompt: '부동산 기업'
     },
     {
-      img: logo7,
-      title: '의료/바이오',
+      img: medicine,
+      title: '의료/바이오 기업',
       rows: 1,
       cols: 1,
       featured: true,
+      en_prompt: 'medical industry',
+      ko_prompt: '의료/바이오 기업'
     },
     {
-      img: logo8,
-      title: '교육',
+      img: education,
+      title: '교육 기업',
       rows: 1,
       cols: 1,
       featured: true,
+      en_prompt: 'education',
+      ko_prompt: '교육 기업'
     },
     {
-      img: logo9,
-      title: '여행',
+      img: travel,
+      title: '여행 기업',
       rows: 1,
       cols: 1,
       featured: true,
+      en_prompt: 'travel',
+      ko_prompt: '여행 기업'
     },
     
   ];
 
   export default AreaData;
-// {id: 0, title: '빨강', prompt: 'red color background'},
-// {id: 1, title: '주황', prompt: 'orange color background'},
-// {id: 2, title: '노랑', prompt: 'yellow color background'},
-// {id: 3, title: '초록', prompt: 'green color background'},
-// {id: 4, title: '파랑', prompt: 'blue color background'},
-// {id: 5, title: '남색', prompt: 'navy color background'},
-// {id: 6, title: '보라', prompt: 'purple color background'}

@@ -98,19 +98,7 @@ const Sidebar = ({name}) => {
             </li>
           </ul>
         </Grid>
-        <Grid item 
-        // sx={{
-        //         width: 200,
-        //         height: 300,
-        //         borderRadius: 1,
-        //         border: 1,
-        //         gap: 2,
-        //         bgcolor: '',
-        //         '&:hover': {
-        //           bgcolor: 'primary.dark',
-        //         },
-        //       }}
-              >
+        <Grid item>
           <Grid container direction="column" justifyContent="flex-end">    
             <div className='rounded-rectangle' style={{ paddingTop: '15px', paddingBottom: '-10px'}}>
               <div className='tagBox'>

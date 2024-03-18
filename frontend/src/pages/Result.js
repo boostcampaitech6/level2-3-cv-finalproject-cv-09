@@ -8,7 +8,7 @@ import './Result.css';
 const Makedlogo = () =>{
   let location = useLocation();
   const name = location.state?.name;
-  const prompt = location.state?.prompt;
+  const prompt = location.state?.sentence;
   const [loding, setLoding] = useState(true);
   useEffect( () => {
     logoapipost();
