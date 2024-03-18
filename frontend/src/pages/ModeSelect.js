@@ -25,13 +25,13 @@ return(
           <div className="select_margin1"></div>
           <div className="nametext" >{name}</div>
           <div className="modeselect_text">라는 로고를 만들게요</div>
-          <div className="modeselect_text">원하시는 생성 방식을 선택해주세요</div>
+          <div className="modeselect_text margin_under">원하시는 생성 방식을 선택해주세요</div>
           {/* <div className="modebuttonbox"> */}
           <Grid container justifyContent="flex-start" alignItems="center">
             <Grid item>
             <div onClick={onClickMaking} className="modebutton" style={{marginRight:"auto"}}>
               <div className="buttonText">
-                <div className="buttonT1">Select Mode</div>
+                <div className="buttonT1">Simple Mode</div>
                 <div className="buttonT2">객관식</div>
               </div>
             </div>
