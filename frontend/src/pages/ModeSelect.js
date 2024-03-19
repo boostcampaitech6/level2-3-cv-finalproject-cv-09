@@ -16,13 +16,12 @@ const ModeSelect = () =>{
     navigate("/adv?name=" + name, {state: { name }});
   }
 return(
-    <div className="home">
+    <div className="modeselect">
       <MainNav/>
+      <div className="modeselect_main">
       <Grid container className= 'ModeSelect_container' justifyContent="center" alignItems="center">
       <Grid item xs={6}>
-      <div className="modeselect">
         <div className='home_main'>
-          <div className="select_margin1"></div>
           <div className="nametext" >{name}</div>
           <div className="modeselect_text">라는 로고를 만들게요</div>
           <div className="modeselect_text margin_under">원하시는 생성 방식을 선택해주세요</div>
@@ -46,12 +45,10 @@ return(
             </div>
             </Grid>
             </Grid>
-          {/* </div> */}
-          <div className="select_margin2"></div>
-        </div>
       </div>
       </Grid>
       </Grid>
+      </div>
       <Footer></Footer>
     </div>
 );

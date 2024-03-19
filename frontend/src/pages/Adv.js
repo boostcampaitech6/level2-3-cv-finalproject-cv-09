@@ -31,11 +31,11 @@ const AdvancedMode = () =>{
     // 화면 크기에 따라 다른 ui구성
     const isMobile = useMediaQuery('(max-width:600px)');
     return(
-      <div className="Adv">
-        <div className="Adv_Main">
+      <div className="adv">
+        
           <MainNav></MainNav>
+          <div className="adv_main">
           <Grid container>
-            <div className="select_margin1"></div>
             <Grid container className= 'Adv_Main_container' justifyContent="center" alignItems="center">
               <Grid item xs={6}>
                 <div className="nametext">{name}</div> 
@@ -101,7 +101,6 @@ const AdvancedMode = () =>{
               </Grid>
             </Grid>
           </Grid>
-          <div className="select_margin1"></div>
         </div>
         <Footer></Footer>
       </div>

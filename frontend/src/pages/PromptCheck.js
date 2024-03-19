@@ -6,6 +6,7 @@ import {useKoPrompt} from '../context'
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import './ModeSelect.css'
+import Footer from "../components/Footer";
 
 const PromptCheck = () =>{
   let location = useLocation();
@@ -27,35 +28,39 @@ const PromptCheck = () =>{
     setKoPromptList(checkItems)
   },[])
 return(
-  <div><MainNav/>
-    <Grid container className= 'ModeSelect_container' justifyContent="center" alignItems="center">
-      <Grid item xs={6}>
-        <div className="nametext" >{name}</div>
-        <Grid item justifyContent="center" alignItems="center">
-        <Box className="PromptCheck" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto', padding: '10px 10px 10px 20px'}} >{sentence}</Box>
-        <div className="QuestionT2"></div>
-        </Grid>
-        <Grid container justifyContent="space-between" alignItems="center">
-            <Grid item>
-              <div onClick={onClickResult} className="modebutton" style={{marginRight:"auto"}}>
-                <div className="buttonText">
-                  <div className="buttonT1">making logo</div>
-                  <div className="buttonT2">로고를 생성할래요!</div>
+  <div className="modeselect">
+    <MainNav/>
+    <div className="modeselect_main">
+      <Grid container className= 'ModeSelect_container' justifyContent="center" alignItems="center">
+        <Grid item xs={6}>
+          <div className="nametext" >{name}</div>
+          <Grid item justifyContent="center" alignItems="center">
+          <Box className="PromptCheck" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto', padding: '10px 10px 10px 20px'}} >{sentence}</Box>
+          <div className="margin_under"></div>
+          </Grid>
+          <Grid container justifyContent="space-between" alignItems="center">
+              <Grid item>
+                <div onClick={onClickResult} className="modebutton" style={{marginRight:"auto"}}>
+                  <div className="buttonText">
+                    <div className="buttonT1">making logo</div>
+                    <div className="buttonT2">로고를 생성할래요!</div>
+                  </div>
                 </div>
-              </div>
-            </Grid>
-            {/* <Grid item className="margin_grid"></Grid> */}
-            <Grid item>
-              <div onClick={onClickAdv} className="modebutton" style={{marginLeft:"auto"}}>
-                <div className="buttonText">
-                  <div className="buttonT1">typing mode</div>
-                  <div className="buttonT2">추가 수정하고 싶어요!</div>
+              </Grid>
+              {/* <Grid item className="margin_grid"></Grid> */}
+              <Grid item>
+                <div onClick={onClickAdv} className="modebutton" style={{marginLeft:"auto"}}>
+                  <div className="buttonText">
+                    <div className="buttonT1">typing mode</div>
+                    <div className="buttonT2">추가 수정하고 싶어요!</div>
+                  </div>
                 </div>
-              </div>
-            </Grid>
+              </Grid>
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </div>
+    <Footer></Footer>
   </div>
 );
 }

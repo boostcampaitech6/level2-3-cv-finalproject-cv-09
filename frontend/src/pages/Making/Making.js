@@ -14,6 +14,7 @@ import './Making.css';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useLocation } from "react-router";
+import Footer from "../../components/Footer";
 
 const Making = () =>{
   let location = useLocation();
@@ -53,6 +54,7 @@ const Making = () =>{
                                                         itemData={StyleData} />}></Route>
             </Routes>
           </section>
+          <Footer></Footer>
         </div>
       </div>
     );
