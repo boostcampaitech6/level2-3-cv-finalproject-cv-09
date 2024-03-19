@@ -4,18 +4,21 @@ import Loding from "../components/Loding";
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import './Result.css';
+import loading from '../components/assets/loading.avif'
 
 const Makedlogo = () =>{
   let location = useLocation();
   const name = location.state?.name;
   const prompt = location.state?.sentence;
   const [loding, setLoding] = useState(true);
+  const [taskid, setTaskID] = useState();
   useEffect( () => {
     imggenAPIPost();
     setTimeout( () => {
     }, 1000);
   },[]);
-
+  const [,updateState]=useState();
+  const forceUpdate = useCallback(()=>updateState({}),[]);
   const imggenAPIPost = () =>{
     console.log('image gen call')
     axios.post('/api/prompt', 
@@ -63,16 +66,16 @@ const Makedlogo = () =>{
   })
   }
   const [Index, setIndex] = useState([
-    {id: 0, title: 'image01', imgurl:''},
-    {id: 1, title: 'image02', imgurl:''},
-    {id: 2, title: 'image03', imgurl:''},
-    {id: 3, title: 'image04', imgurl:''},
+    {id: 0, title: 'image01', imgurl:loading},
+    {id: 1, title: 'image02', imgurl:loading},
+    {id: 2, title: 'image03', imgurl:loading},
+    {id: 3, title: 'image04', imgurl:loading},
   ]);
 return(
     <div >
         <MainNav/>
         <div className='container box'>
-          <div>{taskid}</div>
+          <div>Task ID = {taskid}</div>
           <button onClick={get_image}>새로고침</button>
           <div>{Index.imgurl}</div>
             {Index?.map((Index, key) => (
@@ -82,12 +85,12 @@ return(
                 // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
                 >
                   
-                <img src={Index.imgurl} referrerPolicy="no-referrer"/>
+                <img src={Index.imgurl} referrerPolicy="no-referrer" style={{height:"40vh"}}/>
                   <div className='buttonT1 buttonText'>{Index.title}</div>
-                  </button>
                   <button key={key} onClick={(e) => {
                   downloadImage(Index.imgurl);
                 }}>다운로드</button>
+                  </button>
                 <a></a>
                 </li>
           </ul>
