@@ -4,27 +4,30 @@ import MainNav from "../components/MainNav";
 import Footer from "../components/Footer";
 import '../App.css';
 import './Home.css';
+import Slideshow from "../components/Slideshow";
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
 
 const Home = () =>{
+    
     return(
         <div className="home">
           <MainNav/>
-          <div className="home_align">
-            <div class='home_main'>
-              <div className='main_margin'></div>
-                <div className="column_box">
-                  <div className="column1">
-                    <div className="text1">Create Logo</div>
-                    <div className="text2">로고를 생성해볼까요?</div>
+          <Grid container direction="row" justifyContent="center" alignItems="center">
+          <div className='main_margin'></div>
+            <Grid item  xs={4} lg={4}>
+                  <div className="column_box">
+                    <Box className="text1">Create Logo</Box>
+                    <Box className="text2">로고를 생성해볼까요?</Box>
                     <PromptStart/>
-                  </div>
-                  <div className="column2">
-                  <img alt="HTML" src="https://www.w3schools.com/whatis/img_js.png"></img>
-                  </div>
-                </div>
+                    </div>
+                    </Grid>
+                  <div className="between_margin"></div>
+                  <Grid item >
+                  <Slideshow className='slideshow'/>
+                  </Grid>
               <div className='main_margin'></div>
-            </div>
-          </div>
+          </Grid>
           <Footer/>
         </div>
     );

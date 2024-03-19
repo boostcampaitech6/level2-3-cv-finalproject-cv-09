@@ -8,10 +8,7 @@ const Footer = () => {
           <div className='container'>
             <div className='footer_layout'> 
               <div className='team'>SCV</div> 
-              {/* <div className="navbar_content" aria-expanded="false" aria-hidden="true"> */}
-                <div></div>
                 <div className="RightsReserved">Copyright © 2024 SCV | All Rights Reserved</div>
-                {/* <div> */}
                   <a 
                     className="RightsReserved"
                     href='https://github.com/boostcampaitech6/level2-3-cv-finalproject-cv-09'
@@ -25,7 +22,6 @@ const Footer = () => {
                     Github
                     </div>
                     </a>
-                {/* </div> */}
               </div>
             </div>
         </footer>

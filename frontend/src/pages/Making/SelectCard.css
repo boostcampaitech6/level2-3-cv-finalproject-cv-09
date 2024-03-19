@@ -1,0 +1,13 @@
+.image_list {
+	-webkit-filter: grayscale(90%);
+	filter: grayscale(90%);
+	-webkit-transition: .05s ease-in-out;
+	transition: .05s ease-in-out;
+}
+.image_list:hover {	
+	-webkit-filter: grayscale(0%);
+	filter: grayscale(0%);
+}
+.Question01 {
+    font-size: 140%
+}

@@ -1,14 +1,9 @@
 import { useLocation } from "react-router";
 import MainNav from "../components/MainNav";
 import { useNavigate } from 'react-router';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Adv.css';
-import axios from "axios";
 
-// import Grid from '@mui/material/Grid';
-// import TextField from '@mui/material/TextField';
-// import Box from '@mui/material/Box';
-// import Paper from '@mui/material/Paper';
 import {Button, Stack, Paper, Box, TextField, Grid, useMediaQuery} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import Footer from "../components/Footer";
@@ -17,27 +12,30 @@ import Footer from "../components/Footer";
 const AdvancedMode = () =>{
     let location = useLocation();
     const name = location.state?.name;
-    const [prompt, setPrompt] = useState(location.state?.prompt);
+    const content = location.state?.sentence;
+    const [sentence, setPrompt] = useState(location.state?.sentence);
+    
     //입력창에 글자를 입력했을때 변화를 적용하는 함수
     const onChange = (e) =>{setPrompt(e.target.value)}
+
     //글자를 입력후 엔터키를 눌렀을때 다음 페이지로 넘어가는 함수
-    const onEnter =(e)=>{
-      if((e.key == 'Enter') && (prompt)){
-        onClickResult();  
-        }
-    }
+    //const onEnter =(e)=>{
+      //if((e.key == 'Enter') && (prompt)){
+        //onClickResult();  
+        //}
+    //}
     const navigate = useNavigate();
     const onClickResult = () =>{
-      navigate("/result?name=" + name + "?prompt="+ prompt, {state: { name, prompt }});
+      navigate("/result?name=" + name + "?prompt="+ sentence, {state: { name, sentence}});
     }
     // 화면 크기에 따라 다른 ui구성
     const isMobile = useMediaQuery('(max-width:600px)');
     return(
-      <div className="Adv">
-        <div className="Adv_Main">
+      <div className="adv">
+        
           <MainNav></MainNav>
+          <div className="adv_main">
           <Grid container>
-            <div className="select_margin1"></div>
             <Grid container className= 'Adv_Main_container' justifyContent="center" alignItems="center">
               <Grid item xs={6}>
                 <div className="nametext">{name}</div> 
@@ -77,11 +75,9 @@ const AdvancedMode = () =>{
                         label="로고의 특징을 입력해주세요."
                         multiline
                         onChange={onChange} 
-                        onKeyUp={onEnter} 
                         rows={10}
                         placeholder="로고에 글자를 넣고 싶을 때는 따옴표로(예시:'글자') 표시해주세요."
-                        defaultValue={prompt}
-                        // fullWidth
+                        defaultValue={content}
                       />
                     </Box>
                   </Box>
@@ -105,7 +101,6 @@ const AdvancedMode = () =>{
               </Grid>
             </Grid>
           </Grid>
-          <div className="select_margin1"></div>
         </div>
         <Footer></Footer>
       </div>

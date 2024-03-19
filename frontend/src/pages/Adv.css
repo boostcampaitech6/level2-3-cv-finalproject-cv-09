@@ -1,10 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400&display=swap');
 
 .adv {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100vh;
+}
+.adv_main {
     align-items: center;
     display: flex;
     flex-direction: column;
     width: 100%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
 }
 .select_margin1 {
     display: block;
