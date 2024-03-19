@@ -1,0 +1,14 @@
+accelerate launch train_dreambooth_lora_sdxl.py \
+  --pretrained_model_name_or_path="stabilityai/stable-diffusion-xl-base-1.0" \
+  --instance_data_dir="/data/ephemeral/home/datasets/en_images" \
+  --mixed_precision="fp16" \
+  --instance_prompt="logo" \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --gradient_accumulation_steps=1 \
+  --learning_rate=1e-4 \
+  --lr_scheduler="constant" \
+  --lr_warmup_steps=0 \
+  --max_train_steps=60000 \
+  --checkpointing_steps=1000 \
+  --output_dir="/data/ephemeral/home/level2-3-cv-finalproject-cv-09/logo_generation/output" \

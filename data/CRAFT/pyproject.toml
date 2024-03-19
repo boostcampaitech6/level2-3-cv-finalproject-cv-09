@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "craft"
+version = "0.1.0"
+description = ""
+authors = ["ohkingtaek <mm0741@naver.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+torch = "2.0.0"
+torchvision = "0.15.1"
+tqdm = "^4.66.2"
+opencv-python = "^4.9.0.80"
+easydict = "^1.13"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
