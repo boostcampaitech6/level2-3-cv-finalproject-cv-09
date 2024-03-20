@@ -128,7 +128,7 @@
 .making_column1 {
     display: table-column;
     width: 200px;
-    height: 140vh;
+    height: 100%;
     float: left;
     position: absolute;
 }
@@ -138,4 +138,5 @@
     width: 80vw;
     height: 140vh;
     float: right;
+    min-height: 1200px;
 }

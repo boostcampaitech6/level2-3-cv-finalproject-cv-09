@@ -26,36 +26,38 @@ const Making = () =>{
                           'Style':'스타일을 지정해주세요'}
     return(
       <div className="making_column_box">
-        <div className="making_column1">
-          <SideNavbar name={name}/>
-        </div>
-        <div className="making_column2">
-          <section className='container'>
-            <Routes>
-              <Route path='area' element ={<Area nextNavigate='purpose' 
-                                                       name={name} 
-                                                       QuestionAbout={QuestionAbout['Area']} 
-                                                       itemData={AreaData} />}></Route>
-              <Route path='purpose' element ={<Purpose nextNavigate='fontcolor' 
+        <SideNavbar name={name}/>
+        <body>
+        {/* <div className="making_column1">
+          </div> */}
+          <div className="making_column2">
+            <section className='container'>
+              <Routes>
+                <Route path='area' element ={<Area nextNavigate='purpose' 
                                                           name={name} 
-                                                          QuestionAbout={QuestionAbout['Purpose']} 
-                                                          itemData={PurposeData} />}></Route>
-              <Route path='fontcolor' element ={<FontColor nextNavigate='backgroundcolor' 
+                                                          QuestionAbout={QuestionAbout['Area']} 
+                                                          itemData={AreaData} />}></Route>
+                <Route path='purpose' element ={<Purpose nextNavigate='fontcolor' 
                                                             name={name} 
-                                                            QuestionAbout={QuestionAbout['FontColor']} 
-                                                            itemData={FontColorData} />}></Route>
-              <Route path='backgroundcolor' element ={<BackgroundColor nextNavigate='style' 
-                                                                  name={name} 
-                                                                  QuestionAbout={QuestionAbout['BackgroundColor']} 
-                                                                  itemData={BgColorData} />}></Route>
-              <Route path='style' element ={<Style nextNavigate='PromptCheck'
-                                                        name={name} 
-                                                        QuestionAbout={QuestionAbout['Style']} 
-                                                        itemData={StyleData} />}></Route>
-            </Routes>
-          </section>
-          <Footer></Footer>
-        </div>
+                                                            QuestionAbout={QuestionAbout['Purpose']} 
+                                                            itemData={PurposeData} />}></Route>
+                <Route path='fontcolor' element ={<FontColor nextNavigate='backgroundcolor' 
+                                                              name={name} 
+                                                              QuestionAbout={QuestionAbout['FontColor']} 
+                                                              itemData={FontColorData} />}></Route>
+                <Route path='backgroundcolor' element ={<BackgroundColor nextNavigate='style' 
+                                                                    name={name} 
+                                                                    QuestionAbout={QuestionAbout['BackgroundColor']} 
+                                                                    itemData={BgColorData} />}></Route>
+                <Route path='style' element ={<Style nextNavigate='PromptCheck'
+                                                          name={name} 
+                                                          QuestionAbout={QuestionAbout['Style']} 
+                                                          itemData={StyleData} />}></Route>
+              </Routes>
+            </section>
+          </div>
+        </body>
+        <Footer></Footer>
       </div>
     );
 }

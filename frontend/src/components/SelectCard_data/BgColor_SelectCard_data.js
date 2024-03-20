@@ -1,5 +1,5 @@
-import checked_white from '../assets/BgColor_imgs/checked_white.png'
-import checked_black from '../assets/BgColor_imgs/checked_black.png'
+import white from '../assets/BgColor_imgs/white.png'
+import black from '../assets/BgColor_imgs/black.png'
 import red from '../assets/BgColor_imgs/red.png'
 import orange from '../assets/BgColor_imgs/orange.png'
 import yellow from '../assets/BgColor_imgs/yellow.png'
@@ -7,7 +7,7 @@ import green from '../assets/BgColor_imgs/green.png'
 import blue from '../assets/BgColor_imgs/blue.png'
 import navy from '../assets/BgColor_imgs/navy.png'
 import purple from '../assets/BgColor_imgs/purple.png'
-import checked_grey from '../assets/BgColor_imgs/checked_grey.png'
+import grey from '../assets/BgColor_imgs/grey.png'
 import mint from '../assets/BgColor_imgs/mint.png'
 import brown from '../assets/BgColor_imgs/brown.png'
 import beige from '../assets/BgColor_imgs/beige.png'
@@ -16,7 +16,7 @@ import pink from '../assets/BgColor_imgs/pink.png'
 
 const BgColorData = [
   {
-    img: checked_white,
+    img: white,
     title: '하얀색',
     rows: 1,
     cols: 1,
@@ -24,7 +24,7 @@ const BgColorData = [
     ko_prompt: 'bg흰색'
   },
   {
-    img: checked_black,
+    img: black,
     title: '검정색',
     rows: 1,
     cols: 1,
@@ -32,7 +32,7 @@ const BgColorData = [
     ko_prompt: 'bg검정색'
   },
   {
-    img: checked_grey,
+    img: grey,
     title: '그레이',
     rows: 1,
     cols: 1,

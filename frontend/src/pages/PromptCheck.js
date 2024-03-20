@@ -38,7 +38,7 @@ return(
           <Box className="PromptCheck" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto', padding: '10px 10px 10px 20px'}} >{sentence}</Box>
           <div className="margin_under"></div>
           </Grid>
-          <Grid container justifyContent="space-between" alignItems="center">
+          <Grid container justifyContent="space-evenly" alignItems="center">
               <Grid item>
                 <div onClick={onClickResult} className="modebutton" style={{marginRight:"auto"}}>
                   <div className="buttonText">

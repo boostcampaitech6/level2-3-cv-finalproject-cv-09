@@ -11,7 +11,7 @@ import Chip from '@mui/material/Chip';
 import { useUpdateItems } from '../context'
 
 const Sidebar = ({name}) => {
-  const [isHovered, setIsHovered] = React.useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const {checkItems, updateItems} = useUpdateItems();
   const onDeleteChip = (item) =>{
     updateItems(item);
@@ -49,7 +49,7 @@ const Sidebar = ({name}) => {
     <Box 
       sx={{boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)', borderRadius: '10px'}}
       
-      className={`sidebar ${isHovered ? 'expand' : ''}`}
+      className={`sidebar ${'expand'}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -62,7 +62,7 @@ const Sidebar = ({name}) => {
                 sx={{ opacity: isHovered ? 1 : 0, transition: 'var(--transition)' }}
                 >K-Logo Gen</Typography>
           </Link>
-          <BiMenuAltRight className="BiMenuAltRight" />
+          {/* <BiMenuAltRight className="BiMenuAltRight" /> */}
         </Grid>
         <Grid item className="sidebar-links">
           <ul>

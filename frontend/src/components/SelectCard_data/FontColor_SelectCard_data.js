@@ -1,5 +1,5 @@
-import checked_white from '../assets/FontColor_imgs/checked_white.png'
-import checked_black from '../assets/FontColor_imgs/checked_black.png'
+import white from '../assets/FontColor_imgs/white.png'
+import black from '../assets/FontColor_imgs/black.png'
 import red from '../assets/FontColor_imgs/red.png'
 import orange from '../assets/FontColor_imgs/orange.png'
 import yellow from '../assets/FontColor_imgs/yellow.png'
@@ -7,7 +7,7 @@ import green from '../assets/FontColor_imgs/green.png'
 import blue from '../assets/FontColor_imgs/blue.png'
 import navy from '../assets/FontColor_imgs/navy.png'
 import purple from '../assets/FontColor_imgs/purple.png'
-import checked_grey from '../assets/FontColor_imgs/checked_grey.png'
+import grey from '../assets/FontColor_imgs/grey.png'
 import mint from '../assets/FontColor_imgs/mint.png'
 import brown from '../assets/FontColor_imgs/brown.png'
 import beige from '../assets/FontColor_imgs/beige.png'
@@ -16,7 +16,7 @@ import pink from '../assets/FontColor_imgs/pink.png'
 
 const FontColorData = [
   {
-    img: checked_white,
+    img: white,
     title: '흰색',
     rows: 1,
     cols: 1,
@@ -24,7 +24,7 @@ const FontColorData = [
     ko_prompt: 'f흰색'
   },
   {
-    img: checked_black,
+    img: black,
     title: '검정',
     rows: 1,
     cols: 1,
@@ -32,7 +32,7 @@ const FontColorData = [
     ko_prompt: 'f검정'
   },
   {
-    img: checked_grey,
+    img: grey,
     title: '회색',
     rows: 1,
     cols: 1,
