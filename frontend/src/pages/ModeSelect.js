@@ -18,15 +18,21 @@ const ModeSelect = () =>{
 return(
     <div className="home">
       <MainNav/>
-      <Grid container className= 'ModeSelect_container' justifyContent="center" alignItems="center">
-        <Grid item xs={6}>
+      {/* <Grid container className= 'ModeSelect_container' justifyContent="center" alignItems="center">
+        <Grid item xs={6}> */}
           <Grid item direction="column" className="modeselect" justifyContent="flex-start">
             <Grid item >
+              <div className='textBox0'>
+              {/* <Grid container justifyContent='center' direction="column" alignItems="center">
+                <Grid item> */}
               <div className="select_margin1"></div>
               <div className="nametext" >{name}</div>
               <div className="modeselect_text">라는 로고를 만들게요</div>
               <div className="modeselect_text margin_under">원하시는 생성 방식을 선택해주세요</div>
-              <Grid container justifyContent="flex-start" alignItems="center">
+              </div>
+              {/* </Grid>
+              </Grid> */}
+              <Grid container justifyContent="center" alignItems="center">
                 <Grid item>
                   <div onClick={onClickMaking} className="modebutton" style={{marginRight:"auto"}}>
                     <div className="buttonText">
@@ -46,10 +52,9 @@ return(
                   </Grid>
               </Grid>
             </Grid>
-          <div className="select_margin2"></div>
           </Grid>
-        </Grid>
-      </Grid>
+        {/* </Grid>
+      </Grid> */}
       <Footer></Footer>
     </div>
 );
