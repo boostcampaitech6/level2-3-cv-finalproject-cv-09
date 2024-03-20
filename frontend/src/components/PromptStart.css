@@ -45,6 +45,11 @@
   transition: all .2s;
   width: 100%;
 }
+@media(max-width:1220px) {
+  .label {
+    font-size: 15px;
+  }
+}
 .span {
     position: absolute;
     bottom: 0;
