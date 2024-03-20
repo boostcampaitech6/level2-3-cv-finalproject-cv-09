@@ -2,6 +2,7 @@ import string
 import time
 from tqdm import tqdm
 from PIL import Image, ImageDraw, ImageFont
+import numpy as np
 
 import torch
 from transformers import CLIPTextModel, CLIPTokenizer
@@ -11,6 +12,8 @@ from fastchat.model import get_conversation_template
 
 from datetime import datetime, timedelta
 import os
+
+from parseq.strhub.data.module import SceneTextDataModule
 
 from celery import Celery
 from google.cloud import storage
@@ -47,6 +50,36 @@ alphabet = string.digits + string.ascii_lowercase + string.ascii_uppercase + str
 font_layout = ImageFont.truetype("./arial.ttf", 32)
 cache_dir = ''
 local_files_only = False
+
+parseq = torch.hub.load('baudm/parseq', 'parseq', pretrained=True).eval()
+img_transform = SceneTextDataModule.get_transform(parseq.hparams.img_size)
+
+
+def cal_sim(str1, str2):
+    """
+    Normalized Edit Distance metric (1-N.E.D specifically)
+    """
+    m = len(str1) + 1
+    n = len(str2) + 1
+    matrix = np.zeros((m, n))
+    for i in range(m):
+        matrix[i][0] = i
+    for j in range(n):
+        matrix[0][j] = j
+
+    for i in range(1, m):
+        for j in range(1, n):
+            if str1[i - 1] == str2[j - 1]:
+                matrix[i][j] = matrix[i - 1][j - 1]
+            else:
+                matrix[i][j] = min(matrix[i - 1][j - 1], min(matrix[i][j - 1], matrix[i - 1][j])) + 1
+    lev = matrix[m-1][n-1]
+    if (max(m-1, n-1)) == 0:
+        sim = 1.0
+    else:
+        sim = 1.0-lev/(max(m-1, n-1))
+    return sim
+
 
 m1_model_path = 'JingyeChen22/textdiffuser2_layout_planner'
 
@@ -141,7 +174,7 @@ def text_to_image(
     temperature=1.4,
     radio='TextDiffuser-2'
 ):
-    promptname=prompt
+    promptname = prompt
     time1 = time.time()
     print(
         f'[info] Prompt: {prompt} | Keywords: {keywords} | Radio: {radio} | \
@@ -276,22 +309,28 @@ def text_to_image(
         input = 1 / vae.config.scaling_factor * input
         images = vae.decode(input, return_dict=False)[0]
         width, height = 512, 512
-        results = []
+        results, ans = 0, 0
         new_image = Image.new('RGB', (2*width, 2*height))
         for index, image in enumerate(images.cpu().float()):
             image = (image / 2 + 0.5).clamp(0, 1).unsqueeze(0)
             image = image.cpu().permute(0, 2, 3, 1).numpy()[0]
             image = Image.fromarray((image * 255).round().astype("uint8")).convert('RGB')
-            results.append(image)
+            img = img_transform(image).unsqueeze(0)
+            ocr_res = parseq(img)
+            ocr_pred = ocr_res.softmax(-1)
             row = index // 2
             col = index % 2
-            new_image.paste(image, (col*width, row*height))
+            if ans < cal_sim(promptname, ocr_pred):
+                ans = cal_sim(promptname, ocr_pred)
+                results = [image, row, col]
+
+        image, row, col = results
+        new_image.paste(image, (col*width, row*height))
         torch.cuda.empty_cache()
 
         output_paths = []
-        for i, sample in enumerate(results):
-            output_path = 'sample/'+f'textdiffuser-{i}.png'
-            sample.save(output_path)
-            gcsdir = f'{user_dir}/{promptname}/textdiffuser-{i}.png'
-            output_paths.append(upload_gcs(output_path, gcsdir))
+        output_path = 'sample/'+'textdiffuser-0.png'
+        image.save(output_path)
+        gcsdir = f'{user_dir}/{promptname}/textdiffuser-0.png'
+        output_paths.append(upload_gcs(output_path, gcsdir))
         return output_paths
