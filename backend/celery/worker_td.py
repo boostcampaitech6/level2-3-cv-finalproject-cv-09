@@ -9,15 +9,12 @@ from transformers import CLIPTextModel, CLIPTokenizer
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from diffusers import AutoencoderKL, UNet2DConditionModel, DDPMScheduler
 from fastchat.model import get_conversation_template
-
-from datetime import datetime, timedelta
+from GCS import upload_gcs
 import os
 
 from parseq.strhub.data.module import SceneTextDataModule
 
 from celery import Celery
-from google.cloud import storage
-from google.oauth2 import service_account
 
 REDIS_URL= "www.klogogen.studio:7090"
 REDIS_PASSWORD= "bc0709!"
@@ -29,22 +26,6 @@ broker = connection_url+"/0"
 
 celery_app = Celery("tasks", backend=backend, broker=broker, worker_heartbeat=280)
 celery_app.conf.worker_pool = "solo"
-
-
-def upload_gcs(image_dir, file_name):
-    KEY_PATH = "/data/ephemeral/home/celery/gcskey.json"
-    credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
-    bucket_name = "klogogenimgserver"
-    client = storage.Client(credentials=credentials)
-    
-    bucket = client.bucket(bucket_name)
-    
-    blob = bucket.blob(file_name)
-    blob.upload_from_filename(image_dir)
-    extime = datetime.now() + timedelta(days=30)
-    url = blob.generate_signed_url(extime)
-    return url
-
 
 alphabet = string.digits + string.ascii_lowercase + string.ascii_uppercase + string.punctuation + ' '
 font_layout = ImageFont.truetype("./arial.ttf", 32)
