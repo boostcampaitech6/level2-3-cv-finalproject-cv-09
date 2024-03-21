@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import './ModeSelect.css'
 import Footer from "../components/Footer";
+import axios from 'axios';
 
 const PromptCheck = () =>{
   let location = useLocation();
@@ -18,7 +19,7 @@ const PromptCheck = () =>{
   const navigate = useNavigate();
   
   const onClickResult = () =>{
-  navigate("/result?name=" + name + "?prompt="+ prompt, {state: { name, sentence }});
+  imggenAPIPost();
   }
   const onClickAdv = () =>{
     navigate("/adv?name=" + name + "?prompt="+ prompt, {state: { name, sentence }});
@@ -27,6 +28,32 @@ const PromptCheck = () =>{
     setPrompt(checkItems.join(", "))
     setKoPromptList(checkItems)
   },[])
+  const [ckstate, setCkstate] = useState(0)
+  const [taskid, setTaskID] = useState()
+  useEffect( () => {
+    setCkstate(ckstate+1)
+    if(ckstate === 1) {
+      navigate("/result?taskid=" + taskid , {state: { taskid }});
+    }
+  },[taskid]);
+
+  const imggenAPIPost = () =>{
+    console.log('image gen call')
+    axios.post('/api/prompt', 
+    {
+      user_id: '123',
+      name: name,
+      prompt: prompt,
+    })
+    .then((response)=>{
+      console.log('image gen call success')
+      setTaskID(response.data.task_id);
+  })
+    .catch((error)=>{
+      console.log('image gen call FAILURE')
+      console.log(error)  
+  })
+  }
 return(
   <div className="modeselect">
     <MainNav/>

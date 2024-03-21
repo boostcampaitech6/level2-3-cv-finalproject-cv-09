@@ -1,13 +1,13 @@
 import { useLocation } from "react-router";
 import MainNav from "../components/MainNav";
 import { useNavigate } from 'react-router';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Adv.css';
 
 import {Button, Stack, Paper, Box, TextField, Grid, useMediaQuery} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import Footer from "../components/Footer";
-
+import axios from 'axios';
 
 const AdvancedMode = () =>{
     let location = useLocation();
@@ -26,8 +26,34 @@ const AdvancedMode = () =>{
     //}
     const navigate = useNavigate();
     const onClickResult = () =>{
-      navigate("/result?name=" + name + "?prompt="+ sentence, {state: { name, sentence}});
+      imggenAPIPost();
     }
+    const [ckstate, setCkstate] = useState(0)
+  const [taskid, setTaskID] = useState()
+  useEffect( () => {
+    setCkstate(ckstate+1)
+    if(ckstate === 1) {
+      navigate("/result?taskid=" + taskid , {state: { taskid }});
+    }
+  },[taskid]);
+
+  const imggenAPIPost = () =>{
+    console.log('image gen call')
+    axios.post('/api/prompt', 
+    {
+      user_id: '123',
+      name: name,
+      prompt: prompt,
+    })
+    .then((response)=>{
+      console.log('image gen call success')
+      setTaskID(response.data.task_id);
+  })
+    .catch((error)=>{
+      console.log('image gen call FAILURE')
+      console.log(error)  
+  })
+  }
     // 화면 크기에 따라 다른 ui구성
     const isMobile = useMediaQuery('(max-width:600px)');
     return(

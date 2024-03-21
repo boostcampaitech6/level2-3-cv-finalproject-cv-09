@@ -25,7 +25,12 @@ const FontColor =({nextNavigate, name, QuestionAbout, itemData}) => {
                 <div className='Question01'>{QuestionAbout}</div>
                 <ImageList cols={9} rows={9} sx={{mb:4, mt:4}}>
                 {itemData.map((item) => (
-                    <ImageListItem key={item.title} className="hover-image" cols={3} rows={3}>
+                    <ImageListItem 
+                        onClick={(e) => {
+                            updateItems(item.title);
+                            item.clicked=!item.clicked;
+                        }}
+                        key={item.title} className="hover-image" cols={3} rows={3}>
                         <img
                             class = {item.title}
                             aria-pressed={item.clicked}
@@ -33,10 +38,6 @@ const FontColor =({nextNavigate, name, QuestionAbout, itemData}) => {
                             src={item.img}
                             alt={item.title}
                             loading="lazy"
-                            onClick={(e) => {
-                                updateItems(item.title);
-                                item.clicked=!item.clicked;
-                              }}
                             // onMouseEnter = {(e)=>checkItems.includes(item.title)?'none':e.target.style.filter='grayscale(0%)'}
                             // onMouseLeave={(e) => checkItems.includes(item.title)? 'none':e.target.style.filter = 'grayscale(100%)'}
                             // style ={{filter: checkItems.includes(item.title) ? 'grayscale(0%)' : 'grayscale(100%)'}}

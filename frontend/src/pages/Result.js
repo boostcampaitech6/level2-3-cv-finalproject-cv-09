@@ -7,36 +7,15 @@ import './Result.css';
 
 const Makedlogo = () =>{
   let location = useLocation();
-  const name = location.state?.name;
-  const [taskid, setTaskID] = useState();
-  const [,updateState]=useState();
-  const forceUpdate = useCallback(()=>updateState({}),[]);
-  const prompt = location.state?.sentence;
+  const taskid = location.state?.taskid;
   const [loding, setLoding] = useState(true);
-  useEffect( () => {
-    imggenAPIPost();
-    setTimeout( () => {
-    }, 1000);
-  },[]);
+  const [ckresult, setCkresult] = useState('not');
 
-  const imggenAPIPost = () =>{
-    console.log('image gen call')
-    axios.post('/api/prompt', 
-    {
-      user_id: '123',
-      name: name,
-      prompt: prompt,
-    })
-    .then((response)=>{
-      console.log('image gen call success')
-      setTaskID(response.data.task_id);
-      //setLoding(false)
-  })
-    .catch((error)=>{
-      console.log('요청실패')
-      console.log(error)  
-  })
-  }
+  useEffect( () => {
+    let timer = setTimeout( () => {get_image()}, 5000);
+    return () => {clearTimeout(timer)}
+  }, [ckresult])
+
   const downloadImage = (imageUrl) => {
     const downloadLink = document.createElement('a');
     downloadLink.href = imageUrl;
@@ -46,9 +25,12 @@ const Makedlogo = () =>{
     downloadLink.click();
     document.body.removeChild(downloadLink);
   }
+
   const get_image = () => {
     console.log('get image call')
-    axios.get('/api/get_image/' + taskid)
+    console.log(typeof taskid[0])
+    console.log(taskid[0])
+    axios.get('/api/get_image/' + taskid[0])
     .then((response)=>{
       console.log('get image call success')
       console.log(response.data.status)
@@ -56,13 +38,29 @@ const Makedlogo = () =>{
       Index?.map((Index, key) => (
         Index.imgurl = response.data.result[key]
       ))
+      setLoding(false)
+      if(ckresult ==='not'){
+        setCkresult("end");
+        console.log(ckresult);
+      }
+      else if(ckresult ==='yet'){
+        setCkresult("end");
+        console.log(ckresult);
+      }
+      console.log(ckresult);
     }
-    forceUpdate();
-      //setLoding(false)
+    else if(ckresult ==='not'){
+      setCkresult("yet");
+      console.log(ckresult);
+    }
+    else if(ckresult ==='yet'){
+      setCkresult("not");
+      console.log(ckresult);
+    }
   })
     .catch((error)=>{
       console.log('요청실패')
-      console.log(error)  
+      console.log(error)
   })
   }
   const [Index, setIndex] = useState([
@@ -74,6 +72,7 @@ const Makedlogo = () =>{
 return(
     <div >
         <MainNav/>
+        {loding ? (<Loding/>) :(
         <div className='container box'>
           <div>{taskid}</div>
           <button onClick={get_image}>새로고침</button>
@@ -85,17 +84,18 @@ return(
                 // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
                 >
                   
-                <img src={Index.imgurl} referrerPolicy="no-referrer"/>
-                  <div className='buttonT1 buttonText'>{Index.title}</div>
-                  </button>
+                <img src={Index.imgurl} referrerPolicy="no-referrer" style={{height:"80%"}}/>
+                  {/*<div className='buttonT1 buttonText'>{Index.title}</div>*/}
                   <button key={key} onClick={(e) => {
                   downloadImage(Index.imgurl);
-                }}>다운로드</button>
+                  }}>다운로드</button>
+                  </button>
                 <a></a>
                 </li>
           </ul>
         ))}
         </div>
+        )}
     </div>
     
 )
