@@ -38,7 +38,7 @@ const Makedlogo = () =>{
       Index?.map((Index, key) => (
         Index.imgurl = response.data.result[key]
       ))
-      setLoding(false)
+      setLoading(false)
       if(ckresult ==='not'){
         setCkresult("end");
         console.log(ckresult);
