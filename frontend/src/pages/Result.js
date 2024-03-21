@@ -3,6 +3,8 @@ import MainNav from "../components/MainNav";
 import Loading from "../components/Loading";
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 import './Result.css';
 
 const Makedlogo = () =>{
@@ -10,6 +12,10 @@ const Makedlogo = () =>{
   const taskid = location.state?.taskid;
   const [loading, setLoading] = useState(true);
   const [ckresult, setCkresult] = useState('not');
+
+  const [ismodalopen, setIsmodalopen] = useState(false);
+  const openModal = () => setIsmodalopen(true);
+  const closeModal = () => setIsmodalopen(false);
 
   useEffect( () => {
     let timer = setTimeout( () => {get_image()}, 5000);
@@ -24,6 +30,7 @@ const Makedlogo = () =>{
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
+    openModal();
   }
 
   const get_image = () => {
@@ -69,11 +76,32 @@ const Makedlogo = () =>{
     {id: 2, title: 'image03', imgurl:''},
     {id: 3, title: 'image04', imgurl:''},
   ]);
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #fff',
+    borderRadius: '20px',
+    boxShadow: 24,
+    p: 4,
+  };
 return(
     <div >
         <MainNav/>
         {loading ? (<Loading/>) :(
         <div className='container box'>
+          <Modal
+            open={ismodalopen}
+            onClose={closeModal}
+            ><Box sx={style}>
+            <div>생성된 로고가 마음에 드시나요?</div>
+            <div>더 나은 서비스를 위한 설문에 참여해주세요!</div>
+            <a href="https://www.naver.com" target="_blank">설문참여</a>
+            </Box>
+            </Modal>
           <div>{taskid}</div>
           <button onClick={get_image}>새로고침</button>
           <div>{Index.imgurl}</div>

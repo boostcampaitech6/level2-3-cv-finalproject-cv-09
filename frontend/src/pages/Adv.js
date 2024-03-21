@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import React, { useState, useEffect } from 'react';
 import './Adv.css';
 
-import {Button, Stack, Paper, Box, TextField, Grid, useMediaQuery} from '@mui/material';
+import {Button, Stack, Paper, Box, TextField, Grid, useMediaQuery, Modal } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import Footer from "../components/Footer";
 import axios from 'axios';
@@ -16,7 +16,20 @@ const AdvancedMode = () =>{
     const [sentence, setPrompt] = useState(location.state?.sentence);
     
     //입력창에 글자를 입력했을때 변화를 적용하는 함수
-    const onChange = (e) =>{setPrompt(e.target.value)}
+    const onChange = (e) =>{
+      setPrompt(e.target.value)
+      setModaltext(sentence+"라는 로고를 생성하시겠습니까?")
+    }
+
+  const [ismodalopen, setIsmodalopen] = useState(false);
+  const openModal = () => setIsmodalopen(true);
+  const closeModal = () => {
+    setIsmodalopen(false)
+    setModaltext(sentence+"라는 로고를 생성하시겠습니까?")
+    setButtondisplay("")
+  };
+  const [modaltext, setModaltext] = useState(sentence+"라는 로고를 생성하시겠습니까?")
+  const [buttondisplay, setButtondisplay] = useState("")
 
     //글자를 입력후 엔터키를 눌렀을때 다음 페이지로 넘어가는 함수
     //const onEnter =(e)=>{
@@ -31,7 +44,6 @@ const AdvancedMode = () =>{
     const [ckstate, setCkstate] = useState(0)
   const [taskid, setTaskID] = useState()
   useEffect( () => {
-    setCkstate(ckstate+1)
     if(ckstate === 1) {
       navigate("/result?taskid=" + taskid , {state: { taskid }});
     }
@@ -43,17 +55,33 @@ const AdvancedMode = () =>{
     {
       user_id: '123',
       name: name,
-      prompt: prompt,
+      prompt: sentence,
     })
     .then((response)=>{
       console.log('image gen call success')
       setTaskID(response.data.task_id);
+      setCkstate(ckstate+1)
   })
     .catch((error)=>{
       console.log('image gen call FAILURE')
-      console.log(error)  
+      console.log(error)
+      setModaltext('서버 연결에 오류가 발생했습니다!')
+      setButtondisplay('none')
+      openModal()  
   })
   }
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #fff',
+    borderRadius: '20px',
+    boxShadow: 24,
+    p: 4,
+  };
     // 화면 크기에 따라 다른 ui구성
     const isMobile = useMediaQuery('(max-width:600px)');
     return(
@@ -61,6 +89,24 @@ const AdvancedMode = () =>{
         
           <MainNav></MainNav>
           <div className="adv_main">
+          <Modal
+      open={ismodalopen}
+      onClose={closeModal}
+      ><Box sx={style}>
+        <div>{modaltext}</div>
+        <Button 
+          href="" 
+          variant="contained"
+          style={{display:buttondisplay}}
+          endIcon={<SendIcon />}
+          onClick={onClickResult} //버튼 클릭 처리
+          disabled={!name}//버튼 활성화 처리
+        >
+            로고 생성
+        </Button>
+        
+      </Box>
+      </Modal>
           <Grid container>
             <Grid container className= 'Adv_Main_container' justifyContent="center" alignItems="center">
               <Grid item xs={6}>
@@ -116,7 +162,7 @@ const AdvancedMode = () =>{
                         href="" 
                         variant="contained" 
                         endIcon={<SendIcon />}
-                        onClick={onClickResult} //버튼 클릭 처리
+                        onClick={openModal} //버튼 클릭 처리
                         disabled={!name}//버튼 활성화 처리
                         >
                         로고 생성
