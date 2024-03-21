@@ -1,6 +1,6 @@
 import { useLocation } from "react-router";
 import MainNav from "../components/MainNav";
-import Loding from "../components/Loding";
+import Loading from "../components/Loading";
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import './Result.css';
@@ -8,7 +8,7 @@ import './Result.css';
 const Makedlogo = () =>{
   let location = useLocation();
   const taskid = location.state?.taskid;
-  const [loding, setLoding] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [ckresult, setCkresult] = useState('not');
 
   useEffect( () => {
@@ -72,7 +72,7 @@ const Makedlogo = () =>{
 return(
     <div >
         <MainNav/>
-        {loding ? (<Loding/>) :(
+        {loading ? (<Loading/>) :(
         <div className='container box'>
           <div>{taskid}</div>
           <button onClick={get_image}>새로고침</button>

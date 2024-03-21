@@ -1,7 +1,7 @@
 import { Blocks } from 'react-loader-spinner';
 import React from 'react';
 
-const Loding = () => {
+const Loading = () => {
    
     return ( 
         <div className='loding container '>
@@ -20,4 +20,4 @@ const Loding = () => {
     ) ;
 
 };
-export default Loding;
+export default Loading;
