@@ -5,6 +5,10 @@ import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 import './Result.css';
 
 const Makedlogo = () =>{
@@ -102,28 +106,37 @@ return(
             <a href="https://www.naver.com" target="_blank">설문참여</a>
             </Box>
             </Modal>
-          <div>{taskid}</div>
-          <button onClick={get_image}>새로고침</button>
-          <div>{Index.imgurl}</div>
-            {Index?.map((Index, key) => (
-                  <ul key={key} className="button_list">
-                <li className="logoli">
-                  <button key={key} aria-pressed={Index.clicked} className="logobutton" style={{marginLeft:"auto"}} name={`select-${Index.id}`}
-                // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
-                >
-                  
-                <img src={Index.imgurl} referrerPolicy="no-referrer" style={{height:"80%"}}/>
-                  {/*<div className='buttonT1 buttonText'>{Index.title}</div>*/}
-                  <button key={key} onClick={(e) => {
-                  downloadImage(Index.imgurl);
-                  }}>다운로드</button>
-                  </button>
-                <a></a>
-                </li>
-          </ul>
-        ))}
-        </div>
-        )}
+          <div>로고 생성 결과</div>
+          <Grid container direction="row" justifyContent="center" >
+        <Grid item lg={7} xs={6} alignItems="center" row={4} >
+          <Box sx={{mt:8}} grid >
+                <ImageList cols={4} rows={4} sx={{mb:4, mt:4}}>
+                {Index.map((Index) => (
+                    <ImageListItem  className="hover-image" cols={2} rows={2}>
+                        <img
+                            srcSet={Index.imgurl}
+                            src={Index.imgurl}
+                            loading="lazy"
+                            // onMouseEnter = {(e)=>checkItems.includes(item.title)?'none':e.target.style.filter='grayscale(0%)'}
+                            // onMouseLeave={(e) => checkItems.includes(item.title)? 'none':e.target.style.filter = 'grayscale(100%)'}
+                            // style ={{filter: checkItems.includes(item.title) ? 'grayscale(0%)' : 'grayscale(100%)'}}
+                        />
+                        <ImageListItemBar
+                            className='img_title'
+                            sx={{height: 1/8, }}
+                            position='top'
+                            title='download'
+                            onClick={(e) => {
+                              downloadImage(Index.imgurl);
+                              }}
+                        />
+                    </ImageListItem>
+                ))}
+                </ImageList>
+            </Box>
+            </Grid>
+            </Grid>
+    </div>)}
     </div>
     
 )
