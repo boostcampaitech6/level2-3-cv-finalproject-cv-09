@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import React, { useState, useEffect } from 'react';
 import './Adv.css';
 
-import {Button, Stack, Paper, Box, TextField, Grid, useMediaQuery, Modal } from '@mui/material';
+import {Button, Stack, Paper, Box, TextField, Grid, useMediaQuery, Modal, Dialog,DialogTitle,DialogActions,DialogContent,DialogContentText } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import Footer from "../components/Footer";
 import axios from 'axios';
@@ -13,23 +13,22 @@ const AdvancedMode = () =>{
     let location = useLocation();
     const name = location.state?.name;
     const content = location.state?.sentence;
+    const conditon = /^[가-힣A-Za-z,.""]/;
     const [sentence, setPrompt] = useState(location.state?.sentence);
+    const [modaltext, setModaltext] = useState()
     
     //입력창에 글자를 입력했을때 변화를 적용하는 함수
     const onChange = (e) =>{
+      e.target.value = e.target.value.replace(/[^ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z\s,.""]/ig, '')
       setPrompt(e.target.value)
-      setModaltext(sentence+"라는 로고를 생성하시겠습니까?")
     }
 
   const [ismodalopen, setIsmodalopen] = useState(false);
   const openModal = () => setIsmodalopen(true);
-  const closeModal = () => {
-    setIsmodalopen(false)
-    setModaltext(sentence+"라는 로고를 생성하시겠습니까?")
-    setButtondisplay("")
-  };
-  const [modaltext, setModaltext] = useState(sentence+"라는 로고를 생성하시겠습니까?")
-  const [buttondisplay, setButtondisplay] = useState("")
+  const closeModal = () => setIsmodalopen(false);
+  const openDialog = () => setIsdialogopen(true);
+  const closeDialog = () => setIsdialogopen(false);
+  const [isdialogopen, setIsdialogopen] = useState(false);
 
     //글자를 입력후 엔터키를 눌렀을때 다음 페이지로 넘어가는 함수
     //const onEnter =(e)=>{
@@ -39,7 +38,17 @@ const AdvancedMode = () =>{
     //}
     const navigate = useNavigate();
     const onClickResult = () =>{
+      if(conditon.test(sentence)){
+        setModaltext('로고 생성 요청....')
+      closeDialog()
+      openModal()
       imggenAPIPost();
+      }
+      else {
+        setModaltext('프롬프트가 형식에 맞지 않습니다!')
+        openModal()
+        closeDialog()
+      }
     }
     const [ckstate, setCkstate] = useState(0)
   const [taskid, setTaskID] = useState()
@@ -66,7 +75,6 @@ const AdvancedMode = () =>{
       console.log('image gen call FAILURE')
       console.log(error)
       setModaltext('서버 연결에 오류가 발생했습니다!')
-      setButtondisplay('none')
       openModal()  
   })
   }
@@ -94,19 +102,29 @@ const AdvancedMode = () =>{
       onClose={closeModal}
       ><Box sx={style}>
         <div>{modaltext}</div>
-        <Button 
-          href="" 
-          variant="contained"
-          style={{display:buttondisplay}}
-          endIcon={<SendIcon />}
-          onClick={onClickResult} //버튼 클릭 처리
-          disabled={!name}//버튼 활성화 처리
-        >
-            로고 생성
-        </Button>
-        
       </Box>
       </Modal>
+      <Dialog
+        open={isdialogopen}
+        onClose={closeDialog}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"해당 프롬포트로 생성하시겠습니까?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {sentence}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={closeDialog}>더 수정하기</Button>
+          <Button onClick={onClickResult} autoFocus>
+            생성
+          </Button>
+        </DialogActions>
+      </Dialog>
           <Grid container>
             <Grid container className= 'Adv_Main_container' justifyContent="center" alignItems="center">
               <Grid item xs={6}>
@@ -162,7 +180,7 @@ const AdvancedMode = () =>{
                         href="" 
                         variant="contained" 
                         endIcon={<SendIcon />}
-                        onClick={openModal} //버튼 클릭 처리
+                        onClick={openDialog} //버튼 클릭 처리
                         disabled={!name}//버튼 활성화 처리
                         >
                         로고 생성

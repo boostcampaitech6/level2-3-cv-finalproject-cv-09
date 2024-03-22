@@ -6,7 +6,9 @@ const PromptStart = () => {
       const [name, setname] = useState('');
       const navigate = useNavigate();
       //입력창에 글자를 입력했을때 변화를 적용하는 함수
-      const onChange = (e) =>{setname(e.target.value)}
+      const onChange = (e) =>{
+            e.target.value = e.target.value.replace(/[^A-Za-z]/ig, '')
+            setname(e.target.value)}
       //시작 버튼을 클릭했을 때 다음 페이지로 넘어가는 함수
       const onClick = () =>{
             navigate("/ModeSelect?name=" + name, {state: { name }});
