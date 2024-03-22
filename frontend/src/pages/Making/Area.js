@@ -38,16 +38,13 @@ const Area =({nextNavigate, name, QuestionAbout, itemData}) => {
                             src={item.img}
                             alt={item.title}
                             loading="lazy"
-                            // onMouseEnter = {(e)=>checkItems.includes(item.title)?'none':e.target.style.filter='grayscale(0%)'}
-                            // onMouseLeave={(e) => checkItems.includes(item.title)? 'none':e.target.style.filter = 'grayscale(100%)'}
-                            // style ={{filter: checkItems.includes(item.title) ? 'grayscale(0%)' : 'grayscale(100%)'}}
                         />
                         <ImageListItemBar
                             className='img_title'
                             sx={{height: 1/4, }}
                             position='top'
                             title={item.title}
-                            actionIcon={<CheckCircleOutlinedIcon sx={{color: item.clicked?'rgb(0,255,0)':'', }}/> }
+                            actionIcon={<CheckCircleOutlinedIcon sx={{color: checkItems.includes(item.title)?'rgb(0,255,0)':'', }}/> }
                         />
                     </ImageListItem>
                 ))}
@@ -59,7 +56,7 @@ const Area =({nextNavigate, name, QuestionAbout, itemData}) => {
                 </Grid>
             </Box>
         </Grid>
-        {/* <Grid item lg={4} xs={4} row={1} ></Grid> */}
+        <Grid item lg={4} xs={4} row={1} ></Grid>
     </Grid>
   );
 }

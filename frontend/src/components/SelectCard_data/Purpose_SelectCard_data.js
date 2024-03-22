@@ -1,12 +1,12 @@
-import promotion from '../assets/Purpose_imgs/promotion.png'
-import event from '../assets/Purpose_imgs/event.png'
-import concert from '../assets/Purpose_imgs/concert.png'
-import festival from '../assets/Purpose_imgs/festival.png'
-import non_profit from '../assets/Purpose_imgs/non_profit.png'
-import public_announcement from '../assets/Purpose_imgs/public_announcement.png'
-import contest from '../assets/Purpose_imgs/contest.png'
-import advertise from '../assets/Purpose_imgs/advertise.png'
-import campaign from '../assets/Purpose_imgs/campaign.png'
+import promotion from '../assets/Purpose_imgs/promotion.avif'
+import event from '../assets/Purpose_imgs/event.avif'
+import concert from '../assets/Purpose_imgs/concert.avif'
+import festival from '../assets/Purpose_imgs/festival.avif'
+import non_profit from '../assets/Purpose_imgs/non_profit.avif'
+import public_announcement from '../assets/Purpose_imgs/public_announcement.avif'
+import contest from '../assets/Purpose_imgs/contest.avif'
+import advertise from '../assets/Purpose_imgs/advertise.avif'
+import campaign from '../assets/Purpose_imgs/campaign.avif'
 
 
 const PurposeData = [

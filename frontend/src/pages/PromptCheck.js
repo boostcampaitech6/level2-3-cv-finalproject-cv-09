@@ -15,7 +15,7 @@ const PromptCheck = () =>{
   const name = location.state?.name;
   const checkItems = location.state?.checkItems;
   const {setKoPromptList,prompt_sentence} = useKoPrompt();
-  const sentence = prompt_sentence()+`그리고 "${name}"라는 글자가 아래 작성되어 있다.`;
+  const sentence = prompt_sentence()+`로고에 "${name}"라는 글자가 아래 작성되어 있다.`;
   const [prompt, setPrompt] = useState('');
 
   const navigate = useNavigate();

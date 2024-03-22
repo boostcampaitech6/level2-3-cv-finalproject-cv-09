@@ -1,13 +1,12 @@
-import manufacturing from '../assets/Area_imgs/manufacturing.png'
-import IT from '../assets/Area_imgs/IT.png'
-import agriculture from '../assets/Area_imgs/agriculture.png'
-import fishing from '../assets/Area_imgs/fishing.png'
-import construction from '../assets/Area_imgs/construction.png'
-import real_estate from '../assets/Area_imgs/real_estate.png'
-import medicine from '../assets/Area_imgs/medicine.png'
-import education from '../assets/Area_imgs/education.png'
-import travel from '../assets/Area_imgs/travel.png'
-import restaurant from '../assets/Area_imgs/restaurant.png'
+import manufacturing from '../assets/Area_imgs/manufacturing.avif'
+import IT from '../assets/Area_imgs/IT.avif'
+import agriculture from '../assets/Area_imgs/agriculture.avif'
+import construction from '../assets/Area_imgs/construction.avif'
+import real_estate from '../assets/Area_imgs/real_estate.avif'
+import medicine from '../assets/Area_imgs/medicine.avif'
+import education from '../assets/Area_imgs/education.avif'
+import travel from '../assets/Area_imgs/travel.avif'
+import restaurant from '../assets/Area_imgs/restaurant.avif'
 
 
 const AreaData = [

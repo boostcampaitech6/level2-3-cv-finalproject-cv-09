@@ -46,7 +46,7 @@ const SelectCard =({nextNavigate, name, QuestionAbout, itemData}) => {
                             sx={{height: 1/4, }}
                             position='top'
                             title={item.title}
-                            actionIcon={<CheckCircleOutlinedIcon sx={{color: item.clicked?'rgb(0,255,0)':'', }}/> }
+                            actionIcon={<CheckCircleOutlinedIcon sx={{color: checkItems.includes(item.title)?'rgb(0,255,0)':'', }}/> }
                         />
                     </ImageListItem>
                 ))}
