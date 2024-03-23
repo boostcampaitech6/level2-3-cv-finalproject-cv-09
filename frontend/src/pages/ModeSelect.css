@@ -71,17 +71,18 @@
     height: 100px;
     justify-content: center;
     align-items: center;
+    font-size: 95%;
 }
 @media (max-width:1000px) {
     .buttonText {
         padding-top: 10%;
-        font-size: 70%;
+        font-size: 60%;
     }
 }
 @media (max-width:600px) {
     .buttonText {
         padding-top: 20%;
-        font-size: 50%;
+        font-size: 40%;
     }
 }
 @media (max-width:450px) {
