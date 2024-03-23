@@ -58,13 +58,14 @@
     }
 }
 .column_box {
-    display:grid;
+    display:grid block;
     position:relative;
+    min-width: 380px;
     grid-template-columns:repeat(
         auto-fill,
         minmax(
         380px,
-        1fr
+        480px
     ));
     gap:16px;
     padding-top:16px;
