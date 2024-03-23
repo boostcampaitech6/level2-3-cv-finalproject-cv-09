@@ -16,22 +16,17 @@ const ModeSelect = () =>{
     navigate("/adv?name=" + name, {state: { name }});
   }
 return(
-    <div className="home">
+    <div className="adv">
       <MainNav/>
-      {/* <Grid container className= 'ModeSelect_container' justifyContent="center" alignItems="center">
-        <Grid item xs={6}> */}
-          <Grid item direction="column" className="modeselect" justifyContent="flex-start">
+      <div className="adv_main">
+          <Grid item direction="column" className="modeselect" justifyContent="center">
             <Grid item >
               <div className='textBox0'>
-              {/* <Grid container justifyContent='center' direction="column" alignItems="center">
-                <Grid item> */}
               <div className="select_margin1"></div>
               <div className="nametext" >{name}</div>
               <div className="modeselect_text">라는 로고를 만들게요</div>
               <div className="modeselect_text margin_under">원하시는 생성 방식을 선택해주세요</div>
               </div>
-              {/* </Grid>
-              </Grid> */}
               <Grid container justifyContent="center" alignItems="center">
                 <Grid item>
                   <div onClick={onClickMaking} className="modebutton" style={{marginRight:"auto"}}>
@@ -53,8 +48,7 @@ return(
               </Grid>
             </Grid>
           </Grid>
-        {/* </Grid>
-      </Grid> */}
+        </div>
       <Footer></Footer>
     </div>
 );

@@ -1,13 +1,13 @@
 .textBox0 {
     text-align: left; /* 텍스트를 왼쪽 정렬합니다 */
     margin: 0 auto; /* 수평으로 가운데 정렬합니다 */
-    max-width: 40vw; /* 필요에 따라 조정합니다 */
+    max-width: 45vw; /* 필요에 따라 조정합니다 */
 }
 .modeselect {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: 100vh;
+	/* height: 100vh; */
 }
 .modeselect_main {
     align-items: center;
@@ -82,6 +82,12 @@
     .buttonText {
         padding-top: 20%;
         font-size: 50%;
+    }
+}
+@media (max-width:450px) {
+    .buttonText {
+        padding-top: 50%;
+        font-size: 30%;
     }
 }
 .margin_grid {
