@@ -14,8 +14,8 @@ const Home = () =>{
         <div className="home">
           <MainNav/>
           <Grid container direction="row" justifyContent="center" alignItems="center">
-          <div className='main_margin'></div>
-            <Grid item  xs={4} lg={4} minWidth={'380px'}>
+          {/* <div className='main_margin'></div> */}
+            <Grid item  xs={8} lg={4} minWidth={'380px'}>
                   <div className="column_box">
                     <Box className="text1">Create Logo</Box>
                     <Box className="text2">로고를 생성해볼까요?</Box>
@@ -29,7 +29,7 @@ const Home = () =>{
                   <Grid item >
                   <Slideshow className='slideshow'/>
                   </Grid>
-              <div className='main_margin'></div>
+              {/* <div className='main_margin'></div> */}
           </Grid>
           <Footer/>
         </div>

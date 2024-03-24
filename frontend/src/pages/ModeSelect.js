@@ -19,10 +19,9 @@ return(
     <div className="adv">
       <MainNav/>
       <div className="adv_main">
-          <Grid item direction="column" className="modeselect" justifyContent="center">
-            <Grid item >
+          <Grid item direction="row" justifyContent="space-around" alignItems="baseline">
+            <Grid item xs={10}>
               <div className='textBox0'>
-              <div className="select_margin1"></div>
               <div className="nametext" >{name}</div>
               <div className="modeselect_text">라는 로고를 만들게요</div>
               <div className="modeselect_text margin_under">원하시는 생성 방식을 선택해주세요</div>

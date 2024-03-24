@@ -126,8 +126,8 @@ const AdvancedMode = () =>{
         </DialogActions>
       </Dialog>
           <Grid container>
-            <Grid container className= 'Adv_Main_container' justifyContent="center" alignItems="center">
-              <Grid item xs={6}>
+            <Grid container className= 'Adv_Main_container' justifyContent="space-around" alignItems="baseline">
+              <Grid item xs={8}>
                 <div className="nametext">{name}</div> 
                 <div className="adv_text">브랜드에 대한 구체적인 설명을 바탕으로 로고를 생성합니다.<br/> 로고의 특징을 입력해주세요.</div>
                 

@@ -11,36 +11,31 @@
     --transition: all 0.2s ease;
 }
 .sidebar {
+    display: fixed;
     position: fixed;
+    float: left;
     top: 0;
     left: 0;
     z-index: 100;
-    width: 100px;
-    height: 760px;
+    height: 954px;
     background: #fdfdfd;
     padding: 20px 25px;
     transition: var(--transition);
+    overflow: auto;
 }
 @media (max-width:600px) {
     .sidebar {
+        display: fixed;
         position: fixed;
         top: 0;
         left: 0;
         z-index: 100;
-        width: 60px;
+        width: 10vh;
+        height: 760px;
+        background: #fdfdfd;
         height: 100%;
         background: #fff;
-        padding: 8px 16px;
-        transition: var(--transition);
-    }
-}
-.sidebar.expand {
-    width: 200px;
-    transition: var(--transition);
-}
-@media (max-width:600px) {
-    .sidebar.expand {
-        width: 150px;
+        padding: 10px 20px;
         transition: var(--transition);
     }
 }
@@ -147,6 +142,17 @@
     display: none;
     transition: var(--transition);
 }
+@media (max-width:600px) {
+    .sidebar-links li a .sidebar-title {
+        color: #000;
+        font-size: 15px;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        display: none;
+        transition: var(--transition);
+    }
+}
 .sidebar.expand .sidebar-links li a .sidebar-title {
     display: block;
     transition: var(--transition);
@@ -174,7 +180,7 @@
     position: 50px 50px 50px
 }
 .rounded-rectangle {
-    width: 69px;
+    width: 178px;
     height: 265px;
     background-color: #ffffffde;
     border-radius: 10px; /* 둥근 모서리 반지름 설정 */
@@ -186,47 +192,42 @@
     overflow-y: auto;
     transition: var(--transition);
 }
-@media (max-width:600px) {
+/* @media (max-width:600px) {
     .rounded-rectangle {
-        width: 47px;
+        width: 40px;
         transition: var(--transition);
-    }
-}
-@media (max-height:600px) {
-    .rounded-rectangle {
         height: 50px;
         margin : -20px -10px 10px;
-        transition: var(--transition);
     }
-}
-.sidebar.expand .rounded-rectangle {
+} */
+/* .sidebar.expand .rounded-rectangle {
     width: 168px;
     height: 265px;
     background-color: #ffffffde;
-    border-radius: 10px; /* 둥근 모서리 반지름 설정 */
+    border-radius: 10px;
     padding: 20px;
     text-align: center;
     line-height: 60px;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
     transition: var(--transition);
-}
+} */
+
 @media (max-width:600px) {
-    .sidebar.expand .rounded-rectangle {
-        width: 137px;
+    .rounded-rectangle {
+        width: 108px;
         overflow-y: auto;
-    }
-}
-@media (max-height:600px) {
-    .sidebar.expand .rounded-rectangle {
-        height: 80px;
-        margin : -20px -10px 10px;
         transition: var(--transition);
     }
 }
+
 .rounded-rectangle:not(:hover) {
     transition-delay: 0.11s;
 }
 .tagBox {
     padding: 0px, 5px, 5px, 0px;
     line-height: 2.5;
+}
+
+.minimize {
+    padding-left: 0;
 }

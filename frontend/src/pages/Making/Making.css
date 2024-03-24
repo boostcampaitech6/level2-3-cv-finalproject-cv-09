@@ -118,10 +118,13 @@
 }
 
 .making_column_box {
+    top: 0;
     display: table;
+    flex-direction: column;
+	justify-content: space-between;
     clear: both;
+    position: relative;
     width: 100%;
-    height: 140vh;
     table-layout: fixed;
 }
 
@@ -134,9 +137,18 @@
 }
 
 .making_column2 {
-    display: table-column;
-    width: 80vw;
-    height: 140vh;
+    display: table;
+    width: 70%;
+    /* height: 100vh; */
     float: right;
-    min-height: 1200px;
+    justify-content: right;
+    align-items: right;
+    /* min-height: 1200px; */
+}
+
+.making_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
 }
