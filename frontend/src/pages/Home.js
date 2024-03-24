@@ -15,7 +15,7 @@ const Home = () =>{
           <MainNav/>
           <Grid container direction="row" justifyContent="center" alignItems="center">
           {/* <div className='main_margin'></div> */}
-            <Grid item  xs={8} lg={4} minWidth={'380px'}>
+            <Grid item  xs={5} lg={4} minWidth={'400px'}>
                   <div className="column_box">
                     <Box className="text1">Create Logo</Box>
                     <Box className="text2">로고를 생성해볼까요?</Box>
