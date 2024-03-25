@@ -247,6 +247,22 @@ files = [
 ]
 
 [[package]]
+name = "detoxify"
+version = "0.5.2"
+description = "A python library for detecting toxic comments"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "detoxify-0.5.2-py3-none-any.whl", hash = "sha256:e6135a2d85ad17bfb19d8cf53756a1b499e6d9c03cb1976ddefdc013bf29d32a"},
+    {file = "detoxify-0.5.2.tar.gz", hash = "sha256:c119d0b47545bb076190ff583faad9aa3bb0a90ac01c7c4144758606d21da5b1"},
+]
+
+[package.dependencies]
+sentencepiece = ">=0.1.94"
+torch = ">=1.7.0"
+transformers = "*"
+
+[[package]]
 name = "diffusers"
 version = "0.26.3"
 description = "State-of-the-art diffusion in PyTorch and JAX."
@@ -1681,4 +1697,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "98001958da39a74dd3c05c0888f96d9203b92f2dc7a89789c0ab9a483ffb11b1"
+content-hash = "682b8748fe629f7005ccbf55c02e9c6de11737c8a30c792193a89618ab20c52a"
