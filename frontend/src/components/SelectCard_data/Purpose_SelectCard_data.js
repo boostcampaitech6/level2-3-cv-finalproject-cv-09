@@ -1,13 +1,13 @@
-import promotion from '../assets/Purpose_imgs/promotion.png'
-import event from '../assets/Purpose_imgs/event.png'
-import concert from '../assets/Purpose_imgs/concert.png'
-import festival from '../assets/Purpose_imgs/festival.png'
-import non_profit from '../assets/Purpose_imgs/non_profit.png'
-import public_announcement from '../assets/Purpose_imgs/public_announcement.png'
-import contest from '../assets/Purpose_imgs/contest.png'
-import advertise from '../assets/Purpose_imgs/advertise.png'
-import campaign from '../assets/Purpose_imgs/campaign.png'
-
+import promotion from '../assets/Purpose_imgs/promotion.avif'
+import event from '../assets/Purpose_imgs/event.avif'
+import concert from '../assets/Purpose_imgs/concert.avif'
+import festival from '../assets/Purpose_imgs/festival.avif'
+import club from '../assets/Purpose_imgs/club.avif'
+import public_announcement from '../assets/Purpose_imgs/public_announcement.avif'
+import contest from '../assets/Purpose_imgs/contest.avif'
+import advertise from '../assets/Purpose_imgs/advertise.avif'
+import campaign from '../assets/Purpose_imgs/campaign.avif'
+// import non_profit from '../assets/Purpose_imgs/non_profit.avif'
 
 const PurposeData = [
     {
@@ -29,13 +29,13 @@ const PurposeData = [
       ko_prompt: '행사'
     },
     {
-      img: non_profit,
-      title: '비영리',
+      img: club,
+      title: '동아리',
       rows: 1,
       cols: 1,
       featured: true,
-      en_prompt: 'non-profit',
-      ko_prompt: '비영리'
+      en_prompt: 'club',
+      ko_prompt: '동아리'
     },
     {
       img: contest,
@@ -65,15 +65,6 @@ const PurposeData = [
       ko_prompt: '캠페인'
     },
     {
-      img: festival,
-      title: '축제',
-      rows: 1,
-      cols: 1,
-      featured: true,
-      en_prompt: 'non-profit',
-      ko_prompt: '축제'
-    },
-    {
       img: public_announcement,
       title: '공익',
       rows: 1,
@@ -81,6 +72,15 @@ const PurposeData = [
       featured: true,
       en_prompt: 'Competition',
       ko_prompt: '공익'
+    },
+    {
+      img: festival,
+      title: '축제',
+      rows: 1,
+      cols: 1,
+      featured: true,
+      en_prompt: 'non-profit',
+      ko_prompt: '축제'
     },
     {
       img: advertise,

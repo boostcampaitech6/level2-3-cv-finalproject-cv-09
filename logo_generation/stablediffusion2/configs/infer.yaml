@@ -1,0 +1,7 @@
+weight_dir: "/data/ephemeral/home/SCV/modeloutput/"
+seed: 715
+prompt: "a logo of coding study in naver"
+negative_prompt: "blurry, low quality"
+num_samples: 4
+size: 512
+save_dir: "./samples/"

@@ -65,8 +65,9 @@ ul {
   border-radius: 10px;
 }
 .navbar_login {
-  display: block;
+  display: flex;
   cursor: pointer;
+  margin: auto
 }
 @media (max-width: 400px) {
   .navbar_login {
@@ -85,22 +86,22 @@ ul {
   text-decoration: underline;
   border-radius: 10px;
 }
-@media (max-width: 830px) {
+@media (max-width: 1000px) {
   .navbar_item:nth-child(4) {
     display: none;
   }
 }
-@media (max-width: 830px) {
+@media (max-width: 1000px) {
   .navbar_item:nth-child(3) {
     display: none;
   }
 }
-@media (max-width: 830px) {
+@media (max-width: 1000px) {
   .navbar_item:nth-child(2) {
     display: none;
   }
 }
-@media (max-width: 830px) {
+@media (max-width: 1000px) {
   .navbar_item:nth-child(1) {
     display: none;
   }
@@ -109,7 +110,7 @@ ul {
   display: block;
   cursor: pointer;
 }
-@media (min-width: 830px) {
+@media (min-width: 1000px) {
   .navbar_hide_menu {
     display: none;
   }

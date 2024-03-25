@@ -9,27 +9,27 @@ import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 
 const Home = () =>{
-    
-    return(
-        <div className="home">
-          <MainNav/>
-          <Grid container direction="row" justifyContent="center" alignItems="center">
-          <div className='main_margin'></div>
-            <Grid item  xs={4} lg={4}>
-                  <div className="column_box">
-                    <Box className="text1">Create Logo</Box>
-                    <Box className="text2">로고를 생성해볼까요?</Box>
-                    <PromptStart/>
-                    </div>
-                    </Grid>
-                  <div className="between_margin"></div>
-                  <Grid item >
-                  <Slideshow className='slideshow'/>
-                  </Grid>
-              <div className='main_margin'></div>
+  return(
+      <div className="main">
+        <MainNav/>
+        <Grid container direction="row" justifyContent="center" alignItems="center">
+          <Grid item  xs={5} lg={4} minWidth={'400px'}>
+            <div className="home_column">
+              <Box className="home_text1">Create Logo</Box>
+              <Box className="home_text2">로고를 생성해볼까요?</Box>
+              <PromptStart/>
+              <Box sx={{color: "#adadad",
+              marginLeft:"13px"
+              }}>베타버전에서는 영문 로고만 생성할 수 있어요</Box>
+            </div>
           </Grid>
-          <Footer/>
-        </div>
-    );
+          <div className="between_margin"></div>
+          <Grid item >
+            <Slideshow className='slideshow'/>
+          </Grid>
+        </Grid>
+        <Footer/>
+      </div>
+  );
 }
 export default Home;

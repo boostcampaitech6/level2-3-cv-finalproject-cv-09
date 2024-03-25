@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ReactComponent as Cookie } from './assets/login.svg';
 import './Footer.css';
 import '../App.css';
 
@@ -16,8 +17,7 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     style={{textDecoration:"none", display:"flex"}}
                     >
-                      <img src={process.env.PUBLIC_URL+"./github-mark.svg"}
-                      style={{height:"1rem", paddingRight:"5px"}}></img>
+                      <Cookie width="10" height="10" />
                     <div >
                     Github
                     </div>

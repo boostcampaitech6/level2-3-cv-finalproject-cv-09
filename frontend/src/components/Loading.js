@@ -1,7 +1,7 @@
 import { Blocks } from 'react-loader-spinner';
 import React from 'react';
 
-const Loding = () => {
+const Loading = () => {
    
     return ( 
         <div className='loding container '>
@@ -14,8 +14,10 @@ const Loding = () => {
                 wrapperClass="blocks-wrapper"
                 visible={true}
     />
+    <div>이미지를 생성중입니다</div>
+    <dib>평균적으로 2분정도 소요됩니다</dib>
         </div>
     ) ;
 
 };
-export default Loding;
+export default Loading;
