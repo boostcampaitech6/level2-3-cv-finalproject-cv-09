@@ -1,6 +1,6 @@
-import boostcamp from './boostcamp.jpeg'
-import pinkbee from './pinkbee.jpg'
-import scv from './scv.jpg'
+import boostcamp from './boostcamp.avif'
+import pinkbee from './pinkbee.avif'
+import scv from './scv.avif'
 
 const imageData = [
     

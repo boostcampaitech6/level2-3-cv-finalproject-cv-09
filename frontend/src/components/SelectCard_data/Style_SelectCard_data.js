@@ -1,12 +1,12 @@
-import modern from '../assets/Style_imgs/modern.png'
-import fancy from '../assets/Style_imgs/fancy.png'
-import abstract from '../assets/Style_imgs/abstract.png'
-import gothic from '../assets/Style_imgs/gothic.png'
-import simple from '../assets/Style_imgs/simple.png'
-import mysterious from '../assets/Style_imgs/mysterious.png'
-import typography from '../assets/Style_imgs/typography.png'
-import vintage from '../assets/Style_imgs/vintage.png'
-import elegant from '../assets/Style_imgs/elegant.png'
+import modern from '../assets/Style_imgs/modern.avif'
+import fancy from '../assets/Style_imgs/fancy.avif'
+import abstract from '../assets/Style_imgs/abstract.avif'
+import gothic from '../assets/Style_imgs/gothic.avif'
+import simple from '../assets/Style_imgs/simple.avif'
+import mysterious from '../assets/Style_imgs/mysterious.avif'
+import typography from '../assets/Style_imgs/typography.avif'
+import vintage from '../assets/Style_imgs/vintage.avif'
+import elegant from '../assets/Style_imgs/elegant.avif'
 
 
 const StyleData = [

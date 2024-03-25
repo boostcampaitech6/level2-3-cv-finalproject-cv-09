@@ -1,22 +1,22 @@
-import checked_white from '../assets/FontColor_imgs/checked_white.png'
-import checked_black from '../assets/FontColor_imgs/checked_black.png'
-import red from '../assets/FontColor_imgs/red.png'
-import orange from '../assets/FontColor_imgs/orange.png'
-import yellow from '../assets/FontColor_imgs/yellow.png'
-import green from '../assets/FontColor_imgs/green.png'
-import blue from '../assets/FontColor_imgs/blue.png'
-import navy from '../assets/FontColor_imgs/navy.png'
-import purple from '../assets/FontColor_imgs/purple.png'
-import checked_grey from '../assets/FontColor_imgs/checked_grey.png'
-import mint from '../assets/FontColor_imgs/mint.png'
-import brown from '../assets/FontColor_imgs/brown.png'
-import beige from '../assets/FontColor_imgs/beige.png'
-import rainbow from '../assets/FontColor_imgs/rainbow.png'
-import pink from '../assets/FontColor_imgs/pink.png'
+import white from '../assets/FontColor_imgs/white.avif'
+import black from '../assets/FontColor_imgs/black.avif'
+import red from '../assets/FontColor_imgs/red.avif'
+import orange from '../assets/FontColor_imgs/orange.avif'
+import yellow from '../assets/FontColor_imgs/yellow.avif'
+import green from '../assets/FontColor_imgs/green.avif'
+import blue from '../assets/FontColor_imgs/blue.avif'
+import navy from '../assets/FontColor_imgs/navy.avif'
+import purple from '../assets/FontColor_imgs/purple.avif'
+import grey from '../assets/FontColor_imgs/grey.avif'
+import mint from '../assets/FontColor_imgs/mint.avif'
+import brown from '../assets/FontColor_imgs/brown.avif'
+import beige from '../assets/FontColor_imgs/beige.avif'
+import rainbow from '../assets/FontColor_imgs/rainbow.avif'
+import pink from '../assets/FontColor_imgs/pink.avif'
 
 const FontColorData = [
   {
-    img: checked_white,
+    img: white,
     title: '흰색',
     rows: 1,
     cols: 1,
@@ -24,7 +24,7 @@ const FontColorData = [
     ko_prompt: 'f흰색'
   },
   {
-    img: checked_black,
+    img: black,
     title: '검정',
     rows: 1,
     cols: 1,
@@ -32,7 +32,7 @@ const FontColorData = [
     ko_prompt: 'f검정'
   },
   {
-    img: checked_grey,
+    img: grey,
     title: '회색',
     rows: 1,
     cols: 1,

@@ -8,11 +8,11 @@ import {MakingProvider, PromptProvider} from './context';
 const root = ReactDOM.createRoot(document.getElementById('__next'));
 root.render(
   <MakingProvider>
-  <PromptProvider>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-  </PromptProvider>
+    <PromptProvider>
+      <React.StrictMode>
+        <App/>
+      </React.StrictMode>
+    </PromptProvider>
   </MakingProvider>
 );
 
