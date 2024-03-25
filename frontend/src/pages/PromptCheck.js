@@ -26,6 +26,14 @@ const PromptCheck = () =>{
   const closeModal = () => setIsmodalopen(false);
   const [modaltext, setModaltext] = useState()
   
+  const [user_id, setUserid] = useState('0.0.0.0')
+  const ipget = () =>{
+    axios.get('https://geolocation-db.com/json/')
+    .then((res) => {
+      setUserid(res.data.IPv4)
+    })
+  }
+
   const onClickResult = () =>{
   setModaltext('로고 생성 요청....')
   openModal()
@@ -50,7 +58,7 @@ const PromptCheck = () =>{
     console.log('image gen call')
     axios.post('/api/prompt', 
     {
-      user_id: '123',
+      user_id: user_id,
       name: name,
       prompt: prompt,
     })
@@ -98,7 +106,10 @@ const PromptCheck = () =>{
               </Grid>
               <Grid container justifyContent="center" alignItems="center">
                 <Grid item>
-                  <div onClick={onClickResult} className="modebutton" style={{marginRight:"auto"}}>
+                  <div onClick={ () =>
+                    {ipget()
+                    onClickResult()
+                  }} className="modebutton" style={{marginRight:"auto"}}>
                     <div className="choose_txt">
                       <div className="button_txt1">Making Logo</div>
                       <div className="button_txt2">로고를 생성할래요!</div>

@@ -57,12 +57,19 @@ const AdvancedMode = () =>{
       navigate("/result?taskid=" + taskid , {state: { taskid }});
     }
   },[taskid]);
+  const [user_id, setUserid] = useState('0.0.0.0')
+  const ipget = () =>{
+    axios.get('https://geolocation-db.com/json/')
+    .then((res) => {
+      setUserid(res.data.IPv4)
+    })
+  }
 
   const imggenAPIPost = () =>{
     console.log('image gen call')
     axios.post('/api/prompt', 
     {
-      user_id: '123',
+      user_id: user_id,
       name: name,
       prompt: sentence,
     })
@@ -176,7 +183,10 @@ const AdvancedMode = () =>{
                       href="" 
                       variant="contained" 
                       endIcon={<SendIcon />}
-                      onClick={openDialog} //버튼 클릭 처리
+                      onClick={()=>{
+                        openDialog();
+                        ipget();
+                      }} //버튼 클릭 처리
                       disabled={!name} //버튼 활성화 처리
                       >
                       로고 생성
