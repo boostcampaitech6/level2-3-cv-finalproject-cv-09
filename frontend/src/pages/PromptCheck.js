@@ -60,7 +60,7 @@ const PromptCheck = () =>{
     {
       user_id: user_id,
       name: name,
-      prompt: prompt,
+      prompt: sentence,
     })
     .then((response)=>{
       console.log('image gen call success')

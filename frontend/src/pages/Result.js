@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
+import Footer from "../components/Footer";
 import './Result.css';
 
 const Makedlogo = () =>{
@@ -39,9 +40,15 @@ const Makedlogo = () =>{
 
   const get_image = () => {
     console.log('get image call')
-    console.log(typeof taskid[0])
-    console.log(taskid[0])
-    axios.get('/api/get_image/' + taskid[0])
+    console.log(typeof taskid)
+    console.log(taskid)
+    axios.post('/api/get_image/',
+    {
+      dp_id: taskid[0],
+      td_id: taskid[1],
+      sd2_id: taskid[2],
+      sdxl_id: taskid[3],
+    } )
     .then((response)=>{
       console.log('get image call success')
       console.log(response.data.status)
@@ -106,7 +113,6 @@ return(
             <a href="https://www.naver.com" target="_blank">설문참여</a>
             </Box>
             </Modal>
-          <div>로고 생성 결과</div>
           <Grid container direction="row" justifyContent="center" >
         <Grid item lg={7} xs={6} alignItems="center" row={4} >
           <Box sx={{mt:8}} grid >
@@ -137,6 +143,7 @@ return(
             </Grid>
             </Grid>
     </div>)}
+    <Footer/>
     </div>
     
 )
