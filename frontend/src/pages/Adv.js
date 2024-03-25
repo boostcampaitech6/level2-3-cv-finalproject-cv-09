@@ -13,7 +13,7 @@ const AdvancedMode = () =>{
   let location = useLocation();
   const name = location.state?.name;
   const content = location.state?.sentence;
-  const conditon = /^[가-힣A-Za-z,.""]/;
+  const conditon = /^[가-힣A-Za-z,.""\s]+$/;
   const [sentence, setPrompt] = useState(location.state?.sentence);
   const [modaltext, setModaltext] = useState()
   
@@ -39,7 +39,7 @@ const AdvancedMode = () =>{
   const navigate = useNavigate();
   const onClickResult = () =>{
     if(conditon.test(sentence)){
-      setModaltext('로고 생성 요청....')
+    setModaltext('로고 생성 요청....')
     closeDialog()
     openModal()
     imggenAPIPost();
