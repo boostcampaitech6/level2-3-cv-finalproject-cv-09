@@ -71,8 +71,8 @@ def generate(user_dir, name, prompt, n_sample=1):
     # SR
     image = sr(prompt=prompt, image=image, generator=generator).images
     
-    image_name = '/sample/'+f'{prompt}_1.png'
-    gcsdir = f'{user_dir}/{prompt}_1.png'
+    image_name = '/sample/1.png'
+    gcsdir = f'{user_dir}/1.png'
     image[0].save(image_name)
     url = upload_gcs(image_name, gcsdir)
     #os.remove(image_name)
