@@ -11,6 +11,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Footer from "../components/Footer";
 import './Result.css';
+import loading from '../components/assets/loading.avif'
 
 const Makedlogo = () =>{
   let location = useLocation();
@@ -82,10 +83,10 @@ const Makedlogo = () =>{
   })
   }
   const [Index, setIndex] = useState([
-    {id: 0, title: 'image01', imgurl:''},
-    {id: 1, title: 'image02', imgurl:''},
-    {id: 2, title: 'image03', imgurl:''},
-    {id: 3, title: 'image04', imgurl:''},
+    {id: 0, title: 'image01', imgurl:loading},
+    {id: 1, title: 'image02', imgurl:loading},
+    {id: 2, title: 'image03', imgurl:loading},
+    {id: 3, title: 'image04', imgurl:loading},
   ]);
   const style = {
     position: 'absolute',

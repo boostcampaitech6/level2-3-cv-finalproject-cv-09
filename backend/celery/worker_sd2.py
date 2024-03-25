@@ -4,10 +4,11 @@ from googletrans import Translator
 import argparse
 from datetime import datetime, timedelta
 import os
-
+from GCS import upload_gcs
 from celery import Celery
-from google.cloud import storage
-from google.oauth2 import service_account
+
+from parseq.strhub.data.module import SceneTextDataModule
+from parseq.sim import cal_sim
 
 REDIS_URL= "www.klogogen.studio:7090"
 REDIS_PASSWORD= "bc0709!"
@@ -20,25 +21,12 @@ broker = connection_url+"/0"
 celery_app = Celery("tasks", backend=backend, broker=broker, worker_heartbeat=280)
 celery_app.conf.worker_pool = "solo"
 
-
-def upload_gcs(image_dir, file_name):
-    KEY_PATH = "/data/ephemeral/home/celery/gcskey.json"
-    credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
-    bucket_name = "klogogenimgserver"
-    client = storage.Client(credentials=credentials)
-    
-    bucket = client.bucket(bucket_name)
-    
-    blob = bucket.blob(file_name)
-    blob.upload_from_filename(image_dir)
-    extime = datetime.now() + timedelta(days=30)
-    url = blob.generate_signed_url(extime)
-    return url
-
+parseq = torch.hub.load('baudm/parseq', 'parseq', pretrained=True).eval()
+img_transform = SceneTextDataModule.get_transform(parseq.hparams.img_size)
 
 @celery_app.task(name="SD2")
 
-def generate(user_dir, name, prompt, n_sample=1):
+def generate(user_dir, name, prompt, n_sample=4):
 
     # 모형
     pipe = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-2", torch_dtype=torch.float16, use_safetensors=True, variant="fp16")
@@ -50,12 +38,20 @@ def generate(user_dir, name, prompt, n_sample=1):
     translation = translator.translate(prompt)
     
     prompt = translation.text
-    images = pipe(prompt=prompt).images[0].resize((256,256))
-    
-    image_name = 'sample/'+f'{prompt}_3.png'
-    gcsdir = f'{user_dir}/{prompt}_3.png'
-    images.save(image_name)
+    results, ans = 0, -1
+    for i in range(n_sample):
+        images = pipe(prompt=prompt).images[0].resize((256,256))
+        image_name = 'sample/'+f'{i}.png'
+        images.save(image_name)
+        images = img_transform(images).unsqueeze(0)
+        ocr_res = parseq(images)
+        ocr_pred = ocr_res.softmax(-1)
+        if ans < cal_sim(name, ocr_pred):
+            ans = cal_sim(name, ocr_pred)
+            results = [images, image_name]
+        
+    image, image_name = results
+    gcsdir = f'{user_dir}/SD2.png'
     url = upload_gcs(image_name, gcsdir)
-    #os.remove(image_name)
     
     return url

@@ -4,9 +4,8 @@ from googletrans import Translator
 import argparse
 from datetime import datetime, timedelta
 import os
-
-from celery import Celery
 from GCS import upload_gcs
+from celery import Celery
 
 from parseq.strhub.data.module import SceneTextDataModule
 from parseq.sim import cal_sim
@@ -25,8 +24,36 @@ celery_app.conf.worker_pool = "solo"
 parseq = torch.hub.load('baudm/parseq', 'parseq', pretrained=True).eval()
 img_transform = SceneTextDataModule.get_transform(parseq.hparams.img_size)
 
-@celery_app.task(name="SDXL")
-def generate(user_dir, name, prompt, n_sample=4):
+def generateSD2(user_dir, name, prompt, n_sample=4):
+    # 모형
+    pipe = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-2", torch_dtype=torch.float16, use_safetensors=True, variant="fp16")
+    # Device
+    pipe.to("cuda")
+    
+    translator = Translator()
+    # 번역
+    translation = translator.translate(prompt)
+    
+    prompt = translation.text
+    results, ans = 0, -1
+    for i in range(n_sample):
+        images = pipe(prompt=prompt).images[0].resize((256,256))
+        image_name = 'sample/'+f'{i}.png'
+        images.save(image_name)
+        images = img_transform(images).unsqueeze(0)
+        ocr_res = parseq(images)
+        ocr_pred = ocr_res.softmax(-1)
+        if ans < cal_sim(name, ocr_pred):
+            ans = cal_sim(name, ocr_pred)
+            results = [images, image_name]
+        
+    image, image_name = results
+    gcsdir = f'{user_dir}/SD2.png'
+    url = upload_gcs(image_name, gcsdir)
+    
+    return url
+
+def generateSDXL(user_dir, name, prompt, n_sample=4):
 
     # 모형
     pipe = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16, use_safetensors=True, variant="fp16")
@@ -55,5 +82,12 @@ def generate(user_dir, name, prompt, n_sample=4):
     url = upload_gcs(image_name, gcsdir)
     
     return url
+
+@celery_app.task(name="SDs")
+def generate(user_dir, name, prompt, n_sample=4):
+    urls = []
+    urls.append(generateSD2(user_dir, name, prompt, n_sample=4))
+    urls.append(generateSDXL(user_dir, name, prompt, n_sample=4))
     
-    return url
+    return urls
+    
