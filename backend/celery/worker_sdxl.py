@@ -25,8 +25,8 @@ celery_app.conf.worker_pool = "solo"
 parseq = torch.hub.load('baudm/parseq', 'parseq', pretrained=True).eval()
 img_transform = SceneTextDataModule.get_transform(parseq.hparams.img_size)
 
-@celery_app.task(name="DeepFloyd")
-def generate(user_dir, name, prompt, n_sample=1):
+@celery_app.task(name="xl")
+def generate(user_dir, name, prompt, n_sample=4):
 
     # 모형
     pipe = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16, use_safetensors=True, variant="fp16")
@@ -38,19 +38,22 @@ def generate(user_dir, name, prompt, n_sample=1):
     translation = translator.translate(prompt)
     
     prompt = translation.text
-    results, ans = 0, 0
+    results, ans = 0, -1
     for i in range(n_sample):
         images = pipe(prompt=prompt).images[0].resize((256,256))
-        image_name = 'sample/'+f'{prompt}_1.png'
-        gcsdir = f'{user_dir}/{prompt}_2.png'
+        image_name = 'sample/'+f'{i}.png'
         images.save(image_name)
+        images = img_transform(images).unsqueeze(0)
         ocr_res = parseq(images)
         ocr_pred = ocr_res.softmax(-1)
         if ans < cal_sim(name, ocr_pred):
             ans = cal_sim(name, ocr_pred)
-            results = [images, image_name, gcsdir]
-    image, image_name, gcsdir = results
+            results = [images, image_name]
+        
+    image, image_name = results
+    gcsdir = f'{user_dir}/SDXL.png'
     url = upload_gcs(image_name, gcsdir)
-    #os.remove(image_name)
+    
+    return url
     
     return url

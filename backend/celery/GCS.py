@@ -5,7 +5,7 @@ from google.cloud import storage
 from google.oauth2 import service_account
 
 def upload_gcs(image_dir, file_name):
-    KEY_PATH = "/data/ephemeral/home/celery/gcskey.json"
+    KEY_PATH = "./gcskey.json"
     credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
     bucket_name = "klogogenimgserver"
     client = storage.Client(credentials=credentials)
