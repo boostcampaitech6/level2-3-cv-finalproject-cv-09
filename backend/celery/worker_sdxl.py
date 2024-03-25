@@ -25,7 +25,7 @@ celery_app.conf.worker_pool = "solo"
 parseq = torch.hub.load('baudm/parseq', 'parseq', pretrained=True).eval()
 img_transform = SceneTextDataModule.get_transform(parseq.hparams.img_size)
 
-@celery_app.task(name="xl")
+@celery_app.task(name="SDXL")
 def generate(user_dir, name, prompt, n_sample=4):
 
     # 모형
