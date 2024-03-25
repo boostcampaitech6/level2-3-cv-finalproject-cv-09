@@ -61,29 +61,32 @@ def gen_image(prompt: Prompt):
     task_id.append(task.id)
     task = celery_app.send_task("TD", args=[user_dir, prompt.name, prompt.prompt], queue="TD_queue")
     task_id.append(task.id)
-    task = celery_app.send_task("SDs", args=[user_dir, prompt.name, prompt.prompt], queue="SDs_queue")
+    task = celery_app.send_task("SD2", args=[user_dir, prompt.name, prompt.prompt], queue="SD2_queue")
+    task_id.append(task.id)
+    task = celery_app.send_task("SDXL", args=[user_dir, prompt.name, prompt.prompt], queue="SDXL_queue")
     task_id.append(task.id)
     return {"task_id":task_id}
 
 class TaskID(BaseModel):
     dp_id: str
     td_id:str
-    sd_id: str
+    sd2_id: str
+    sdxl_id: str
 
 @app.post("/api/get_image/") #이미지 prompt를 받아 생성후 전송
 def get_image(task_id: TaskID):
     DP_result=AsyncResult(task_id.dp_id, app=celery_app)
     TD_result=AsyncResult(task_id.td_id, app=celery_app)
-    SD_result=AsyncResult(task_id.sd_id, app=celery_app)
-    if (not DP_result.ready()) or (not TD_result.ready()) or (not SD_result.ready()):
-        return {"status": str(SD_result.status)}
+    SD2_result=AsyncResult(task_id.sd2_id, app=celery_app)
+    SDXL_result=AsyncResult(task_id.sdxl_id, app=celery_app)
+    if (not DP_result.ready()) or (not TD_result.ready()) or (not SD2_result.ready()) or (not SDXL_result.ready()):
+        return {"status": str(SDXL_result.status)}
     result = []
     result.append(DP_result.get())
     result.append(TD_result.get())
-    print(SD_result.get())
-    result.append(SD_result.get()[0])
-    result.append(SD_result.get()[1])
-    return {"status": str(SD_result.status), "result": result}
+    result.append(SD2_result.get())
+    result.append(SDXL_result.get())
+    return {"status": str(SDXL_result.status), "result": result}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
