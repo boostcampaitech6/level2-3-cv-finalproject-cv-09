@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SideNavbar.css'
 import { Typography, Box, Grid} from '@mui/material';
-import { BiMenuAltRight, BiSolidBusiness, BiSolidColorFill, BiFontColor } from 'react-icons/bi';
+import { BiSolidBusiness, BiSolidColorFill, BiFontColor } from 'react-icons/bi';
 import { TbCrosshair } from "react-icons/tb";
 import { RxFontStyle } from "react-icons/rx";
 import { useNavigate } from "react-router";
@@ -61,7 +61,6 @@ const Sidebar = ({name}) => {
                 sx={{ opacity: isHovered ? 1 : 0, transition: 'var(--transition)' }}
                 >K-Logo Gen</Typography>
           </Link>
-          {/* <BiMenuAltRight className="BiMenuAltRight" /> */}
         </Grid>
         <Grid item className="sidebar-links">
           <ul className='minimize'>
