@@ -2,14 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
 
-.sidebarall * {
+/* .sidebarall * {
     margin: 0;
     padding: 0px 0px 5px;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     --color-hover: rgb(32, 232, 62);
     --transition: all 0.2s ease;
-}
+} */
 .sidebar {
     display: fixed;
     position: fixed;
@@ -19,6 +19,7 @@
     z-index: 100;
     height: 954px;
     background: #fdfdfd;
+    --color-hover: rgb(32, 232, 62);
     padding: 20px 25px;
     transition: var(--transition);
     overflow: auto;

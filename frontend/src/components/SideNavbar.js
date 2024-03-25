@@ -45,7 +45,6 @@ const Sidebar = ({name}) => {
     navigate("/making/style?name=" + name, {state: { name }});
   }
   return (
-  // <Box className='sidebarall'>
     <Box 
       sx={{boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)', borderRadius: '10px'}}
       
@@ -116,7 +115,6 @@ const Sidebar = ({name}) => {
         </Grid> 
       </Grid>
     </Box>
-  // </Box>
   );
 };
 
