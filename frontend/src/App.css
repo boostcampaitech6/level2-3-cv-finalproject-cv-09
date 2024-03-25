@@ -39,3 +39,9 @@
   flex-grow: 0;
   flex-shrink: 1;
 }
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
