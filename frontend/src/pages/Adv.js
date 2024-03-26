@@ -39,10 +39,10 @@ const AdvancedMode = () =>{
   const navigate = useNavigate();
   const onClickResult = () =>{
     if(conditon.test(sentence)){
-    setModaltext('로고 생성 요청....')
+    setModaltext('프롬프트 검증중')
     closeDialog()
     openModal()
-    imggenAPIPost();
+    PerspectiveAPI()
     }
     else {
       setModaltext('프롬프트가 형식에 맞지 않습니다!')
@@ -64,7 +64,31 @@ const AdvancedMode = () =>{
       setUserid(res.data.IPv4)
     })
   }
-
+  const PerspectiveAPI = () =>{
+    console.log('PerspectiveAPI call')
+    axios.get('/api/perspectiveapi/'+ sentence)
+    .then((response)=>{
+      console.log('PerspectiveAPI success')
+      console.log(typeof sentence)
+      console.log(sentence)
+      console.log(response.data)
+      if (!response.data){
+        setModaltext('프롬프트에서 부적절한 내용이 검출되었습니다!')
+        openModal()
+      }
+      else {
+        setModaltext('로고 생성 요청....')
+        openModal()
+        imggenAPIPost()
+      }
+  })
+    .catch((error)=>{
+      console.log('PerspectiveAPI call FAILURE')
+      console.log(error)
+      setModaltext('서버 연결에 오류가 발생했습니다!')
+      openModal()  
+  })
+  }
   const imggenAPIPost = () =>{
     console.log('image gen call')
     axios.post('/api/prompt', 

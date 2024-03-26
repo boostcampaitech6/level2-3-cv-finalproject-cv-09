@@ -10,7 +10,7 @@ import os
 from GCS import upload_gcs
 from celery import Celery
 
-REDIS_URL= "www.klogogen.studio:7090"
+REDIS_URL= "redis.klogogen.studio:7090"
 REDIS_PASSWORD= "bc0709!"
 
 connection_url = f"redis://:{REDIS_PASSWORD}@{REDIS_URL}"
@@ -61,7 +61,7 @@ def generate(user_dir, name, prompt, n_sample=1):
     # 번역
     translation = translator.translate(prompt)
     
-    #prompt = translation.text
+    prompt = translation.text
     safety_modules = {"feature_extractor": pipeline.feature_extractor, "safety_checker": pipeline.safety_checker}
     sr = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-x4-upscaler", **safety_modules, torch_dtype=torch.float16)
     sr.enable_model_cpu_offload()

@@ -7,6 +7,8 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
 import base64
+import json
+import requests
 
 app = FastAPI()
 
@@ -32,7 +34,7 @@ from fastapi import FastAPI
 from celery import Celery
 from celery.result import AsyncResult
 
-REDIS_URL= "www.klogogen.studio:7090"
+REDIS_URL= "localhost:7090"
 REDIS_PASSWORD= "bc0709!"
 
 connection_url = f"redis://:{REDIS_PASSWORD}@{REDIS_URL}"
@@ -41,11 +43,45 @@ backend = connection_url+"/0"
 broker = connection_url+"/0"
 
 celery_app = Celery("tasks", backend=backend, broker=broker)
+
+
     
 @app.get("/api")
 def read_root():
     return {"Hello": "World"}
 
+@app.get("/api/perspectiveapi/{prompt}")
+def PerspectiveAPI(prompt: str):
+    API_KEY = 'AIzaSyAYnTflzIHVmWuKci4ypGdzuHkC9-Ds-Q0'
+    API_URL = "https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze"
+    
+    # 분석하고자 하는 속성 목록
+    # 여러 LANGUAGES 지원 영어 : en , 언어별 지원 attributes 다름. 확인해야함
+    # 공식문서 https://developers.perspectiveapi.com/s/about-the-api-attributes-and-languages?language=en_US
+    attributes = ["TOXICITY", "INSULT", "THREAT", "PROFANITY"]
+    data = {
+        "comment": {"text": prompt},
+        "languages": ["ko"],
+        "requestedAttributes": {attr: {} for attr in attributes}
+    }
+    
+    params = {
+        "key": API_KEY
+    }
+    
+    # Google Perspective API 호출
+    response = requests.post(API_URL, params=params, json=data)
+    result = response.json()
+    
+    # 점수가 0.5를 넘는 속성의 개수 계산
+    over_threshold_count = sum(
+        1 for attr, details in result["attributeScores"].items()
+        if details["summaryScore"]["value"] > 0.5
+    )
+    
+    # 한개 이상의 점수가 0.5를 넘으면 False, 그렇지 않으면 True 반환
+    return over_threshold_count < 1
+    
 class Prompt(BaseModel):
     user_id: str
     name: str
@@ -53,6 +89,7 @@ class Prompt(BaseModel):
 
 @app.post("/api/prompt") #이미지 prompt를 받아 생성후 전송
 def gen_image(prompt: Prompt):
+        
     user_dir = prompt.user_id +'/'+ datetime.now().strftime('%y%m%d%H%M')
     
     #task_name = ["SDs"]
