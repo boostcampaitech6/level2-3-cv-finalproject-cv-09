@@ -11,7 +11,7 @@ from GCS import upload_gcs
 from parseq.strhub.data.module import SceneTextDataModule
 from parseq.sim import cal_sim
 
-REDIS_URL= "www.klogogen.studio:7090"
+REDIS_URL= "redis.klogogen.studio:7090"
 REDIS_PASSWORD= "bc0709!"
 
 connection_url = f"redis://:{REDIS_PASSWORD}@{REDIS_URL}"
