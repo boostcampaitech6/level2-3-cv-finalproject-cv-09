@@ -7,7 +7,6 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
 import base64
-from googleapiclient import discovery
 import json
 import requests
 
