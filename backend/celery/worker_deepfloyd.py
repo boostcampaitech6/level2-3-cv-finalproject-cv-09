@@ -10,7 +10,7 @@ import os
 from GCS import upload_gcs
 from celery import Celery
 
-REDIS_URL= "www.klogogen.studio:7090"
+REDIS_URL= "redis.klogogen.studio:7090"
 REDIS_PASSWORD= "bc0709!"
 
 connection_url = f"redis://:{REDIS_PASSWORD}@{REDIS_URL}"
