@@ -1,0 +1,129 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000000;
+  border-bottom: 3px solid transparent;
+  background-color: #ffffff;
+  left: 0;
+  transition: background-color .2s ease;
+  border-bottom-color: rgba(0,27,55,0.1);
+  padding: 5px;
+}
+.container {
+  width: 95%;
+  height: 100%;
+}
+.navbar_inner-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.title{
+  display: block;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  color: #4f64ff;
+  font-family: 'Spoqa Han Sans Neo', sans-serif;
+  font-weight: bolder;
+  font-size: 220%;
+  text-decoration: none;
+
+}
+.navbar_content {
+  display: flex;
+  align-items: center;
+}
+ul {
+  list-style: none;
+}
+.navbar_menu {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0 auto;
+}
+.navbar_item>a {
+  display: flex;
+  padding: 1.5em 1.5em;
+  font-size: 20px;
+  line-height: 20px;
+  color: #646464;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+  text-decoration: none;
+  text-align: left;
+  letter-spacing :0.5px;
+}
+.navbar_item>a:hover {
+  background-color: #f4f4f4;
+  color: #000000;
+  text-decoration: underline;
+  border-radius: 10px;
+}
+.navbar_login {
+  display: flex;
+  cursor: pointer;
+  margin: auto
+}
+@media (max-width: 400px) {
+  .navbar_login {
+    display: none;
+  }
+}
+.login_item>a {
+  display: flex;
+  color: #646464;
+  cursor: pointer;
+  background-color: transparent;
+}
+.login_item>a:hover {
+  background-color: #f4f4f4;
+  color: #000000;
+  text-decoration: underline;
+  border-radius: 10px;
+}
+@media (max-width: 1000px) {
+  .navbar_item:nth-child(4) {
+    display: none;
+  }
+}
+@media (max-width: 1000px) {
+  .navbar_item:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 1000px) {
+  .navbar_item:nth-child(2) {
+    display: none;
+  }
+}
+@media (max-width: 1000px) {
+  .navbar_item:nth-child(1) {
+    display: none;
+  }
+}
+.navbar_hide_menu {
+  display: block;
+  cursor: pointer;
+}
+@media (min-width: 1000px) {
+  .navbar_hide_menu {
+    display: none;
+  }
+}
+.menu_item>a {
+  display: flex;
+  color: #646464;
+  cursor: pointer;
+  background-color: transparent;
+}
+.menu_item>a:hover {
+  background-color: #f4f4f4;
+  color: #000000;
+  text-decoration: underline;
+  border-radius: 10px;
+}

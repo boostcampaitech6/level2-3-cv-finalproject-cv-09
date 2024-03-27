@@ -1,0 +1,16 @@
+accelerate launch train_text_to_image_lora_sdxl.py \
+  --pretrained_model_name_or_path="stabilityai/stable-diffusion-xl-base-1.0" \
+  --pretrained_vae_model_name_or_path="madebyollin/sdxl-vae-fp16-fix" \
+  --dataset_name="logo-wizard/modern-logo-dataset" \
+  --image_column="image" \
+  --caption_column="text" \
+  --resolution=512 \
+  --train_batch_size=1 \
+  --checkpointing_steps=100 \
+  --num_train_epochs=1 \
+  --learning_rate=1e-04 \
+  --lr_scheduler="constant" \
+  --lr_warmup_steps=0 \
+  --mixed_precision="fp16" \
+  --seed=42 \
+  --output_dir="/data/ephemeral/home/level2-3-cv-finalproject-cv-09/logo_generation/output/custom3" \

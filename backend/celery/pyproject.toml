@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "logo-generation"
+version = "0.1.0"
+description = ""
+authors = ["Ohkingtaek"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+torch = "1.13.0"
+torchvision = "0.14.0"
+diffusers = "0.26.3"
+omegaconf = "2.3.0"
+transformers = "4.37.2"
+accelerate = "0.27.2"
+sentencepiece = "0.2.0"
+bitsandbytes = "0.42.0"
+peft = "^0.8.2"
+uvicorn = "^0.27.1"
+fastapi = "^0.110.0"
+celery = "^5.3.6"
+redis = "^5.0.3"
+translator = "^0.0.9"
+googletrans = "3.1.0a0"
+google-cloud-storage = "^2.15.0"
+pytorch-lightning = "^2.2.1"
+lmdb = "^1.4.1"
+timm = "^0.9.16"
+nltk = "^3.8.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+flake8 = "^7.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
