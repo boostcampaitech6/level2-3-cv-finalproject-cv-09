@@ -1,0 +1,49 @@
+dir:
+  output_dir: "./modeloutput"
+  logging_dir: "logs"
+  instance_dir: "./dataset/kaggle/"
+  class_dir: "./dataset/logo/"
+
+model:
+  model_name: "stabilityai/stable-diffusion-2-base"
+  revision: "fp16" 
+
+train:
+  gradient_accumulation_steps: 1
+  mixed_precision: "fp16"
+  train_text_encoder: False
+  learning_rate: 1e-6
+  adam_weight_decay: 1e-2
+  adam_epsilon: 1e-08
+  train_batch_size: 1
+  max_train_steps: 100
+  num_train_epochs: 1
+  lr_scheduler: "constant"
+  lr_warmup_steps: 0
+  prior_loss_weight: 1
+
+save:
+  save_sample_prompt: 'a logo'
+  save_sample_negative_prompt: None 
+  save_guidance_scale: 7.5
+  n_save_sample: 4
+  save_infer_steps: 50
+  save_interval: 10000
+  save_min_steps: 0
+
+
+resolution: 512
+seed: 1337
+with_prior_preservation: True
+center_crop: False
+num_class_images: 100
+pad_tokens: False
+hflip: False
+not_cache_latents: None 
+max_grad_norm: 1
+log_interval: 10
+
+
+
+
+

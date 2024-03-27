@@ -1,0 +1,234 @@
+/* styles.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+
+/* .sidebarall * {
+    margin: 0;
+    padding: 0px 0px 5px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    --color-hover: rgb(32, 232, 62);
+    --transition: all 0.2s ease;
+} */
+.sidebar {
+    display: fixed;
+    position: fixed;
+    float: left;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 954px;
+    background: #fdfdfd;
+    --color-hover: rgb(32, 232, 62);
+    padding: 20px 25px;
+    transition: var(--transition);
+    overflow: auto;
+}
+@media (max-width:600px) {
+    .sidebar {
+        display: fixed;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 10vh;
+        height: 760px;
+        background: #fdfdfd;
+        height: 100%;
+        background: #fff;
+        padding: 10px 20px;
+        transition: var(--transition);
+    }
+}
+.sidebar:not(:hover) {
+    transition-delay: 0.11s;
+}
+.sidebar-header {
+    height: 60px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: var(--transition);
+}
+.sidebar-header .logo {
+    color: #4f64ff;
+    font-size: 23px;
+    font-weight: 600;
+    opacity: 0;
+    transition: var(--transition);
+}
+@media (max-width:600px) {
+    .sidebar-header .logo {
+        color: #4f64ff;
+        padding-left: 5px;
+        font-size: 15px;
+        transition: var(--transition);
+    }
+}
+.sidebar.expand .sidebar-header .logo {
+    opacity: 1;
+    transition: var(--transition);
+}
+.BiMenuAltRight {
+    position: absolute;
+    color: #000;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 23px;
+    cursor: pointer;
+    margin-right: -5px;
+    transition: var(--transition);
+}
+@media (max-width:600px) {
+    .BiMenuAltRight {
+        left: 1rem;
+        transition: var(--transition);
+    }
+}
+.sidebar.expand .BiMenuAltRight{
+    margin-right: -20px;
+    transition: var(--transition);
+}
+@media (max-width:600px) {
+    .sidebar.expand .BiMenuAltRight{
+        margin-right: 0px;
+        left: 6.5rem;
+        transition: var(--transition);
+    }
+}
+.sidebar-icon{
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    color: #4f64ff
+}
+@media (max-width:600px) {
+    .sidebar-icon{
+        width: 25px;
+        height: 25px;
+    }
+}
+.sidebar-links {
+    margin-top: 20px;
+    height: 100%;
+}
+
+.sidebar-links li {
+    position: relative;
+    margin: 10px 0;
+    list-style: none;
+}
+.sidebar-links li a {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    align-items: center;
+    text-decoration: none;
+    background: #fff;
+    transition: var(--transition);
+}
+
+.sidebar-links li:hover a {
+    background: var(--color-hover);
+}
+.sidebar-links li a .sidebar-title {
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    display: none;
+    transition: var(--transition);
+}
+@media (max-width:600px) {
+    .sidebar-links li a .sidebar-title {
+        color: #000;
+        font-size: 15px;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        display: none;
+        transition: var(--transition);
+    }
+}
+.sidebar.expand .sidebar-links li a .sidebar-title {
+    display: block;
+    transition: var(--transition);
+}
+.sidebar-links li:hover a .sidebar-title {
+    color: #fff;
+    transition: var(--transition);
+}
+.sidevar_home {
+    position: relative;
+    top: 0;
+    left: 78px;
+    width: calc(100% - 78px);
+    min-height: 100vh;
+    background: #e2e2e2;
+    z-index: 6;
+    transition: var(--transition);
+}
+.sidebar.expand ~ .home {
+    left: 250px;
+    width: calc(100% - 250px);
+    transition: var(--transition);
+}
+.tag_space {
+    position: 50px 50px 50px
+}
+.rounded-rectangle {
+    width: 178px;
+    height: 265px;
+    background-color: #ffffffde;
+    border-radius: 10px; /* 둥근 모서리 반지름 설정 */
+    padding: 5px;
+    text-align: center;
+    line-height: 60px;
+    margin : 20px -10px 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    transition: var(--transition);
+}
+/* @media (max-width:600px) {
+    .rounded-rectangle {
+        width: 40px;
+        transition: var(--transition);
+        height: 50px;
+        margin : -20px -10px 10px;
+    }
+} */
+/* .sidebar.expand .rounded-rectangle {
+    width: 168px;
+    height: 265px;
+    background-color: #ffffffde;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    line-height: 60px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    transition: var(--transition);
+} */
+
+@media (max-width:600px) {
+    .rounded-rectangle {
+        width: 108px;
+        overflow-y: auto;
+        transition: var(--transition);
+    }
+}
+
+.rounded-rectangle:not(:hover) {
+    transition-delay: 0.11s;
+}
+.tagBox {
+    padding: 0px, 5px, 5px, 0px;
+    line-height: 2.5;
+}
+
+.minimize {
+    padding-left: 0;
+}
