@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "craft"
+name = "logo-generation-data"
 version = "0.1.0"
 description = ""
 authors = ["ohkingtaek <mm0741@naver.com>"]
@@ -8,10 +8,18 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 torch = "2.0.0"
+salesforce-lavis = "^1.0.2"
+googletrans = "^3.0.0"
+pandas = "^2.2.1"
 torchvision = "0.15.1"
 tqdm = "^4.66.2"
 opencv-python = "^4.9.0.80"
 easydict = "^1.13"
+jupyter = "^1.0.0"
+lmdb = "^1.4.1"
+pytorch-lightning = "^2.2.1"
+nltk = "^3.8.1"
+timm = "0.4.12"
 
 
 [build-system]

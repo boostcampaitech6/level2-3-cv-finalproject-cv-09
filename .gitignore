@@ -203,3 +203,8 @@ pyrightconfig.json
 # Ignore all local history of files
 .history
 .ionide
+
+backend/celery/model_cache
+backend/celery/output
+backend/celery/sample
+backend/celery/nohup.out
