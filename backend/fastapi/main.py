@@ -1,8 +1,9 @@
+import json
 from typing import Optional
 from datetime import datetime
+from pydantic import BaseModel
 
 import uvicorn
-from pydantic import BaseModel
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import requests
@@ -27,8 +28,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-REDIS_URL = "localhost:7090"
-REDIS_PASSWORD = "bc0709!"
+with open('../celery/redis.json', 'r') as f:
+    data = json.load(f)
+
+REDIS_URL = data['LOCAL_REDIS_URL']
+REDIS_PASSWORD = data['REDIS_PASSWORD']
 
 connection_url = f"redis://:{REDIS_PASSWORD}@{REDIS_URL}"
 

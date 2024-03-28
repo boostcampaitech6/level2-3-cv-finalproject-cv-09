@@ -14,7 +14,7 @@ datasets = "^2.18.0"
 transformers = "^4.39.1"
 fastchat = "^0.1.0"
 accelerate = "^0.28.0"
-googletrans = "^3.0.0"
+googletrans = "4.0.0-rc1"
 celery = "^5.3.6"
 google-cloud-storage = "^2.16.0"
 google-auth = "^2.29.0"
@@ -24,6 +24,9 @@ timm = "^0.9.16"
 pytorch-lightning = "^2.2.1"
 lmdb = "^1.4.1"
 nltk = "^3.8.1"
+redis = "^5.0.3"
+sentencepiece = "^0.2.0"
+peft = "^0.10.0"
 
 
 [build-system]

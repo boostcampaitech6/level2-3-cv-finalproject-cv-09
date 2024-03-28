@@ -15,7 +15,7 @@ from GCS import upload_gcs
 from celery import Celery
 
 from parseq.strhub.data.module import SceneTextDataModule
-from backend.celery.parseq.utils import cal_sim
+from parseq.utils import cal_sim
 
 
 with open('./redis.json', 'r') as f:

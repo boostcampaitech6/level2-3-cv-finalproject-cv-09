@@ -1,4 +1,5 @@
 {
     "REDIS_URL": "www.klogogen.studio:7090",
-    "REDIS_PASSWORD": "bc0709!"
+    "REDIS_PASSWORD": "bc0709!",
+    "LOCAL_REDIS_URL": "localhost:7090"
 }
