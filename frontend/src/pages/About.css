@@ -1,0 +1,18 @@
+.about_main {
+    text-align: center;
+    font-size: 400%;
+    color: #4f64ff;
+    font-weight: bolder;
+    margin-bottom: 5vh;
+}
+.about_text {
+    text-align: center;
+    font-size: 130%;
+    color: #747272;
+    margin-bottom: 1vh;
+}
+
+.about_img {
+    margin-top: 5vh;
+    text-align: center;
+}
