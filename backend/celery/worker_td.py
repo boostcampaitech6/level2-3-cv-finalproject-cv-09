@@ -256,6 +256,6 @@ def text_to_image(
         output_paths = []
         output_path = 'sample/textdiffuser-0.png'
         results.save(output_path)
-        gcsdir = f'{user_dir}/{promptname}/textdiffuser-0.png'
+        gcsdir = f'{user_dir}/textdiffuser-0.png'
         output_paths.append(upload_gcs(output_path, gcsdir))
         return output_paths
