@@ -1,14 +1,16 @@
 import React from "react"
 import MainNav from "../components/MainNav";
+import Footer from "../components/Footer";
 import { Box, Grid } from "@mui/material";
 import "./Devs.css"
 const Devs = () =>{
     return(
         <div>
+          <div className="devs_column_box">
           <MainNav/>
-          <Grid container direction="column"  justifyContent="center" alignItems="center">
+          <Grid container direction="column" justifyContent="center" alignItems="center">
             <Grid item>
-              <Grid container direction="row"justifyContent="center"alignItems="center">
+              <Grid container direction="row" justifyContent="center" alignItems="center">
                 <Grid item >
                   <div className="profile_card">
                     <h2>박상언</h2>
@@ -87,6 +89,8 @@ const Devs = () =>{
               </Grid>
             </Grid>
           </Grid>
+          <Footer/>
+          </div>
           </div>
     );
 }

@@ -7,3 +7,9 @@
     border-color: #4f64ff;
     border-radius: 20px;
 }
+.devs_column_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
