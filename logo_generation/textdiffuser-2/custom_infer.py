@@ -10,10 +10,11 @@ from diffusers import AutoencoderKL, UNet2DConditionModel, DDPMScheduler
 from fastchat.model import get_conversation_template
 
 
-alphabet = string.digits + string.ascii_lowercase + string.ascii_uppercase + string.punctuation + ' '
+alphabet = string.digits + string.ascii_lowercase + \
+    string.ascii_uppercase + string.punctuation + ' '
 font_layout = ImageFont.truetype("./arial.ttf", 32)
 cache_dir = 'model_cache'
-local_files_only = True
+local_files_only = False
 
 m1_model_path = 'JingyeChen22/textdiffuser2_layout_planner'
 
@@ -111,13 +112,16 @@ def text_to_image(
 
     with torch.no_grad():
         user_prompt = prompt
-
-        # if len(keywords.strip()) == 0:
-        #     template = f'Given a prompt that will be used to generate an image, plan the layout of visual text for the image. The size of the image is 128x128. Therefore, all properties of the positions should not exceed 128, including the coordinates of top, left, right, and bottom. All keywords are included in the caption. You dont need to specify the details of font styles. At each line, the format should be keyword left, top, right, bottom. So let us begin. Prompt: {user_prompt}'
-        # else:
         keywords = keywords.split('/')
         keywords = [i.strip() for i in keywords]
-        template = f'Given a prompt that will be used to generate an image, plan the layout of visual text for the image. The size of the image is 128x128. Therefore, all properties of the positions should not exceed 128, including the coordinates of top, left, right, and bottom. In addition, we also provide all keywords at random order for reference. You dont need to specify the details of font styles. At each line, the format should be keyword left, top, right, bottom. So let us begin. Prompt: {prompt}. Keywords: {str(keywords)}'
+        template = f'Given a prompt that will be used to generate an image, \
+        plan the layout of visual text for the image. The size of the image \
+        is 128x128. Therefore, all properties of the positions should not \
+        exceed 128, including the coordinates of top, left, right, and bottom.\
+        In addition, we also provide all keywords at random order for \
+        reference. You dont need to specify the details of font styles.\
+        At each line, the format should be keyword left, top, right, bottom.\
+        So let us begin. Prompt: {prompt}. Keywords: {str(keywords)}'
 
         msg = template
         conv = get_conversation_template(m1_model_path)
@@ -219,12 +223,13 @@ def text_to_image(
                 noise_pred_cond = unet(
                     sample=input, timestep=t,
                     encoder_hidden_states=encoder_hidden_states_cond[:batch]
-                ).sample # b, 4, 64, 64
+                ).sample
                 noise_pred_uncond = unet(
                     sample=input, timestep=t,
                     encoder_hidden_states=encoder_hidden_states_nocond[:batch]
-                ).sample # b, 4, 64, 64
-                noisy_residual = noise_pred_uncond + guidance * (noise_pred_cond - noise_pred_uncond) # b, 4, 64, 64     
+                ).sample
+                noisy_residual = noise_pred_uncond + guidance * (
+                    noise_pred_cond - noise_pred_uncond)
                 input = scheduler.step(noisy_residual, t, input).prev_sample
                 del noise_pred_cond
                 del noise_pred_uncond
@@ -240,7 +245,8 @@ def text_to_image(
         for index, image in enumerate(images.cpu().float()):
             image = (image / 2 + 0.5).clamp(0, 1).unsqueeze(0)
             image = image.cpu().permute(0, 2, 3, 1).numpy()[0]
-            image = Image.fromarray((image * 255).round().astype("uint8")).convert('RGB')
+            image = Image.fromarray(
+                (image * 255).round().astype("uint8")).convert('RGB')
             results.append(image)
             row = index // 2
             col = index % 2
@@ -256,9 +262,10 @@ def text_to_image(
 
 
 text_to_image(
-    prompt='Draw a logo for a cafe named “Blueprint” that sells blue drinks.',
-    keywords='Blueprint',
-    positive_prompt=', digital art, very detailed, fantasy, high definition, cinematic light, dnd, trending on artstation',
+    prompt='',
+    keywords='',
+    positive_prompt=', logo vectorize, digital art, very detailed, \
+        high definition, cinematic light, trending on artstation',
     sampling_step=20,
     guidance=7.5,
     batch=4,

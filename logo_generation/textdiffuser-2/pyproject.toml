@@ -2,32 +2,23 @@
 name = "textdiffuser-2"
 version = "0.1.0"
 description = ""
-authors = ["OhKingTaek <mm074111@gmail.com>"]
+authors = ["ohkingtaek <mm0741@naver.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-diffusers = "0.24.0"
-datasets = "2.11.0"
-transformers = "4.28.1"
-fschat = "0.2.26"
-torch = "2.0.0"
-accelerate = "^0.27.2"
-torchvision = "0.15.1"
-xformers = "0.0.19"
-sentencepiece = "^0.2.0"
-protobuf = "^4.25.3"
-opencv-python = "^4.9.0.80"
-jupyter = "^1.0.0"
-cog = "^0.9.4"
+torch = "2.2.0"
+torchvision = "0.17.0"
+xformers = "0.0.24"
+wandb = "^0.16.5"
+diffusers = "^0.27.2"
+transformers = "^4.39.1"
+tqdm = "^4.66.2"
+datasets = "^2.18.0"
+accelerate = "^0.28.0"
+huggingface = "^0.0.1"
+fastchat = "^0.1.0"
 
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.0.2"
-isort = "^5.13.2"
-mypy = "^1.8.0"
-ruff = "^0.3.0"
-black = "^24.2.0"
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "logo-generation"
+name = "logo-generation-model"
 version = "0.1.0"
 description = ""
 authors = ["Ohkingtaek"]
@@ -7,8 +7,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-torch = "1.13.0"
-torchvision = "0.14.0"
+torch = "2.0.0"
+torchvision = "0.15.1"
 diffusers = "0.26.3"
 omegaconf = "2.3.0"
 transformers = "4.37.2"
@@ -18,6 +18,10 @@ bitsandbytes = "0.42.0"
 peft = "^0.8.2"
 googletrans = "3.1.0a0"
 detoxify = "^0.5.2"
+natsort = "^8.4.0"
+datasets = "^2.18.0"
+fastchat = "^0.1.0"
+wandb = "^0.16.5"
 
 
 [tool.poetry.group.dev.dependencies]
