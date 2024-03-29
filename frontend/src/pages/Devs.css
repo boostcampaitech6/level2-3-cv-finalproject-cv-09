@@ -1,0 +1,15 @@
+.profile_card {
+    width: 400px;
+    height: 240px;
+    margin: 100px 20px 0px 20px;
+    padding: 20px;
+    border: solid;
+    border-color: #4f64ff;
+    border-radius: 20px;
+}
+.devs_column_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}

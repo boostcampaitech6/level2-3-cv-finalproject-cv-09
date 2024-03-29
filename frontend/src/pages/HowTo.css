@@ -1,0 +1,14 @@
+.howto_column_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+.howto_card {
+    margin: 10% 20% 10% 20%;
+    padding: 20px;
+    border: none;
+    background-color: white;
+    box-shadow: 2px 2px 10px whitesmoke;
+    border-radius: 20px;
+}
