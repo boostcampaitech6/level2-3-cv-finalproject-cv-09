@@ -52,8 +52,8 @@ def read_root():
 
 @app.get("/api/perspectiveapi/{prompt}")
 def PerspectiveAPI(prompt: str):
-    API_KEY = 'AIzaSyAYnTflzIHVmWuKci4ypGdzuHkC9-Ds-Q0'
-    API_URL = "https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze"
+    API_KEY = ''
+    API_URL = ""
     
     # 분석하고자 하는 속성 목록
     # 여러 LANGUAGES 지원 영어 : en , 언어별 지원 attributes 다름. 확인해야함
