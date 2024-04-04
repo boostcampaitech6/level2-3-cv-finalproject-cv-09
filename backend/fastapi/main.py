@@ -49,8 +49,8 @@ def read_root():
 
 @app.get("/api/perspectiveapi/{prompt}")
 def PerspectiveAPI(prompt: str):
-    API_KEY = 'AIzaSyAYnTflzIHVmWuKci4ypGdzuHkC9-Ds-Q0'
-    API_URL = "https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze"
+    API_KEY = ''
+    API_URL = ""
 
     attributes = ["TOXICITY", "INSULT", "THREAT", "PROFANITY"]
     data = {
